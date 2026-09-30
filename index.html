@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Svitlana Biletska — Frontend Fixes &amp; UI/UX Audits for E-commerce</title>
+  <meta name="description" content="Front-end developer with 6+ years in e-commerce (Magento/Hyvä, PrestaShop, WordPress). I audit and fix what's costing you sales on your site — plus visual content that sells better than a plain product photo.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://svitlanabiletska.com/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Svitlana Biletska — Frontend Fixes & UI/UX Audits for E-commerce">
+  <meta property="og:description" content="Front-end developer with 6+ years in e-commerce (Magento/Hyvä, PrestaShop, WordPress). I audit and fix what's costing you sales on your site.">
+  <meta property="og:image" content="https://svitlanabiletska.com/assets/og-preview.jpg">
+  <meta property="og:url" content="https://svitlanabiletska.com/">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Svitlana Biletska — Frontend Fixes & UI/UX Audits for E-commerce">
+  <meta name="twitter:description" content="Front-end developer with 6+ years in e-commerce (Magento/Hyvä, PrestaShop, WordPress).">
+  <meta name="twitter:image" content="https://svitlanabiletska.com/assets/og-preview.jpg">
+
+  <!-- Icons -->
+  <link rel="icon" href="/assets/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="512x512" href="/assets/icon-512.png">
+  <link rel="apple-touch-icon" href="/assets/icon-512.png">
+
+  <link rel="preload" href="/assets/fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Svitlana Biletska",
+    "url": "https://svitlanabiletska.com/",
+    "image": "https://svitlanabiletska.com/assets/og-preview.jpg",
+    "description": "Front-end development, UI/UX audits and visual content for e-commerce stores (Magento/Hyvä, PrestaShop, WordPress).",
+    "email": "hello@svitlanabiletska.com",
+    "areaServed": "Worldwide",
+    "address": { "@type": "PostalAddress", "addressLocality": "Piekary Śląskie", "addressCountry": "PL" },
+    "founder": {
+      "@type": "Person",
+      "name": "Svitlana Biletska",
+      "jobTitle": "Front-End Developer",
+      "sameAs": ["https://www.linkedin.com/in/svitlana-biletska-8507841bb"]
+    },
+    "sameAs": ["https://www.linkedin.com/in/svitlana-biletska-8507841bb"]
+  }
+  </script>
+
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.9/dist/cdn.min.js"></script>
+</head>
+<body>
+
+<header class="site-header" x-data="{ open: false }">
+  <div class="wrap nav-row">
+    <div class="logo">Svitlana <span>Biletska</span></div>
+    <div class="nav-links">
+      <nav aria-label="Primary" class="hidden md:block">
+        <ul>
+          <li><a href="#work">Work</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <a href="#contact" class="btn btn-solid hidden md:inline-flex">Start a project</a>
+      <button
+        class="nav-toggle flex md:!hidden"
+        :aria-expanded="open.toString()"
+        :aria-label="open ? 'Close menu' : 'Open menu'"
+        aria-controls="mobileMenu"
+        @click="open = !open">
+        <span :class="open ? 'translate-y-[3.25px] rotate-45' : ''"></span>
+        <span :class="open ? '-translate-y-[3.25px] -rotate-45' : ''"></span>
+      </button>
+    </div>
+  </div>
+  <div id="mobileMenu" class="mobile-menu md:hidden" x-show="open" x-transition x-cloak>
+    <div class="wrap mobile-menu-inner">
+      <nav aria-label="Mobile">
+        <ul>
+          <li><a href="#work" @click="open=false">Work</a></li>
+          <li><a href="#services" @click="open=false">Services</a></li>
+          <li><a href="#about" @click="open=false">About</a></li>
+          <li><a href="#contact" @click="open=false">Contact</a></li>
+        </ul>
+      </nav>
+      <a href="#contact" class="btn btn-solid mt-4" @click="open=false">Start a project</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="pt-[72px] pb-24 x-clip">
+    <div class="wrap grid grid-cols-[1.1fr_.9fr] gap-14 items-end max-[860px]:grid-cols-1 max-[860px]:gap-10">
+      <div>
+        <p class="eyebrow">Frontend · UI/UX audit · Content</p>
+        <h1 id="heroHeadline" class="text-[clamp(34px,5.4vw,60px)] leading-[1.06] font-medium tracking-[-0.01em] my-[18px] mb-[22px]">
+          <span class="hero-line"><span>I fix and build</span></span>
+          <span class="hero-line"><span>what makes your</span></span>
+          <span class="hero-line"><span>site <em class="italic text-accent">sell</em>.</span></span>
+        </h1>
+        <p class="text-[17px] leading-[1.6] text-ink-soft max-w-[46ch]">A front-end developer with 6 years in e-commerce (Magento/Hyvä, PrestaShop, WordPress) — I find what's killing conversion on your site and fix it. Plus visual content that sells better than a plain product photo.</p>
+        <div class="flex gap-3 flex-wrap mt-[30px]">
+          <a href="#contact" class="btn btn-solid">Start a project</a>
+          <a href="#work" class="btn btn-ghost">See the work</a>
+        </div>
+        <div class="trust-row">
+          <div><b>6 years</b> in e-commerce</div>
+          <div><b>Magento · Hyvä</b> · PrestaShop · WordPress</div>
+          <div><b>UI/UX</b> audits</div>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <picture>
+          <source type="image/webp" srcset="/assets/about/portrait-480.webp 480w, /assets/about/portrait-800.webp 800w, /assets/about/portrait-944.webp 944w" sizes="(min-width: 1180px) 484px, (min-width: 861px) calc(45vw - 47px), calc(100vw - 36px)">
+          <img src="/assets/about/portrait-800.jpg" srcset="/assets/about/portrait-480.jpg 480w, /assets/about/portrait-800.jpg 800w, /assets/about/portrait-944.jpg 944w" sizes="(min-width: 1180px) 484px, (min-width: 861px) calc(45vw - 47px), calc(100vw - 36px)" width="944" height="1180" alt="Svitlana Biletska in a white linen shirt, arms crossed, in warm evening light" fetchpriority="high">
+        </picture>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="section-alt py-22">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">How I help</p>
+          <h2><span class="reveal-line"><span>Three ways to make a site better</span></span></h2>
+        </div>
+        <p>Technical (frontend/audit) and visual (content) — book either one, or both together.</p>
+      </div>
+      <div class="stack-stage" id="stackStage">
+        <article class="stack-card" data-i="0">
+          <div>
+            <span class="num">01</span>
+            <h3>Frontend fixes</h3>
+            <p>Targeted fixes on Magento/Hyvä, PrestaShop and WordPress: whatever's visually or functionally broken on a product page, cart, or checkout.</p>
+          </div>
+          <span class="stack-tag tag-live">Available now</span>
+        </article>
+        <article class="stack-card" data-i="1">
+          <div>
+            <span class="num">02</span>
+            <h3>UI/UX audit</h3>
+            <p>A breakdown of specific problems on your store — desktop and mobile: what's stopping shoppers from checking out, with examples and fixes.</p>
+          </div>
+          <span class="stack-tag tag-live">Available now</span>
+        </article>
+        <article class="stack-card" data-i="2">
+          <div>
+            <span class="num">03</span>
+            <h3>Content — photo/video</h3>
+            <p>Visual content for product pages and social — for small businesses that want more than a dull supplier photo, something that actually sells.</p>
+          </div>
+          <span class="stack-tag tag-soon">Coming soon</span>
+        </article>
+      </div>
+
+      <div class="section-head mt-16">
+        <div>
+          <p class="eyebrow">Pricing</p>
+          <h2><span class="reveal-line"><span>What it usually looks like</span></span></h2>
+        </div>
+        <p>Every site is different, so every quote is too — here's the general shape, exact price after a quick look at the scope.</p>
+      </div>
+      <div class="grid grid-cols-3 gap-5 mt-9 max-[820px]:grid-cols-1">
+        <div class="price-card">
+          <div class="amount">Quick Fix</div>
+          <p>One specific, well-defined issue — a broken layout, a styling bug, a small functional fix.</p>
+        </div>
+        <div class="price-card">
+          <div class="amount">Mobile &amp; Product Page Polish</div>
+          <p>A focused pass on your product pages and mobile experience — several related fixes at once.</p>
+        </div>
+        <div class="price-card">
+          <div class="amount">Larger Frontend Task</div>
+          <p>A bigger piece of work — a new section, a custom module, a multi-page update.</p>
+        </div>
+      </div>
+      <div class="price-note">
+        <span>Content packages (photo/video) launch soon.</span>
+        <a href="#contact" class="btn btn-solid ml-auto">Get a quote</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="work" class="py-22">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Work</p>
+          <h2><span class="reveal-line"><span>Recent case studies</span></span></h2>
+        </div>
+        <p>Real client projects are under NDA — these are demo cases built to honestly show the approach and quality of the code.</p>
+      </div>
+      <div class="flex flex-col gap-6">
+      <div class="grid grid-cols-[1.15fr_.85fr] gap-6 max-[760px]:grid-cols-1">
+        <a href="/case-northcairn.html" class="case case-link">
+          <div class="case-media">
+            <picture>
+              <source type="image/webp" srcset="/assets/cases/northcairn/pdp-desktop-560.webp 560w, /assets/cases/northcairn/pdp-desktop-800.webp 800w, /assets/cases/northcairn/pdp-desktop-1600.webp 1600w" sizes="(min-width: 1180px) 650px, (min-width: 761px) 55vw, calc(100vw - 36px)">
+              <img src="/assets/cases/northcairn/pdp-desktop-800.jpg" srcset="/assets/cases/northcairn/pdp-desktop-560.jpg 560w, /assets/cases/northcairn/pdp-desktop-800.jpg 800w, /assets/cases/northcairn/pdp-desktop-1600.jpg 1600w" sizes="(min-width: 1180px) 650px, (min-width: 761px) 55vw, calc(100vw - 36px)" width="1600" height="1000" alt="Northcairn Ridge 32L product page on desktop: product photo, price, colour and volume options and the Add to Cart button" loading="lazy" decoding="async">
+            </picture>
+          </div>
+          <div class="case-body">
+            <p class="eyebrow mb-1.5">Frontend / UI-UX · Magento 2 + Hyvä</p>
+            <h3>Northcairn</h3>
+            <p>A demo outdoor-gear store: before/after on the mobile product page — gallery hint, sticky add to cart, clear variant selection.</p>
+            <span class="case-more">Read the case study <span aria-hidden="true">→</span></span>
+          </div>
+        </a>
+        <a href="/case-solene.html" class="case case-link">
+          <div class="case-media">
+            <picture>
+              <source type="image/webp" srcset="/assets/cases/solene/pdp-desktop-560.webp 560w, /assets/cases/solene/pdp-desktop-800.webp 800w, /assets/cases/solene/pdp-desktop-1600.webp 1600w" sizes="(min-width: 1180px) 480px, (min-width: 761px) 40vw, calc(100vw - 36px)">
+              <img src="/assets/cases/solene/pdp-desktop-800.jpg" srcset="/assets/cases/solene/pdp-desktop-560.jpg 560w, /assets/cases/solene/pdp-desktop-800.jpg 800w, /assets/cases/solene/pdp-desktop-1600.jpg 1600w" sizes="(min-width: 1180px) 480px, (min-width: 761px) 40vw, calc(100vw - 36px)" width="1600" height="1000" alt="Solene Soleil Medallion Necklace product page on desktop: photo of the gold medallion being worn, star rating, price, Finish and Chain length options with the selected ones outlined" loading="lazy" decoding="async">
+            </picture>
+          </div>
+          <div class="case-body">
+            <p class="eyebrow mb-1.5">Frontend / UI-UX · WordPress + WooCommerce + Kadence</p>
+            <h3>Solene</h3>
+            <p>A demo fine-jewelry store: PDP with a live engraving preview, ProductGroup structured data for configurable products, and mobile checkout-trust signals.</p>
+            <span class="case-more">Read the case study <span aria-hidden="true">→</span></span>
+          </div>
+        </a>
+      </div>
+        <a href="/case-hearth-hound.html" class="case case-link grid grid-cols-[1.15fr_.85fr] gap-6 max-[760px]:grid-cols-1">
+          <div class="case-media">
+            <picture>
+              <source type="image/webp" srcset="/assets/cases/hearth-hound/category-desktop-after-560.webp 560w, /assets/cases/hearth-hound/category-desktop-after-800.webp 800w, /assets/cases/hearth-hound/category-desktop-after-1440.webp 1440w" sizes="(min-width: 1180px) 650px, (min-width: 761px) 55vw, calc(100vw - 36px)">
+              <img src="/assets/cases/hearth-hound/category-desktop-after-800.jpg" srcset="/assets/cases/hearth-hound/category-desktop-after-560.jpg 560w, /assets/cases/hearth-hound/category-desktop-after-800.jpg 800w, /assets/cases/hearth-hound/category-desktop-after-1440.jpg 1440w" sizes="(min-width: 1180px) 650px, (min-width: 761px) 55vw, calc(100vw - 36px)" width="1440" height="900" alt="Hearth &amp; Hound Bedding category on desktop: serif title, sidebar filters for Size, Material and Price with S selected, and three dog beds and a crate mat with full product names" loading="lazy" decoding="async">
+            </picture>
+          </div>
+          <div class="case-body flex flex-col justify-center">
+            <p class="eyebrow mb-1.5">Frontend / UI-UX · PrestaShop</p>
+            <h3>Hearth &amp; Hound</h3>
+            <p>A demo pet and home-goods store. The size guide and faceted filters were built from scratch, and everything the store says is true, from product descriptions to checkout.</p>
+            <span class="case-more">Read the case study <span aria-hidden="true">→</span></span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="py-22 x-clip">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">About</p>
+          <h2><span class="reveal-line"><span>Why I do this</span></span></h2>
+        </div>
+      </div>
+      <div class="grid grid-cols-[1.15fr_.85fr] gap-6 max-[760px]:grid-cols-1 about-content">
+        <div class="hero-photo" style="aspect-ratio:4/3;">
+          <picture>
+            <source type="image/webp" srcset="/assets/about/workspace-640.webp 640w, /assets/about/workspace-1280.webp 1280w" sizes="(min-width: 1180px) 637px, (min-width: 761px) 58vw, calc(100vw - 36px)">
+            <img src="/assets/about/workspace-640.jpg" srcset="/assets/about/workspace-640.jpg 640w, /assets/about/workspace-1280.jpg 1280w" sizes="(min-width: 1180px) 637px, (min-width: 761px) 58vw, calc(100vw - 36px)" width="1280" height="960" alt="A laptop with code on the screen on a desk under a lamp, with a sunset through the window behind it" loading="lazy" decoding="async">
+          </picture>
+        </div>
+        <div class="flex flex-col justify-center gap-[14px]">
+          <p class="text-[17px] leading-[1.6] text-ink-soft max-w-[46ch]">I've spent six years building and fixing e-commerce storefronts — mostly Magento and Hyvä, with PrestaShop and WordPress along the way. Somewhere in that time, I started noticing the same pattern on almost every store: small, fixable UX problems that quietly cost sales, because nobody's looking closely enough to catch them.</p>
+          <p class="text-[17px] leading-[1.6] text-ink-soft max-w-[46ch]">So I started offering that close look as its own service — a fast, specific audit, then the fix. And because a site that works still needs to look like it's worth trusting, I'm building out the other half of this: visual content for the same small stores I work with.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-alt py-22">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Process</p>
+          <h2><span class="reveal-line"><span>How a project runs</span></span></h2>
+        </div>
+        <p>Four steps, whether it's a quick fix or a larger task — just faster for the small ones.</p>
+      </div>
+      <div class="grid grid-cols-4 mt-9 max-[820px]:grid-cols-2 max-[520px]:grid-cols-1">
+        <div class="process-step">
+          <span class="step-num">01</span>
+          <h3>Discovery</h3>
+          <p>You tell me what's wrong, or I point it out first — either way, we agree what "fixed" looks like.</p>
+        </div>
+        <div class="process-step">
+          <span class="step-num">02</span>
+          <h3>Audit &amp; proposal</h3>
+          <p>A short written breakdown of the problem and the fix, with a price and timeline — before anything starts.</p>
+        </div>
+        <div class="process-step">
+          <span class="step-num">03</span>
+          <h3>Build</h3>
+          <p>I work in your environment or a staging copy, with progress updates — no radio silence until "done".</p>
+        </div>
+        <div class="process-step">
+          <span class="step-num">04</span>
+          <h3>Handover</h3>
+          <p>You review it live, I make final tweaks, and you get a short note on what changed and why.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-22">
+    <div class="wrap">
+      <div class="cta-band">
+        <p class="eyebrow text-accent">Let's start</p>
+        <h2><span class="reveal-line"><span>Ready to see what could work better on your site?</span></span></h2>
+        <a href="#contact" class="btn btn-solid">Get in touch</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section-alt py-22">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Contact</p>
+          <h2><span class="reveal-line"><span>Tell me about your site</span></span></h2>
+        </div>
+        <p>A link and a couple of sentences is plenty to start.</p>
+      </div>
+      <div class="grid grid-cols-2 gap-12 mt-9 items-start max-[820px]:grid-cols-1 max-[820px]:gap-9">
+        <form
+          id="contactForm" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field"
+          x-data="{
+            status: '',
+            sending: false,
+            submitForm(e){
+              this.sending = true; this.status = 'Sending…';
+              const data = new FormData(e.target);
+              fetch('/', { method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body: new URLSearchParams(data).toString() })
+                .then(r => { if(!r.ok) throw new Error('network'); this.status = 'Thanks — I\'ll get back to you within a day or two.'; e.target.reset(); })
+                .catch(() => { this.status = 'Something went wrong — email me directly at hello@svitlanabiletska.com'; })
+                .finally(() => { this.sending = false; });
+            }
+          }"
+          @submit.prevent="submitForm($event)">
+          <input type="hidden" name="form-name" value="contact">
+          <p class="hidden-field">
+            <label>Don't fill this out if you're human: <input name="bot-field"></label>
+          </p>
+          <div class="field">
+            <label for="cf-name">Name</label>
+            <input id="cf-name" name="name" type="text" required>
+          </div>
+          <div class="field">
+            <label for="cf-email">Email</label>
+            <input id="cf-email" name="email" type="email" required>
+          </div>
+          <div class="field">
+            <label for="cf-site">Your site (optional)</label>
+            <input id="cf-site" name="site" type="text" placeholder="yourstore.com">
+          </div>
+          <div class="field">
+            <label for="cf-message">What's going on?</label>
+            <textarea id="cf-message" name="message" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-solid" :disabled="sending">Send message</button>
+          <div class="form-status" role="status" aria-live="polite" x-text="status"></div>
+        </form>
+        <div class="contact-direct">
+          <div class="row"><b>Email</b><span>hello@svitlanabiletska.com</span></div>
+          <div class="row"><b>LinkedIn</b><span><a href="https://www.linkedin.com/in/svitlana-biletska-8507841bb" target="_blank" rel="noopener" class="underline underline-offset-4">/in/svitlana-biletska</a></span></div>
+          <div class="row"><b>Based in</b><span>Piekary Śląskie, Poland</span></div>
+          <p class="text-ink-soft text-[13.5px] leading-[1.6] mt-1.5">Working ~2–3 hours a day around a full-time role — I usually reply within a day or two.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="logo">Svitlana <span>Biletska</span></div>
+      <nav aria-label="Footer">
+        <ul>
+          <li><a href="#work">Work</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#about">About</a></li>
+        </ul>
+      </nav>
+      <div class="foot-contact">
+        <div><b>Email</b> — hello@svitlanabiletska.com</div>
+        <div><b>LinkedIn</b> — <a href="https://www.linkedin.com/in/svitlana-biletska-8507841bb" target="_blank" rel="noopener" class="underline underline-offset-4">/in/svitlana-biletska</a></div>
+        <div><b>Based in</b> — Piekary Śląskie, Poland</div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Svitlana Biletska</span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="/js/main.js"></script>
+</body>
+</html>

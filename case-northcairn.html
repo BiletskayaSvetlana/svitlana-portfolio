@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Northcairn Case Study — Mobile Product Page UX Fixes on Magento 2 + Hyvä | Svitlana Biletska</title>
+  <meta name="description" content="A Magento 2 + Hyvä demo store for outdoor gear: a UX audit of the homepage and product page and three mobile fixes — gallery hint, sticky add to cart, clear variant selection — shown before and after.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://svitlanabiletska.com/case-northcairn.html">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Northcairn — outdoor-gear demo store (case study)">
+  <meta property="og:description" content="UX audit and fix cycle on a Magento 2 + Hyvä product page: three mobile fixes, before and after.">
+  <meta property="og:image" content="https://svitlanabiletska.com/assets/cases/northcairn/pdp-desktop-1600.jpg">
+  <meta property="og:url" content="https://svitlanabiletska.com/case-northcairn.html">
+  <meta property="og:locale" content="en_US">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Northcairn — outdoor-gear demo store (case study)">
+  <meta name="twitter:description" content="UX audit and fix cycle on a Magento 2 + Hyvä product page: three mobile fixes, before and after.">
+  <meta name="twitter:image" content="https://svitlanabiletska.com/assets/cases/northcairn/pdp-desktop-1600.jpg">
+
+  <link rel="icon" href="/assets/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="512x512" href="/assets/icon-512.png">
+  <link rel="apple-touch-icon" href="/assets/icon-512.png">
+
+  <link rel="preload" href="/assets/fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://svitlanabiletska.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Work", "item": "https://svitlanabiletska.com/#work" },
+      { "@type": "ListItem", "position": 3, "name": "Northcairn", "item": "https://svitlanabiletska.com/case-northcairn.html" }
+    ]
+  }
+  </script>
+
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.9/dist/cdn.min.js"></script>
+</head>
+<body>
+
+<header class="site-header" x-data="{ open: false }">
+  <div class="wrap nav-row">
+    <a href="/" class="logo">Svitlana <span>Biletska</span></a>
+    <div class="nav-links">
+      <nav aria-label="Primary" class="hidden md:block">
+        <ul>
+          <li><a href="/#work">Work</a></li>
+          <li><a href="/#services">Services</a></li>
+          <li><a href="/#about">About</a></li>
+          <li><a href="/#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <a href="/#contact" class="btn btn-solid hidden md:inline-flex">Start a project</a>
+      <button
+        class="nav-toggle flex md:!hidden"
+        :aria-expanded="open.toString()"
+        :aria-label="open ? 'Close menu' : 'Open menu'"
+        aria-controls="mobileMenu"
+        @click="open = !open">
+        <span :class="open ? 'translate-y-[3.25px] rotate-45' : ''"></span>
+        <span :class="open ? '-translate-y-[3.25px] -rotate-45' : ''"></span>
+      </button>
+    </div>
+  </div>
+  <div id="mobileMenu" class="mobile-menu md:hidden" x-show="open" x-transition x-cloak>
+    <div class="wrap mobile-menu-inner">
+      <nav aria-label="Mobile">
+        <ul>
+          <li><a href="/#work" @click="open=false">Work</a></li>
+          <li><a href="/#services" @click="open=false">Services</a></li>
+          <li><a href="/#about" @click="open=false">About</a></li>
+          <li><a href="/#contact" @click="open=false">Contact</a></li>
+        </ul>
+      </nav>
+      <a href="/#contact" class="btn btn-solid mt-4" @click="open=false">Start a project</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="pt-[72px] pb-22 x-clip">
+    <div class="wrap">
+      <div class="grid grid-cols-[1.1fr_.9fr] gap-14 items-end max-[860px]:grid-cols-1 max-[860px]:gap-8">
+        <div>
+          <p class="eyebrow"><a href="/#work" class="hover:text-ink transition-colors">Work</a> · Case study · Demo store</p>
+          <h1 class="text-[clamp(34px,5.4vw,60px)] leading-[1.06] font-medium tracking-[-0.01em] my-[18px] mb-[22px]">
+            <span class="hero-line"><span><em class="italic text-accent">Northcairn</em> —</span></span>
+            <span class="hero-line"><span>outdoor-gear</span></span>
+            <span class="hero-line"><span>demo store</span></span>
+          </h1>
+        </div>
+        <div class="case-intro">
+          <p class="text-[17px] leading-[1.6] text-ink-soft max-w-[46ch]">A demo store I designed and built on Magento 2 + Hyvä — the homepage and the product page — to show how I run a UX audit and the fix cycle after it: find what quietly costs sales, fix it, compare before and after.</p>
+          <div class="flex gap-3 flex-wrap mt-[30px]">
+            <a href="/#contact" class="btn btn-solid">Start a project</a>
+            <a href="http://northcairn.loc/" class="btn btn-ghost" target="_blank" rel="noopener">View the live demo</a>
+          </div>
+        </div>
+      </div>
+      <div class="trust-row">
+        <div><b>Magento 2 · Hyvä</b> stack</div>
+        <div><b>Homepage + product page</b> scope</div>
+        <div><b>UX audit → fix cycle</b> goal</div>
+      </div>
+      <figure class="shot case-hero-shot mt-14">
+        <div class="shot-frame">
+          <picture>
+            <source type="image/webp" srcset="/assets/cases/northcairn/home-desktop-560.webp 560w, /assets/cases/northcairn/home-desktop-800.webp 800w, /assets/cases/northcairn/home-desktop-1600.webp 1600w" sizes="(min-width: 1180px) 1132px, calc(100vw - 36px)">
+            <img src="/assets/cases/northcairn/home-desktop-1600.jpg" srcset="/assets/cases/northcairn/home-desktop-560.jpg 560w, /assets/cases/northcairn/home-desktop-800.jpg 800w, /assets/cases/northcairn/home-desktop-1600.jpg 1600w" sizes="(min-width: 1180px) 1132px, calc(100vw - 36px)" width="1600" height="1000" alt="Northcairn homepage on desktop: full-width mountain photo with the headline “Gear for the long way up.” and a Shop the collection button under the store navigation" fetchpriority="high" decoding="async">
+          </picture>
+        </div>
+        <figcaption>Homepage, desktop — northcairn.loc</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section-alt py-22">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Overview</p>
+          <h2><span class="reveal-line"><span>An audit, then the fix</span></span></h2>
+        </div>
+        <p>The same loop I run on client stores: look closely, write down what gets in the way, fix it, check the result.</p>
+      </div>
+      <div class="grid grid-cols-[1.15fr_.85fr] gap-14 items-start max-[860px]:grid-cols-1 max-[860px]:gap-10 case-overview">
+        <div class="flex flex-col gap-[14px]">
+          <p class="text-[17px] leading-[1.6] text-ink-soft max-w-[52ch]">Northcairn is a fictional outdoor-gear brand — backpacks, jackets, camp gear. The store looks finished on desktop, and that's exactly the trap: most of the traffic on stores like this is mobile, and that's where the product page quietly lost people.</p>
+          <p class="text-[17px] leading-[1.6] text-ink-soft max-w-[52ch]">I went through the mobile product page the way a first-time shopper would and picked the three problems most likely to cost a sale. Each one is below: the problem, the fix, and why it matters for conversion — with screenshots of the page before and after.</p>
+        </div>
+        <div class="case-meta">
+          <div class="row"><b>Role</b><span>Design &amp; frontend</span></div>
+          <div class="row"><b>Stack</b><span>Magento 2 · Hyvä · Alpine.js · Tailwind</span></div>
+          <div class="row"><b>Pages</b><span>Homepage, product page</span></div>
+          <div class="row"><b>Focus</b><span>Mobile product page</span></div>
+          <div class="row"><b>Live demo</b><span><a href="http://northcairn.loc/" target="_blank" rel="noopener" class="underline underline-offset-4">northcairn.loc</a></span></div>
+        </div>
+      </div>
+      <figure class="shot mt-14 case-pdp-shot">
+        <div class="shot-frame">
+          <picture>
+            <source type="image/webp" srcset="/assets/cases/northcairn/pdp-desktop-560.webp 560w, /assets/cases/northcairn/pdp-desktop-800.webp 800w, /assets/cases/northcairn/pdp-desktop-1600.webp 1600w" sizes="(min-width: 1180px) 1132px, calc(100vw - 36px)">
+            <img src="/assets/cases/northcairn/pdp-desktop-1600.jpg" srcset="/assets/cases/northcairn/pdp-desktop-560.jpg 560w, /assets/cases/northcairn/pdp-desktop-800.jpg 800w, /assets/cases/northcairn/pdp-desktop-1600.jpg 1600w" sizes="(min-width: 1180px) 1132px, calc(100vw - 36px)" width="1600" height="1000" alt="Northcairn Ridge 32L product page on desktop: large product photo on the left; rating, title, price, colour and volume options and the Add to Cart button on the right" loading="lazy" decoding="async">
+          </picture>
+        </div>
+        <figcaption>Product page, desktop — the starting point for the mobile fixes below</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section id="fix-gallery" class="py-22">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Fix 01 · Mobile gallery</p>
+          <h2><span class="reveal-line"><span>Nobody knew the photos swipe</span></span></h2>
+        </div>
+        <p>On a phone the gallery shows one photo at a time — and nothing said there were more.</p>
+      </div>
+      <div class="fix">
+        <div class="fix-points">
+          <div class="fix-point">
+            <h3>Problem</h3>
+            <p>On mobile the gallery is a horizontal slider, but nothing on screen said so: no dots, no counter, no motion inviting a swipe. Most shoppers saw the first photo and kept scrolling.</p>
+          </div>
+          <div class="fix-point">
+            <h3>Solution</h3>
+            <p>Dot indicators under the gallery that show the current photo and double as buttons, plus a soft one-time nudge: shortly after the gallery comes into view, the track slides a little to the side and back. It never repeats, stops the moment the shopper touches it, and is skipped for anyone with reduced motion turned on.</p>
+          </div>
+          <div class="fix-point">
+            <h3>Why it matters for conversion</h3>
+            <p>Shoppers who don’t realise the photos swipe judge the product by the first one alone and leave without seeing the rest. Making the gallery obviously swipeable means the other photos — fit, details, colours — actually get seen, and those are often what makes the decision.</p>
+          </div>
+        </div>
+        <div class="shot-pair">
+          <figure class="shot">
+            <div class="shot-frame">
+              <picture>
+                <source type="image/webp" srcset="/assets/cases/northcairn/gallery-mobile-before-400.webp 400w, /assets/cases/northcairn/gallery-mobile-before-780.webp 780w" sizes="(min-width: 1180px) 300px, (min-width: 861px) 26vw, calc(50vw - 30px)">
+                <img src="/assets/cases/northcairn/gallery-mobile-before-780.jpg" srcset="/assets/cases/northcairn/gallery-mobile-before-400.jpg 400w, /assets/cases/northcairn/gallery-mobile-before-780.jpg 780w" sizes="(min-width: 1180px) 300px, (min-width: 861px) 26vw, calc(50vw - 30px)" width="780" height="1328" alt="Before: mobile product gallery showing one backpack photo with the edge of the next one, and no dots or other sign that it can be swiped" loading="lazy" decoding="async">
+              </picture>
+            </div>
+            <figcaption><span class="stack-tag tag-soon">Before</span>No sign there's more than one photo</figcaption>
+          </figure>
+          <figure class="shot">
+            <div class="shot-frame">
+              <picture>
+                <source type="image/webp" srcset="/assets/cases/northcairn/gallery-mobile-after-400.webp 400w, /assets/cases/northcairn/gallery-mobile-after-780.webp 780w" sizes="(min-width: 1180px) 300px, (min-width: 861px) 26vw, calc(50vw - 30px)">
+                <img src="/assets/cases/northcairn/gallery-mobile-after-780.jpg" srcset="/assets/cases/northcairn/gallery-mobile-after-400.jpg 400w, /assets/cases/northcairn/gallery-mobile-after-780.jpg 780w" sizes="(min-width: 1180px) 300px, (min-width: 861px) 26vw, calc(50vw - 30px)" width="780" height="1328" alt="After: the same mobile gallery with dot indicators under the photo, the first dot highlighted to show the current image" loading="lazy" decoding="async">
+              </picture>
+            </div>
+            <figcaption><span class="stack-tag tag-live">After</span>Dots show position and count; the track nudges once</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="fix-sticky-cart" class="section-alt py-22">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Fix 02 · Sticky add to cart</p>
+          <h2><span class="reveal-line"><span>Add to Cart scrolled out of sight</span></span></h2>
+        </div>
+        <p>Mobile product pages are long — by the time a shopper decides, the button is several screens up.</p>
+      </div>
+      <div class="fix">
+        <div class="fix-points">
+          <div class="fix-point">
+            <h3>Problem</h3>
+            <p>On a phone the Add to Cart button sits near the top of the page. Shoppers who scroll down to read the description, specs and reviews leave it behind, and nothing brings it back.</p>
+          </div>
+          <div class="fix-point">
+            <h3>Solution</h3>
+            <p>A slim sticky bar slides up from the bottom as soon as the main button leaves the screen: product photo, name, live price, the chosen variant and its own Add to Cart. If options aren't picked yet, it scrolls back to them and says so instead of failing silently. When the main button is visible again, the bar hides.</p>
+          </div>
+          <div class="fix-point">
+            <h3>Why it matters for conversion</h3>
+            <p>It closes a leak analytics doesn't show: someone scrolls all the way down, is ready to buy, has forgotten where the button was — and leaves. In reports that looks like an ordinary exit, not a lost sale.</p>
+          </div>
+        </div>
+        <div class="shot-pair">
+          <figure class="shot">
+            <div class="shot-frame">
+              <picture>
+                <source type="image/webp" srcset="/assets/cases/northcairn/sticky-mobile-before-400.webp 400w, /assets/cases/northcairn/sticky-mobile-before-780.webp 780w" sizes="(min-width: 1180px) 300px, (min-width: 861px) 26vw, calc(50vw - 30px)">
+                <img src="/assets/cases/northcairn/sticky-mobile-before-780.jpg" srcset="/assets/cases/northcairn/sticky-mobile-before-400.jpg 400w, /assets/cases/northcairn/sticky-mobile-before-780.jpg 780w" sizes="(min-width: 1180px) 300px, (min-width: 861px) 26vw, calc(50vw - 30px)" width="780" height="1328" alt="Before: mobile product page scrolled down to the description tabs, with no Add to Cart button anywhere on screen" loading="lazy" decoding="async">
+              </picture>
+            </div>
+            <figcaption><span class="stack-tag tag-soon">Before</span>Mid-page: no way to buy without scrolling back up</figcaption>
+          </figure>
+          <figure class="shot">
+            <div class="shot-frame">
+              <picture>
+                <source type="image/webp" srcset="/assets/cases/northcairn/sticky-mobile-after-400.webp 400w, /assets/cases/northcairn/sticky-mobile-after-780.webp 780w" sizes="(min-width: 1180px) 300px, (min-width: 861px) 26vw, calc(50vw - 30px)">
+                <img src="/assets/cases/northcairn/sticky-mobile-after-780.jpg" srcset="/assets/cases/northcairn/sticky-mobile-after-400.jpg 400w, /assets/cases/northcairn/sticky-mobile-after-780.jpg 780w" sizes="(min-width: 1180px) 300px, (min-width: 861px) 26vw, calc(50vw - 30px)" width="780" height="1328" alt="After: the same scroll position with a sticky bar at the bottom showing the product photo, name, price and an Add to Cart button" loading="lazy" decoding="async">
+              </picture>
+            </div>
+            <figcaption><span class="stack-tag tag-live">After</span>Photo, price, variant and the button stay in reach</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="fix-variants" class="py-22">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Fix 03 · Variant selection</p>
+          <h2><span class="reveal-line"><span>The chosen option was hard to see</span></span></h2>
+        </div>
+        <p>When the selected colour looks almost like the others, people add the wrong one.</p>
+      </div>
+      <div class="fix">
+        <div class="fix-points">
+          <div class="fix-point">
+            <h3>Problem</h3>
+            <p>The selected colour and volume differed from the rest by a thin grey outline. On a small screen, in daylight, it was easy to miss — and easy to add the wrong variant to the cart without noticing.</p>
+          </div>
+          <div class="fix-point">
+            <h3>Solution</h3>
+            <p>A clear selected state on every option: a solid dark ring and a check mark on the colour swatch, a filled high-contrast button with a check for volume, and the chosen value spelled out in the label — “Color: Slate”, “Volume: 32L”. Unavailable options are crossed out.</p>
+          </div>
+          <div class="fix-point">
+            <h3>Why it matters for conversion</h3>
+            <p>Fewer orders cancelled or returned because the wrong colour or size was picked by accident — and fewer “which one did I order?” emails to support.</p>
+          </div>
+        </div>
+        <div class="shot-pair">
+          <figure class="shot">
+            <div class="shot-frame">
+              <picture>
+                <source type="image/webp" srcset="/assets/cases/northcairn/swatch-mobile-before-400.webp 400w, /assets/cases/northcairn/swatch-mobile-before-780.webp 780w" sizes="(min-width: 1180px) 300px, (min-width: 861px) 26vw, calc(50vw - 30px)">
+                <img src="/assets/cases/northcairn/swatch-mobile-before-780.jpg" srcset="/assets/cases/northcairn/swatch-mobile-before-400.jpg 400w, /assets/cases/northcairn/swatch-mobile-before-780.jpg 780w" sizes="(min-width: 1180px) 300px, (min-width: 861px) 26vw, calc(50vw - 30px)" width="780" height="1328" alt="Before: mobile colour and volume options where the selected Slate swatch and 32L button have only a faint grey outline, almost identical to the unselected ones" loading="lazy" decoding="async">
+              </picture>
+            </div>
+            <figcaption><span class="stack-tag tag-soon">Before</span>Slate and 32L are selected — hard to tell</figcaption>
+          </figure>
+          <figure class="shot">
+            <div class="shot-frame">
+              <picture>
+                <source type="image/webp" srcset="/assets/cases/northcairn/swatch-mobile-after-400.webp 400w, /assets/cases/northcairn/swatch-mobile-after-780.webp 780w" sizes="(min-width: 1180px) 300px, (min-width: 861px) 26vw, calc(50vw - 30px)">
+                <img src="/assets/cases/northcairn/swatch-mobile-after-780.jpg" srcset="/assets/cases/northcairn/swatch-mobile-after-400.jpg 400w, /assets/cases/northcairn/swatch-mobile-after-780.jpg 780w" sizes="(min-width: 1180px) 300px, (min-width: 861px) 26vw, calc(50vw - 30px)" width="780" height="1328" alt="After: the selected Slate swatch has a dark double ring with a white check mark, and the selected 32L button is filled black with a check mark" loading="lazy" decoding="async">
+              </picture>
+            </div>
+            <figcaption><span class="stack-tag tag-live">After</span>Ring, check mark and contrast make the choice obvious</figcaption>
+          </figure>
+        </div>
+      </div>
+      <div class="fix-wide">
+        <figure class="shot">
+          <div class="shot-frame">
+            <picture>
+              <source type="image/webp" srcset="/assets/cases/northcairn/swatch-desktop-before-372.webp 372w, /assets/cases/northcairn/swatch-desktop-before-744.webp 744w" sizes="(min-width: 1180px) 556px, (min-width: 641px) calc(50vw - 28px), calc(100vw - 36px)">
+              <img src="/assets/cases/northcairn/swatch-desktop-before-744.jpg" srcset="/assets/cases/northcairn/swatch-desktop-before-372.jpg 372w, /assets/cases/northcairn/swatch-desktop-before-744.jpg 744w" sizes="(min-width: 1180px) 556px, (min-width: 641px) calc(50vw - 28px), calc(100vw - 36px)" width="744" height="282" alt="Before, desktop: colour and volume options with Slate and 32L selected, marked only by a faint grey outline" loading="lazy" decoding="async">
+            </picture>
+          </div>
+          <figcaption><span class="stack-tag tag-soon">Before</span>Desktop</figcaption>
+        </figure>
+        <figure class="shot">
+          <div class="shot-frame">
+            <picture>
+              <source type="image/webp" srcset="/assets/cases/northcairn/swatch-desktop-after-372.webp 372w, /assets/cases/northcairn/swatch-desktop-after-744.webp 744w" sizes="(min-width: 1180px) 556px, (min-width: 641px) calc(50vw - 28px), calc(100vw - 36px)">
+              <img src="/assets/cases/northcairn/swatch-desktop-after-744.jpg" srcset="/assets/cases/northcairn/swatch-desktop-after-372.jpg 372w, /assets/cases/northcairn/swatch-desktop-after-744.jpg 744w" sizes="(min-width: 1180px) 556px, (min-width: 641px) calc(50vw - 28px), calc(100vw - 36px)" width="744" height="282" alt="After, desktop: Slate swatch with a dark ring and check mark, 32L button filled black with a check, and the chosen values written next to the Color and Volume labels" loading="lazy" decoding="async">
+            </picture>
+          </div>
+          <figcaption><span class="stack-tag tag-live">After</span>Desktop — same selected state</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-22">
+    <div class="wrap">
+      <div class="cta-band">
+        <p class="eyebrow text-accent">Let's start</p>
+        <h2><span class="reveal-line"><span>Want the same close look at your store?</span></span></h2>
+        <p>The demo is live — open it on your phone and try the product page, then send me a link to your own site.</p>
+        <div class="flex gap-3 flex-wrap justify-center">
+          <a href="/#contact" class="btn btn-solid">Start a project</a>
+          <a href="http://northcairn.loc/" class="btn btn-ghost" target="_blank" rel="noopener">Visit the live demo</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <a href="/" class="logo">Svitlana <span>Biletska</span></a>
+      <nav aria-label="Footer">
+        <ul>
+          <li><a href="/#work">Work</a></li>
+          <li><a href="/#services">Services</a></li>
+          <li><a href="/#about">About</a></li>
+        </ul>
+      </nav>
+      <div class="foot-contact">
+        <div><b>Email</b> — hello@svitlanabiletska.com</div>
+        <div><b>LinkedIn</b> — <a href="https://www.linkedin.com/in/svitlana-biletska-8507841bb" target="_blank" rel="noopener" class="underline underline-offset-4">/in/svitlana-biletska</a></div>
+        <div><b>Based in</b> — Piekary Śląskie, Poland</div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Svitlana Biletska</span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="/js/main.js"></script>
+</body>
+</html>

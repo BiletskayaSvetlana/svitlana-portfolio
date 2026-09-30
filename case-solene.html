@@ -1,0 +1,462 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Solene Case Study — Fine-Jewelry Product Page on WooCommerce + Kadence | Svitlana Biletska</title>
+  <meta name="description" content="A WordPress + WooCommerce demo store for fine jewelry: a product page with swipe dots, sticky add to cart, clear variant selection, a live engraving preview, ProductGroup structured data and trust signals.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://svitlanabiletska.com/case-solene.html">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Solene — fine-jewelry demo store (case study)">
+  <meta property="og:description" content="A WooCommerce + Kadence product page: live engraving preview, ProductGroup structured data for variants, and mobile trust signals.">
+  <meta property="og:image" content="https://svitlanabiletska.com/assets/cases/solene/pdp-desktop-1600.jpg">
+  <meta property="og:url" content="https://svitlanabiletska.com/case-solene.html">
+  <meta property="og:locale" content="en_US">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Solene — fine-jewelry demo store (case study)">
+  <meta name="twitter:description" content="A WooCommerce + Kadence product page: live engraving preview, ProductGroup structured data for variants, and mobile trust signals.">
+  <meta name="twitter:image" content="https://svitlanabiletska.com/assets/cases/solene/pdp-desktop-1600.jpg">
+
+  <link rel="icon" href="/assets/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="512x512" href="/assets/icon-512.png">
+  <link rel="apple-touch-icon" href="/assets/icon-512.png">
+
+  <link rel="preload" href="/assets/fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://svitlanabiletska.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Work", "item": "https://svitlanabiletska.com/#work" },
+      { "@type": "ListItem", "position": 3, "name": "Solene", "item": "https://svitlanabiletska.com/case-solene.html" }
+    ]
+  }
+  </script>
+
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.9/dist/cdn.min.js"></script>
+</head>
+<body>
+
+<header class="site-header" x-data="{ open: false }">
+  <div class="wrap nav-row">
+    <a href="/" class="logo">Svitlana <span>Biletska</span></a>
+    <div class="nav-links">
+      <nav aria-label="Primary" class="hidden md:block">
+        <ul>
+          <li><a href="/#work">Work</a></li>
+          <li><a href="/#services">Services</a></li>
+          <li><a href="/#about">About</a></li>
+          <li><a href="/#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <a href="/#contact" class="btn btn-solid hidden md:inline-flex">Start a project</a>
+      <button
+        class="nav-toggle flex md:!hidden"
+        :aria-expanded="open.toString()"
+        :aria-label="open ? 'Close menu' : 'Open menu'"
+        aria-controls="mobileMenu"
+        @click="open = !open">
+        <span :class="open ? 'translate-y-[3.25px] rotate-45' : ''"></span>
+        <span :class="open ? '-translate-y-[3.25px] -rotate-45' : ''"></span>
+      </button>
+    </div>
+  </div>
+  <div id="mobileMenu" class="mobile-menu md:hidden" x-show="open" x-transition x-cloak>
+    <div class="wrap mobile-menu-inner">
+      <nav aria-label="Mobile">
+        <ul>
+          <li><a href="/#work" @click="open=false">Work</a></li>
+          <li><a href="/#services" @click="open=false">Services</a></li>
+          <li><a href="/#about" @click="open=false">About</a></li>
+          <li><a href="/#contact" @click="open=false">Contact</a></li>
+        </ul>
+      </nav>
+      <a href="/#contact" class="btn btn-solid mt-4" @click="open=false">Start a project</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="pt-[72px] pb-22 x-clip">
+    <div class="wrap">
+      <div class="grid grid-cols-[1.1fr_.9fr] gap-14 items-end max-[860px]:grid-cols-1 max-[860px]:gap-8">
+        <div>
+          <p class="eyebrow"><a href="/#work" class="hover:text-ink transition-colors">Work</a> · Case study · Demo store</p>
+          <h1 class="text-[clamp(34px,5.4vw,60px)] leading-[1.06] font-medium tracking-[-0.01em] my-[18px] mb-[22px]">
+            <span class="hero-line"><span><em class="italic text-accent">Solene</em> —</span></span>
+            <span class="hero-line"><span>fine-jewelry</span></span>
+            <span class="hero-line"><span>demo store</span></span>
+          </h1>
+        </div>
+        <div class="case-intro">
+          <p class="text-[17px] leading-[1.6] text-ink-soft max-w-[46ch]">A demo store I built on WordPress + WooCommerce with a Kadence child theme, centred on one product page: a personalised gold medallion with two finishes, three chain lengths and free engraving.</p>
+          <div class="flex gap-3 flex-wrap mt-[30px]">
+            <a href="/#contact" class="btn btn-solid">Start a project</a>
+            <a href="https://solene.loc/product/soleil-medallion-necklace/" class="btn btn-ghost" target="_blank" rel="noopener">View the live demo</a>
+          </div>
+        </div>
+      </div>
+      <div class="trust-row">
+        <div><b>WordPress · WooCommerce</b> stack</div>
+        <div><b>Product page</b> scope</div>
+        <div><b>Personalisation + structured data</b> focus</div>
+      </div>
+      <figure class="shot case-hero-shot mt-14">
+        <div class="shot-frame">
+          <picture>
+            <source type="image/webp" srcset="/assets/cases/solene/pdp-desktop-560.webp 560w, /assets/cases/solene/pdp-desktop-800.webp 800w, /assets/cases/solene/pdp-desktop-1600.webp 1600w" sizes="(min-width: 1180px) 1132px, calc(100vw - 36px)">
+            <img src="/assets/cases/solene/pdp-desktop-1600.jpg" srcset="/assets/cases/solene/pdp-desktop-560.jpg 560w, /assets/cases/solene/pdp-desktop-800.jpg 800w, /assets/cases/solene/pdp-desktop-1600.jpg 1600w" sizes="(min-width: 1180px) 1132px, calc(100vw - 36px)" width="1600" height="1000" alt="Soleil Medallion Necklace product page on desktop: thumbnails and a large photo of the medallion being worn on the left; title, star rating, price, Finish and Chain length options with Polished Gold and 18 inch selected on the right" fetchpriority="high" decoding="async">
+          </picture>
+        </div>
+        <figcaption>Product page, desktop — solene.loc</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section-alt py-22">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Overview</p>
+          <h2><span class="reveal-line"><span>Built right from the start</span></span></h2>
+        </div>
+        <p>The same checklist I audit client stores against — applied while building, not after.</p>
+      </div>
+      <div class="grid grid-cols-[1.15fr_.85fr] gap-14 items-start max-[860px]:grid-cols-1 max-[860px]:gap-10 case-overview">
+        <div class="flex flex-col gap-[14px]">
+          <p class="text-[17px] leading-[1.6] text-ink-soft max-w-[52ch]">Solene is a fictional fine-jewelry brand. Personalised jewelry is a hard sell online: the shopper is choosing a finish, a length and a word to engrave on something they can't hold, and nothing on a standard product page helps them picture the result.</p>
+          <p class="text-[17px] leading-[1.6] text-ink-soft max-w-[52ch]">Unlike <a href="/case-northcairn.html" class="underline underline-offset-4">Northcairn</a>, there's no before/after here — this product page was built with these solutions from day one, so there's no honest “before” to show. Each block below names the problem it prevents and shows the solution as it runs on the live demo.</p>
+        </div>
+        <div class="case-meta">
+          <div class="row"><b>Role</b><span>Design &amp; frontend</span></div>
+          <div class="row"><b>Stack</b><span>WordPress · WooCommerce · Kadence child theme</span></div>
+          <div class="row"><b>Pages</b><span>Product page</span></div>
+          <div class="row"><b>Focus</b><span>Mobile PDP, personalisation, structured data</span></div>
+          <div class="row"><b>Live demo</b><span><a href="https://solene.loc/product/soleil-medallion-necklace/" target="_blank" rel="noopener" class="underline underline-offset-4">solene.loc</a></span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="fix-gallery" class="py-22">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">01 · Mobile gallery</p>
+          <h2><span class="reveal-line"><span>Photos that say they swipe</span></span></h2>
+        </div>
+        <p>On a phone the gallery shows one photo at a time — so it has to say there are more.</p>
+      </div>
+      <div class="fix">
+        <div class="fix-points">
+          <div class="fix-point">
+            <h3>Problem</h3>
+            <p>A swipeable mobile gallery with no indicator looks like a single photo. Shoppers see the first shot and scroll on, never reaching the close-up, the scale shot or the video.</p>
+          </div>
+          <div class="fix-point">
+            <h3>Solution</h3>
+            <p>A row of dots under the gallery. Each dot is a real button with a 44×44 tap target and a “Show slide N” label for screen readers. The active dot stretches into a filled pill, and it follows the swipe, not just taps.</p>
+          </div>
+          <div class="fix-point">
+            <h3>Why it matters for conversion</h3>
+            <p>With jewelry, the first photo rarely answers the real questions — how big is it, how does it sit, what does the engraving look like. Those answers are in the other slides, and the dots make sure people get to them.</p>
+          </div>
+        </div>
+        <figure class="shot shot-solo">
+          <div class="shot-frame">
+            <picture>
+              <source type="image/webp" srcset="/assets/cases/solene/gallery-mobile-400.webp 400w, /assets/cases/solene/gallery-mobile-780.webp 780w" sizes="(min-width: 861px) 330px, min(330px, calc(100vw - 36px))">
+              <img src="/assets/cases/solene/gallery-mobile-780.jpg" srcset="/assets/cases/solene/gallery-mobile-400.jpg 400w, /assets/cases/solene/gallery-mobile-780.jpg 780w" sizes="(min-width: 861px) 330px, min(330px, calc(100vw - 36px))" width="780" height="1328" alt="Mobile product gallery: photo of the medallion being worn, with five dots underneath; the first dot is a filled, wider pill marking the current photo" loading="lazy" decoding="async">
+            </picture>
+          </div>
+          <figcaption><span class="stack-tag tag-live">Solution</span>Five dots, the active one filled and wider</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="fix-sticky-cart" class="section-alt py-22">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">02 · Sticky add to cart</p>
+          <h2><span class="reveal-line"><span>The button stays in reach</span></span></h2>
+        </div>
+        <p>On mobile, Add to cart sits above the fold — and the description, delivery and reviews are all below it.</p>
+      </div>
+      <div class="fix">
+        <div class="fix-points">
+          <div class="fix-point">
+            <h3>Problem</h3>
+            <p>Shoppers who scroll down to read the details, delivery terms and reviews leave the Add to cart button several screens behind. To buy, they have to find their way back up.</p>
+          </div>
+          <div class="fix-point">
+            <h3>Solution</h3>
+            <p>A slim bar slides up from the bottom once the main button has scrolled out of view: product name, live price and its own Add to cart. It hides again as soon as the main button is back on screen. If options aren't chosen yet, it scrolls back to them and focuses the first one instead of failing silently.</p>
+          </div>
+          <div class="fix-point">
+            <h3>Why it matters for conversion</h3>
+            <p>The moment someone finishes reading the reviews is often the moment they decide. The bar means the button is right there when that happens.</p>
+          </div>
+        </div>
+        <figure class="shot shot-solo">
+          <div class="shot-frame">
+            <picture>
+              <source type="image/webp" srcset="/assets/cases/solene/sticky-mobile-400.webp 400w, /assets/cases/solene/sticky-mobile-780.webp 780w" sizes="(min-width: 861px) 330px, min(330px, calc(100vw - 36px))">
+              <img src="/assets/cases/solene/sticky-mobile-780.jpg" srcset="/assets/cases/solene/sticky-mobile-400.jpg 400w, /assets/cases/solene/sticky-mobile-780.jpg 780w" sizes="(min-width: 861px) 330px, min(330px, calc(100vw - 36px))" width="780" height="1328" alt="Mobile product page scrolled down to the description; a bar pinned to the bottom of the screen shows Soleil Medallion Necklace, 149,00 € and an Add to cart button" loading="lazy" decoding="async">
+            </picture>
+          </div>
+          <figcaption><span class="stack-tag tag-live">Solution</span>Mid-page, the bar keeps name, price and button on screen</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="fix-variants" class="py-22">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">03 · Variant selection</p>
+          <h2><span class="reveal-line"><span>The chosen option is obvious</span></span></h2>
+        </div>
+        <p>Two finishes and three chain lengths — six combinations, and the shopper should always know which one they're on.</p>
+      </div>
+      <div class="fix">
+        <div class="fix-points">
+          <div class="fix-point">
+            <h3>Problem</h3>
+            <p>When the selected option looks almost like the others, it's easy to add the wrong finish or length without noticing — and with jewelry that often means a return or an exchange.</p>
+          </div>
+          <div class="fix-point">
+            <h3>Solution</h3>
+            <p>The active Finish and Chain length get a dark outline, a tinted background and a bolder label, and the chosen value is written next to each heading — “Finish: Polished Gold”, “Chain length: 18″”. The price in the buy box and in the sticky bar update together with the choice: the 20″ chain is 159 € instead of 149 €.</p>
+          </div>
+          <div class="fix-point">
+            <h3>Why it matters for conversion</h3>
+            <p>Fewer wrong-variant orders and fewer surprises at checkout, because the price the shopper sees always belongs to the combination they picked.</p>
+          </div>
+        </div>
+        <figure class="shot">
+          <div class="shot-frame">
+            <picture>
+              <source type="image/webp" srcset="/assets/cases/solene/variants-desktop-547.webp 547w, /assets/cases/solene/variants-desktop-1094.webp 1094w" sizes="(min-width: 1180px) 650px, (min-width: 861px) 55vw, calc(100vw - 36px)">
+              <img src="/assets/cases/solene/variants-desktop-1094.jpg" srcset="/assets/cases/solene/variants-desktop-547.jpg 547w, /assets/cases/solene/variants-desktop-1094.jpg 1094w" sizes="(min-width: 1180px) 650px, (min-width: 861px) 55vw, calc(100vw - 36px)" width="1094" height="452" alt="Finish and Chain length options: Polished Gold and 18 inch are selected, each with a dark outline, beige fill and bold label; the headings read Finish: Polished Gold and Chain length: 18 inch" loading="lazy" decoding="async">
+            </picture>
+          </div>
+          <figcaption><span class="stack-tag tag-live">Solution</span>Outline, fill and the value spelled out in the heading</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="fix-engraving" class="section-alt py-22">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">04 · Personalisation</p>
+          <h2><span class="reveal-line"><span>See the engraving before you buy</span></span></h2>
+        </div>
+        <p>An engraved piece is made for one person — the shopper needs to know what they'll get.</p>
+      </div>
+      <div class="fix">
+        <div class="fix-points">
+          <div class="fix-point">
+            <h3>Problem</h3>
+            <p>A plain text field asks the shopper to imagine the result: how a name will look in script, whether it fits the disc, whether an accent comes out right. Unsure, they hesitate or leave.</p>
+          </div>
+          <div class="fix-point">
+            <h3>Solution</h3>
+            <p>A live preview: as the shopper types, the text is drawn in script on a photo of the medallion with an SVG overlay. A counter shows “6 of 12 characters” and is announced to screen readers. The 12-character limit is enforced in the field and checked again on the server when the item is added to the cart, where the text is also sanitised.</p>
+          </div>
+          <div class="fix-point">
+            <h3>Why it matters for conversion</h3>
+            <p>Free returns only cover unengraved pieces, so doubt about the result is a real reason not to buy. Showing the engraving on the actual piece removes that doubt at the moment of choice.</p>
+          </div>
+        </div>
+        <figure class="shot shot-solo">
+          <div class="shot-frame">
+            <picture>
+              <source type="image/webp" srcset="/assets/cases/solene/engraving-mobile-400.webp 400w, /assets/cases/solene/engraving-mobile-780.webp 780w" sizes="(min-width: 861px) 330px, min(330px, calc(100vw - 36px))">
+              <img src="/assets/cases/solene/engraving-mobile-780.jpg" srcset="/assets/cases/solene/engraving-mobile-400.jpg 400w, /assets/cases/solene/engraving-mobile-780.jpg 780w" sizes="(min-width: 861px) 330px, min(330px, calc(100vw - 36px))" width="780" height="1328" alt="Mobile engraving field with Amélie typed in and the counter reading 6 of 12 characters; next to it a close-up of the gold medallion with Amélie engraved in script, labelled Live preview" loading="lazy" decoding="async">
+            </picture>
+          </div>
+          <figcaption><span class="stack-tag tag-live">Solution</span>“Amélie” typed in, rendered on the disc as you type</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="fix-structured-data" class="py-22">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">05 · Structured data</p>
+          <h2><span class="reveal-line"><span>Every variant visible to Google</span></span></h2>
+        </div>
+        <p>Six combinations of finish and length, each with its own SKU, price and availability.</p>
+      </div>
+      <div class="fix">
+        <div class="fix-points">
+          <div class="fix-point">
+            <h3>Problem</h3>
+            <p>Out of the box, a variable product is described to search engines as one product with a price range. The individual variants — which finish, which length, what each one costs, whether it's in stock — stay invisible.</p>
+          </div>
+          <div class="fix-point">
+            <h3>Solution</h3>
+            <p>JSON-LD in the ProductGroup / Product pattern: one ProductGroup with <code>variesBy</code> color and size, and a Product for each of the six combinations with its own SKU, name, variant URL and Offer — price, availability and the return policy. It's the same approach I use on a real enterprise project with configurable products.</p>
+          </div>
+          <div class="fix-point">
+            <h3>Why it matters for conversion</h3>
+            <p>Search can match a query to the exact variant and its real price, and each variant URL opens the product page with that finish and length already selected.</p>
+          </div>
+        </div>
+        <figure class="code-frame">
+<pre><code>{
+  "@type": "ProductGroup",
+  "name": "Soleil Medallion Necklace",
+  "productGroupID": "SOL-004",
+  <b>"variesBy"</b>: [
+    "https://schema.org/color",
+    "https://schema.org/size"
+  ],
+  <b>"hasVariant"</b>: [
+    {
+      "@type": "Product",
+      "name": "Soleil Medallion Necklace – Polished Gold, 16\"",
+      "sku": "SOL-004-PG-16",
+      "inProductGroupWithID": "SOL-004",
+      "color": "Polished Gold",
+      "size": "16\"",
+      "offers": {
+        "@type": "Offer",
+        "url": "…?attribute_pa_finish=polished-gold&amp;…=16-inch",
+        "price": "149.00",
+        "priceCurrency": "EUR",
+        "availability": "https://schema.org/InStock",
+        "hasMerchantReturnPolicy": { "merchantReturnDays": 30, … }
+      }
+    },
+    … 5 more variants
+  ],
+  <b>"aggregateRating"</b>: { "ratingValue": "4.75", "reviewCount": 4, … }
+}</code></pre>
+          <figcaption>Trimmed from the JSON-LD on the live product page</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="fix-trust" class="section-alt py-22">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">06 · Purchase trust</p>
+          <h2><span class="reveal-line"><span>Answers right under the button</span></span></h2>
+        </div>
+        <p>Delivery, returns, warranty and what other buyers thought — where the decision is made.</p>
+      </div>
+      <div class="fix">
+        <div class="fix-points">
+          <div class="fix-point">
+            <h3>Problem</h3>
+            <p>Before paying 149 € for a piece they haven't held, shoppers want to know how it ships, whether they can send it back and what other buyers thought. When those answers are buried in footer pages, they go looking — and some don't come back.</p>
+          </div>
+          <div class="fix-point">
+            <h3>Solution</h3>
+            <p>Three trust points with icons directly under Add to cart: free tracked delivery, 30-day returns on unengraved pieces, a 2-year metal warranty. Further down, a review summary with the average score and a breakdown by star rating (a real table, with a caption for screen readers). The same rating goes into the structured data as <code>aggregateRating</code> — only when the product actually has reviews.</p>
+          </div>
+          <div class="fix-point">
+            <h3>Why it matters for conversion</h3>
+            <p>The usual last-minute doubts are answered without leaving the page, and a breakdown by stars reads as more honest than a lone average.</p>
+          </div>
+        </div>
+        <figure class="shot shot-solo">
+          <div class="shot-frame">
+            <picture>
+              <source type="image/webp" srcset="/assets/cases/solene/reviews-mobile-400.webp 400w, /assets/cases/solene/reviews-mobile-780.webp 780w" sizes="(min-width: 861px) 330px, min(330px, calc(100vw - 36px))">
+              <img src="/assets/cases/solene/reviews-mobile-780.jpg" srcset="/assets/cases/solene/reviews-mobile-400.jpg 400w, /assets/cases/solene/reviews-mobile-780.jpg 780w" sizes="(min-width: 861px) 330px, min(330px, calc(100vw - 36px))" width="780" height="1328" alt="Mobile Customer reviews section: 4.8 out of 5 based on 4 reviews, with bars showing 75% five-star and 25% four-star, followed by the first review" loading="lazy" decoding="async">
+            </picture>
+          </div>
+          <figcaption><span class="stack-tag tag-live">Solution</span>Average plus breakdown by stars (demo reviews)</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="result" class="py-22">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Stack &amp; result</p>
+          <h2><span class="reveal-line"><span>Fast, accessible, readable by search</span></span></h2>
+        </div>
+        <p>All of the above runs in a Kadence child theme on top of a standard WooCommerce store.</p>
+      </div>
+      <ul class="stack-list" aria-label="Stack">
+        <li>WordPress</li>
+        <li>WooCommerce</li>
+        <li>Kadence child theme</li>
+        <li>Self-hosted fonts</li>
+        <li>JSON-LD structured data</li>
+      </ul>
+      <div class="metric-grid">
+        <div class="metric"><span class="value">99</span><span class="label">Performance, desktop</span></div>
+        <div class="metric"><span class="value">86–87</span><span class="label">Performance, mobile</span></div>
+        <div class="metric"><span class="value">100</span><span class="label">Accessibility</span></div>
+        <div class="metric"><span class="value">100</span><span class="label">SEO</span></div>
+        <div class="metric"><span class="value">~0</span><span class="label">Cumulative Layout Shift</span></div>
+      </div>
+      <p class="metric-note">Lighthouse scores for the demo store.</p>
+    </div>
+  </section>
+
+  <section class="py-22">
+    <div class="wrap">
+      <div class="cta-band">
+        <p class="eyebrow text-accent">Let's start</p>
+        <h2><span class="reveal-line"><span>Want a product page that sells like this?</span></span></h2>
+        <p>The demo is live — open it on your phone, try the engraving preview, then send me a link to your own store.</p>
+        <div class="flex gap-3 flex-wrap justify-center">
+          <a href="/#contact" class="btn btn-solid">Start a project</a>
+          <a href="https://solene.loc/product/soleil-medallion-necklace/" class="btn btn-ghost" target="_blank" rel="noopener">Visit the live demo</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <a href="/" class="logo">Svitlana <span>Biletska</span></a>
+      <nav aria-label="Footer">
+        <ul>
+          <li><a href="/#work">Work</a></li>
+          <li><a href="/#services">Services</a></li>
+          <li><a href="/#about">About</a></li>
+        </ul>
+      </nav>
+      <div class="foot-contact">
+        <div><b>Email</b> — hello@svitlanabiletska.com</div>
+        <div><b>LinkedIn</b> — <a href="https://www.linkedin.com/in/svitlana-biletska-8507841bb" target="_blank" rel="noopener" class="underline underline-offset-4">/in/svitlana-biletska</a></div>
+        <div><b>Based in</b> — Piekary Śląskie, Poland</div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Svitlana Biletska</span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="/js/main.js"></script>
+</body>
+</html>

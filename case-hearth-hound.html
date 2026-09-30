@@ -1,0 +1,529 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Hearth &amp; Hound Case Study — Size Guide, Filters and Click &amp; Collect on PrestaShop | Svitlana Biletska</title>
+  <meta name="description" content="A PrestaShop demo store for pet and home goods: a size guide on the product page, faceted filters built from scratch, and honest click-and-collect wording from the cart to the confirmation email — shown before and after.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://svitlanabiletska.com/case-hearth-hound.html">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Hearth &amp; Hound — pet and home-goods demo store (case study)">
+  <meta property="og:description" content="A PrestaShop store: size guide and faceted filters built from scratch, and honesty at every step — from product descriptions to checkout.">
+  <meta property="og:image" content="https://svitlanabiletska.com/assets/cases/hearth-hound/home-desktop-1440.jpg">
+  <meta property="og:url" content="https://svitlanabiletska.com/case-hearth-hound.html">
+  <meta property="og:locale" content="en_US">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Hearth &amp; Hound — pet and home-goods demo store (case study)">
+  <meta name="twitter:description" content="A PrestaShop store: size guide and faceted filters built from scratch, and honesty at every step — from product descriptions to checkout.">
+  <meta name="twitter:image" content="https://svitlanabiletska.com/assets/cases/hearth-hound/home-desktop-1440.jpg">
+
+  <link rel="icon" href="/assets/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="512x512" href="/assets/icon-512.png">
+  <link rel="apple-touch-icon" href="/assets/icon-512.png">
+
+  <link rel="preload" href="/assets/fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://svitlanabiletska.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Work", "item": "https://svitlanabiletska.com/#work" },
+      { "@type": "ListItem", "position": 3, "name": "Hearth & Hound", "item": "https://svitlanabiletska.com/case-hearth-hound.html" }
+    ]
+  }
+  </script>
+
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.9/dist/cdn.min.js"></script>
+</head>
+<body>
+
+<header class="site-header" x-data="{ open: false }">
+  <div class="wrap nav-row">
+    <a href="/" class="logo">Svitlana <span>Biletska</span></a>
+    <div class="nav-links">
+      <nav aria-label="Primary" class="hidden md:block">
+        <ul>
+          <li><a href="/#work">Work</a></li>
+          <li><a href="/#services">Services</a></li>
+          <li><a href="/#about">About</a></li>
+          <li><a href="/#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <a href="/#contact" class="btn btn-solid hidden md:inline-flex">Start a project</a>
+      <button
+        class="nav-toggle flex md:!hidden"
+        :aria-expanded="open.toString()"
+        :aria-label="open ? 'Close menu' : 'Open menu'"
+        aria-controls="mobileMenu"
+        @click="open = !open">
+        <span :class="open ? 'translate-y-[3.25px] rotate-45' : ''"></span>
+        <span :class="open ? '-translate-y-[3.25px] -rotate-45' : ''"></span>
+      </button>
+    </div>
+  </div>
+  <div id="mobileMenu" class="mobile-menu md:hidden" x-show="open" x-transition x-cloak>
+    <div class="wrap mobile-menu-inner">
+      <nav aria-label="Mobile">
+        <ul>
+          <li><a href="/#work" @click="open=false">Work</a></li>
+          <li><a href="/#services" @click="open=false">Services</a></li>
+          <li><a href="/#about" @click="open=false">About</a></li>
+          <li><a href="/#contact" @click="open=false">Contact</a></li>
+        </ul>
+      </nav>
+      <a href="/#contact" class="btn btn-solid mt-4" @click="open=false">Start a project</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="pt-[72px] pb-22 x-clip">
+    <div class="wrap">
+      <div class="grid grid-cols-[1.1fr_.9fr] gap-14 items-end max-[860px]:grid-cols-1 max-[860px]:gap-8">
+        <div>
+          <p class="eyebrow"><a href="/#work" class="hover:text-ink transition-colors">Work</a> · Case study · Demo store</p>
+          <h1 class="text-[clamp(34px,5.4vw,60px)] leading-[1.06] font-medium tracking-[-0.01em] my-[18px] mb-[22px]">
+            <span class="hero-line"><span><em class="italic text-accent">Hearth &amp; Hound</em> —</span></span>
+            <span class="hero-line"><span>pet &amp; home-goods</span></span>
+            <span class="hero-line"><span>demo store</span></span>
+          </h1>
+        </div>
+        <div class="case-intro">
+          <p class="text-[17px] leading-[1.6] text-ink-soft max-w-[46ch]">A demo store on PrestaShop for dog beds, collars, bowls and throws. The fixes here were things the store didn't have at all, like a size guide and filters. Others were places where it said something that wasn't true, from the policy pages to checkout.</p>
+          <div class="flex gap-3 flex-wrap mt-[30px]">
+            <a href="/#contact" class="btn btn-solid">Start a project</a>
+            <a href="http://hearth-hound.loc/" class="btn btn-ghost" target="_blank" rel="noopener">View the live demo</a>
+          </div>
+        </div>
+      </div>
+      <div class="trust-row">
+        <div><b>PrestaShop</b> stack</div>
+        <div><b>Product, category, checkout, email</b> scope</div>
+        <div><b>Size guide · filters · honest wording</b> focus</div>
+      </div>
+      <figure class="shot case-hero-shot mt-14">
+        <div class="shot-frame">
+          <picture>
+            <source type="image/webp" srcset="/assets/cases/hearth-hound/home-desktop-560.webp 560w, /assets/cases/hearth-hound/home-desktop-800.webp 800w, /assets/cases/hearth-hound/home-desktop-1440.webp 1440w" sizes="(min-width: 1180px) 1132px, calc(100vw - 36px)">
+            <img src="/assets/cases/hearth-hound/home-desktop-1440.jpg" srcset="/assets/cases/hearth-hound/home-desktop-560.jpg 560w, /assets/cases/hearth-hound/home-desktop-800.jpg 800w, /assets/cases/hearth-hound/home-desktop-1440.jpg 1440w" sizes="(min-width: 1180px) 1132px, calc(100vw - 36px)" width="1440" height="900" alt="Hearth &amp; Hound homepage on desktop: a rust linen dog bed, a stoneware bowl and a herringbone throw on a wooden floor, with the headline “Good things for the animals you come home to” and a Shop the collection button" fetchpriority="high" decoding="async">
+          </picture>
+        </div>
+        <figcaption>Homepage, desktop — hearth-hound.loc</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section-alt py-22">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Overview</p>
+          <h2><span class="reveal-line"><span>What was missing, and what wasn't true</span></span></h2>
+        </div>
+        <p>Three main fixes, then four smaller ones that bring the rest of the store up to the same standard.</p>
+      </div>
+      <div class="grid grid-cols-[1.15fr_.85fr] gap-14 items-start max-[860px]:grid-cols-1 max-[860px]:gap-10 case-overview">
+        <div class="flex flex-col gap-[14px]">
+          <p class="text-[17px] leading-[1.6] text-ink-soft max-w-[52ch]">Hearth &amp; Hound is a fictional brand of goods for dogs, cats and the homes they share: linen beds, waxed canvas collars, oak feeders, wool throws. Much of the range comes in sizes, and every order is click and collect. A standard PrestaShop store handles neither well.</p>
+          <p class="text-[17px] leading-[1.6] text-ink-soft max-w-[52ch]">Each block below shows the problem, the fix and why it matters for conversion. Like <a href="/case-northcairn.html" class="underline underline-offset-4">Northcairn</a>, the screenshots show the same store before and after the work.</p>
+        </div>
+        <div class="case-meta">
+          <div class="row"><b>Role</b><span>Design &amp; frontend</span></div>
+          <div class="row"><b>Stack</b><span>PrestaShop · Classic child theme · Smarty</span></div>
+          <div class="row"><b>Pages</b><span>Product, category, cart, checkout, CMS, order email</span></div>
+          <div class="row"><b>Focus</b><span>Sizing, filtering, honest wording</span></div>
+          <div class="row"><b>Live demo</b><span><a href="http://hearth-hound.loc/" target="_blank" rel="noopener" class="underline underline-offset-4">hearth-hound.loc</a></span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="fix-size-guide" class="py-22">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Fix 01 · Size guide</p>
+          <h2><span class="reveal-line"><span>“Which size fits my dog?”</span></span></h2>
+        </div>
+        <p>Beds come in S/M/L, collars in S–XL, feeders in three heights. Nothing on the page said which one to pick.</p>
+      </div>
+      <div class="fix">
+        <div class="fix-points">
+          <div class="fix-point">
+            <h3>Problem</h3>
+            <p>Products with size variants showed a row of buttons and nothing else. The beds go by the dog's weight, the Waxed Canvas Collar by neck circumference, and the Raised Oak Feeder comes in Low, Medium and Tall. To find the actual dimensions, shoppers had to dig through the description tab, and nothing told them how to measure.</p>
+          </div>
+          <div class="fix-point">
+            <h3>Solution</h3>
+            <p>A size guide on the product page, tailored to each kind of product. It has a line drawing showing what's measured, then a table with every size's range, its real dimensions and a few typical breeds. It opens from a “Find your size” button and highlights the size already selected. The Choose button on each row sets that size on the product and closes the guide. A short tip covers the in-between cases. The dimensions come from each product's own description, because a bolster bed, a cushion bed and a crate mat all differ in size. On a phone the guide opens as a bottom sheet.</p>
+          </div>
+          <div class="fix-point">
+            <h3>Why it matters for conversion</h3>
+            <p>Not knowing the size is a common reason people give up on a bed or a collar, and a wrong guess comes back as a return. With the answer next to the size buttons, shoppers can pick a size without leaving the page or guessing.</p>
+          </div>
+        </div>
+        <figure class="shot shot-solo">
+          <div class="shot-frame">
+            <picture>
+              <source type="image/webp" srcset="/assets/cases/hearth-hound/sizeguide-mobile-after-400.webp 400w, /assets/cases/hearth-hound/sizeguide-mobile-after-780.webp 780w" sizes="(min-width: 861px) 330px, min(330px, calc(100vw - 36px))">
+              <img src="/assets/cases/hearth-hound/sizeguide-mobile-after-780.jpg" srcset="/assets/cases/hearth-hound/sizeguide-mobile-after-400.jpg 400w, /assets/cases/hearth-hound/sizeguide-mobile-after-780.jpg 780w" sizes="(min-width: 861px) 330px, min(330px, calc(100vw - 36px))" width="780" height="1688" alt="Mobile bed size guide as a bottom sheet: a line drawing of a curled-up dog in a bed with length and width arrows, then a table of S, M and L with dog weight, bed dimensions and example breeds; the M row is highlighted with a filled Choose button" loading="lazy" decoding="async">
+            </picture>
+          </div>
+          <figcaption><span class="stack-tag tag-live">After</span>Bed guide on mobile: weight, size in cm, typical breeds</figcaption>
+        </figure>
+      </div>
+      <div class="fix-wide">
+        <figure class="shot">
+          <div class="shot-frame">
+            <picture>
+              <source type="image/webp" srcset="/assets/cases/hearth-hound/sizeguide-desktop-before-560.webp 560w, /assets/cases/hearth-hound/sizeguide-desktop-before-800.webp 800w, /assets/cases/hearth-hound/sizeguide-desktop-before-1280.webp 1280w" sizes="(min-width: 1180px) 556px, (min-width: 641px) calc(50vw - 28px), calc(100vw - 36px)">
+              <img src="/assets/cases/hearth-hound/sizeguide-desktop-before-800.jpg" srcset="/assets/cases/hearth-hound/sizeguide-desktop-before-560.jpg 560w, /assets/cases/hearth-hound/sizeguide-desktop-before-800.jpg 800w, /assets/cases/hearth-hound/sizeguide-desktop-before-1280.jpg 1280w" sizes="(min-width: 1180px) 556px, (min-width: 641px) calc(50vw - 28px), calc(100vw - 36px)" width="1280" height="800" alt="Before, desktop: bolster bed product page with three small size buttons, S up to 10kg, M 10–25kg and L 25kg+, and no size guide; placeholder reassurance text reads edit with the Customer Reassurance module" loading="lazy" decoding="async">
+            </picture>
+          </div>
+          <figcaption><span class="stack-tag tag-soon">Before</span>Three size buttons and nothing to go on</figcaption>
+        </figure>
+        <figure class="shot">
+          <div class="shot-frame">
+            <picture>
+              <source type="image/webp" srcset="/assets/cases/hearth-hound/sizeguide-desktop-after-560.webp 560w, /assets/cases/hearth-hound/sizeguide-desktop-after-800.webp 800w, /assets/cases/hearth-hound/sizeguide-desktop-after-1440.webp 1440w" sizes="(min-width: 1180px) 556px, (min-width: 641px) calc(50vw - 28px), calc(100vw - 36px)">
+              <img src="/assets/cases/hearth-hound/sizeguide-desktop-after-800.jpg" srcset="/assets/cases/hearth-hound/sizeguide-desktop-after-560.jpg 560w, /assets/cases/hearth-hound/sizeguide-desktop-after-800.jpg 800w, /assets/cases/hearth-hound/sizeguide-desktop-after-1440.jpg 1440w" sizes="(min-width: 1180px) 556px, (min-width: 641px) calc(50vw - 28px), calc(100vw - 36px)" width="1440" height="900" alt="After, desktop: collar size guide dialog over the Waxed Canvas Collar page, with a drawing of the collar and a dashed line around the neck, and a table of sizes S to XL by neck circumference with example breeds; M is highlighted" loading="lazy" decoding="async">
+            </picture>
+          </div>
+          <figcaption><span class="stack-tag tag-live">After</span>Collar guide, desktop: sized by neck circumference</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="fix-filters" class="section-alt py-22">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Fix 02 · Faceted filters</p>
+          <h2><span class="reveal-line"><span>Filters, from nothing</span></span></h2>
+        </div>
+        <p>The category pages had no filters at all. There was nothing set up for filters to run on.</p>
+      </div>
+      <div class="fix">
+        <div class="fix-points">
+          <div class="fix-point">
+            <h3>Problem</h3>
+            <p>PrestaShop's faceted search module was there, but the store had no product features and no filter template. So the category page was just a list of products. Shoppers couldn't narrow it down to their dog's size, a material or a budget.</p>
+          </div>
+          <div class="fix-point">
+            <h3>Solution</h3>
+            <p>I added a Material feature and filled in its values from each product's description. Then I set up a filter template for the catalogue categories with Size, Material and a Price slider. Filters are chips with a result count, and they use the same markup on phone and desktop. On desktop they sit in the sidebar. On mobile, a Filters button shows how many are active and opens them in a sheet with a “Show N results” button. Active filters appear above the grid as chips you can remove.</p>
+          </div>
+          <div class="fix-point">
+            <h3>Why it matters for conversion</h3>
+            <p>Someone with a 30 kg dog only wants to see what fits. Filtering down to that takes one tap, instead of opening each product to check.</p>
+          </div>
+        </div>
+        <div class="shot-pair">
+          <figure class="shot">
+            <div class="shot-frame">
+              <picture>
+                <source type="image/webp" srcset="/assets/cases/hearth-hound/filters-mobile-before-390.webp 390w" sizes="(min-width: 1180px) 300px, (min-width: 861px) 26vw, calc(50vw - 30px)">
+                <img src="/assets/cases/hearth-hound/filters-mobile-before-390.jpg" width="390" height="844" alt="Before: mobile Bedding category with a category list box, the title in capitals, a Relevance sort dropdown and the first product, and no filters anywhere" loading="lazy" decoding="async">
+              </picture>
+            </div>
+            <figcaption><span class="stack-tag tag-soon">Before</span>Sort only, no way to filter</figcaption>
+          </figure>
+          <figure class="shot">
+            <div class="shot-frame">
+              <picture>
+                <source type="image/webp" srcset="/assets/cases/hearth-hound/filters-mobile-after-400.webp 400w, /assets/cases/hearth-hound/filters-mobile-after-780.webp 780w" sizes="(min-width: 1180px) 300px, (min-width: 861px) 26vw, calc(50vw - 30px)">
+                <img src="/assets/cases/hearth-hound/filters-mobile-after-780.jpg" srcset="/assets/cases/hearth-hound/filters-mobile-after-400.jpg 400w, /assets/cases/hearth-hound/filters-mobile-after-780.jpg 780w" sizes="(min-width: 1180px) 300px, (min-width: 861px) 26vw, calc(50vw - 30px)" width="780" height="1688" alt="After: mobile Filters sheet over the Bedding category with Size chips S, M and L and Material chips Cotton, Linen and Wool, each with a count; Cotton is selected and the button reads Show 1 result" loading="lazy" decoding="async">
+              </picture>
+            </div>
+            <figcaption><span class="stack-tag tag-live">After</span>Size and Material chips with counts</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="fix-click-collect" class="py-22">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Fix 03 · Click &amp; collect</p>
+          <h2><span class="reveal-line"><span>“Free shipping” that wasn't shipping</span></span></h2>
+        </div>
+        <p>Every order is picked up in person, but the store kept promising free shipping.</p>
+      </div>
+      <div class="fix">
+        <div class="fix-points">
+          <div class="fix-point">
+            <h3>Problem</h3>
+            <p>The only way to get an order is click and collect, but PrestaShop called it “Shipping: Free” everywhere. That line appeared in the cart popup, the cart and checkout summaries, and the checkout step title. The order confirmation email even had a “Delivery address”. Shoppers could easily expect a courier and find out otherwise after paying.</p>
+          </div>
+          <div class="fix-point">
+            <h3>Solution</h3>
+            <p>Everywhere that said “Shipping: Free” now says “Click and collect — Free”: the cart popup, the cart and checkout summaries, and the checkout step, now called “Collection”. The order confirmation email has a Collection section saying how long the order takes to be ready. The delivery address is replaced by the collection point's address and opening hours.</p>
+          </div>
+          <div class="fix-point">
+            <h3>Why it matters for conversion</h3>
+            <p>A shopper who expects a delivery and then learns they have to pick up the order is likely to cancel, and to trust the store less. Saying it plainly at every step means only people who can collect place an order, and they know what happens next.</p>
+          </div>
+        </div>
+        <div class="shot-pair">
+          <figure class="shot">
+            <div class="shot-frame">
+              <picture>
+                <source type="image/webp" srcset="/assets/cases/hearth-hound/collect-email-before-320.webp 320w, /assets/cases/hearth-hound/collect-email-before-640.webp 640w" sizes="(min-width: 1180px) 300px, (min-width: 861px) 26vw, calc(50vw - 30px)">
+                <img src="/assets/cases/hearth-hound/collect-email-before-640.jpg" srcset="/assets/cases/hearth-hound/collect-email-before-320.jpg 320w, /assets/cases/hearth-hound/collect-email-before-640.jpg 640w" sizes="(min-width: 1180px) 300px, (min-width: 861px) 26vw, calc(50vw - 30px)" width="640" height="750" alt="Before: order confirmation email with a Shipping row of €0.00, a Shipping section with a truck icon, and the customer's own address under Delivery address" loading="lazy" decoding="async">
+              </picture>
+            </div>
+            <figcaption><span class="stack-tag tag-soon">Before</span>Email: “Shipping” and a delivery address</figcaption>
+          </figure>
+          <figure class="shot">
+            <div class="shot-frame">
+              <picture>
+                <source type="image/webp" srcset="/assets/cases/hearth-hound/collect-email-after-320.webp 320w, /assets/cases/hearth-hound/collect-email-after-640.webp 640w" sizes="(min-width: 1180px) 300px, (min-width: 861px) 26vw, calc(50vw - 30px)">
+                <img src="/assets/cases/hearth-hound/collect-email-after-640.jpg" srcset="/assets/cases/hearth-hound/collect-email-after-320.jpg 320w, /assets/cases/hearth-hound/collect-email-after-640.jpg 640w" sizes="(min-width: 1180px) 300px, (min-width: 861px) 26vw, calc(50vw - 30px)" width="640" height="750" alt="After: the same email with a Click and collect row marked Free, a Collection section saying to allow 2–4 working days, and a Collection point box with the shop's address and opening hours" loading="lazy" decoding="async">
+              </picture>
+            </div>
+            <figcaption><span class="stack-tag tag-live">After</span>Email: collection time, address and hours</figcaption>
+          </figure>
+        </div>
+      </div>
+      <div class="fix-wide">
+        <figure class="shot">
+          <div class="shot-frame">
+            <picture>
+              <source type="image/webp" srcset="/assets/cases/hearth-hound/collect-cart-before-580.webp 580w, /assets/cases/hearth-hound/collect-cart-before-1160.webp 1160w" sizes="(min-width: 1180px) 556px, (min-width: 641px) calc(50vw - 28px), calc(100vw - 36px)">
+              <img src="/assets/cases/hearth-hound/collect-cart-before-1160.jpg" srcset="/assets/cases/hearth-hound/collect-cart-before-580.jpg 580w, /assets/cases/hearth-hound/collect-cart-before-1160.jpg 1160w" sizes="(min-width: 1180px) 556px, (min-width: 641px) calc(50vw - 28px), calc(100vw - 36px)" width="1160" height="371" alt="Before: add-to-cart popup for the Herringbone Wool Throw with Subtotal €64.00 and Shipping: Free" loading="lazy" decoding="async">
+            </picture>
+          </div>
+          <figcaption><span class="stack-tag tag-soon">Before</span>Cart popup: “Shipping: Free”</figcaption>
+        </figure>
+        <figure class="shot">
+          <div class="shot-frame">
+            <picture>
+              <source type="image/webp" srcset="/assets/cases/hearth-hound/collect-cart-after-580.webp 580w, /assets/cases/hearth-hound/collect-cart-after-1160.webp 1160w" sizes="(min-width: 1180px) 556px, (min-width: 641px) calc(50vw - 28px), calc(100vw - 36px)">
+              <img src="/assets/cases/hearth-hound/collect-cart-after-1160.jpg" srcset="/assets/cases/hearth-hound/collect-cart-after-580.jpg 580w, /assets/cases/hearth-hound/collect-cart-after-1160.jpg 1160w" sizes="(min-width: 1180px) 556px, (min-width: 641px) calc(50vw - 28px), calc(100vw - 36px)" width="1160" height="371" alt="After: the same popup with Subtotal €64.00 and Click and collect: Free" loading="lazy" decoding="async">
+            </picture>
+          </div>
+          <figcaption><span class="stack-tag tag-live">After</span>Cart popup: “Click and collect: Free”</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="fix-category" class="section-alt py-22">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">04 · Category &amp; product cards</p>
+          <h2><span class="reveal-line"><span>A category page in the store's own style</span></span></h2>
+        </div>
+        <p>The listing still looked like stock PrestaShop.</p>
+      </div>
+      <div class="fix">
+        <div class="fix-points">
+          <div class="fix-point">
+            <h3>Problem</h3>
+            <p>The category page used the stock theme's layout: white boxes, a bold all-caps title and small centred product names. It looked nothing like the homepage and product pages.</p>
+          </div>
+          <div class="fix-point">
+            <h3>Solution</h3>
+            <p>A new layout for the category page and product cards. Headings are set in Fraunces with terracotta accents, as on the rest of the site, and product names show in full.</p>
+          </div>
+        </div>
+        <div class="flex flex-col gap-5">
+          <figure class="shot">
+            <div class="shot-frame">
+              <picture>
+                <source type="image/webp" srcset="/assets/cases/hearth-hound/category-desktop-before-560.webp 560w, /assets/cases/hearth-hound/category-desktop-before-800.webp 800w, /assets/cases/hearth-hound/category-desktop-before-1440.webp 1440w" sizes="(min-width: 1180px) 650px, (min-width: 861px) 55vw, calc(100vw - 36px)">
+                <img src="/assets/cases/hearth-hound/category-desktop-before-800.jpg" srcset="/assets/cases/hearth-hound/category-desktop-before-560.jpg 560w, /assets/cases/hearth-hound/category-desktop-before-800.jpg 800w, /assets/cases/hearth-hound/category-desktop-before-1440.jpg 1440w" sizes="(min-width: 1180px) 650px, (min-width: 861px) 55vw, calc(100vw - 36px)" width="1440" height="900" alt="Before: Bedding category on desktop with a white HOME box listing categories, a white box with the all-caps title BEDDING, and product cards in white boxes with small centred names" loading="lazy" decoding="async">
+              </picture>
+            </div>
+            <figcaption><span class="stack-tag tag-soon">Before</span>Stock layout in white boxes</figcaption>
+          </figure>
+          <figure class="shot">
+            <div class="shot-frame">
+              <picture>
+                <source type="image/webp" srcset="/assets/cases/hearth-hound/category-desktop-after-560.webp 560w, /assets/cases/hearth-hound/category-desktop-after-800.webp 800w, /assets/cases/hearth-hound/category-desktop-after-1440.webp 1440w" sizes="(min-width: 1180px) 650px, (min-width: 861px) 55vw, calc(100vw - 36px)">
+                <img src="/assets/cases/hearth-hound/category-desktop-after-800.jpg" srcset="/assets/cases/hearth-hound/category-desktop-after-560.jpg 560w, /assets/cases/hearth-hound/category-desktop-after-800.jpg 800w, /assets/cases/hearth-hound/category-desktop-after-1440.jpg 1440w" sizes="(min-width: 1180px) 650px, (min-width: 861px) 55vw, calc(100vw - 36px)" width="1440" height="900" alt="After: Bedding category with a large serif title, a sidebar with Shop by category and Filter by Size, Material and Price, an active Size S chip, and three product cards with full names under large photos" loading="lazy" decoding="async">
+              </picture>
+            </div>
+            <figcaption><span class="stack-tag tag-live">After</span>Serif headings, filters in the sidebar, full product names</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="fix-policies" class="py-22">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">05 · Policy pages</p>
+          <h2><span class="reveal-line"><span>Terms that describe this shop</span></span></h2>
+        </div>
+        <p>Delivery, Legal notice, Terms and Secure payment still had PrestaShop's demo text.</p>
+      </div>
+      <div class="fix">
+        <div class="fix-points">
+          <div class="fix-point">
+            <h3>Problem</h3>
+            <p>The pages shoppers read before paying were PrestaShop's placeholder text. They described delivery the store doesn't offer and payment it doesn't take, and the product page promised 30-day returns that the store's return settings didn't match.</p>
+          </div>
+          <div class="fix-point">
+            <h3>Solution</h3>
+            <p>All four pages rewritten to match how the store actually works. Collection is free and takes 2–4 working days. Returns are 30 days, longer than the 14 days required by law, and the store's return settings now match. The payment page says the store takes no cards: bank transfer, cheque, or cash when you collect.</p>
+          </div>
+        </div>
+        <figure class="shot">
+          <div class="shot-frame">
+            <picture>
+              <source type="image/webp" srcset="/assets/cases/hearth-hound/policies-mobile-780.webp 780w, /assets/cases/hearth-hound/policies-mobile-1560.webp 1560w" sizes="(min-width: 1180px) 650px, (min-width: 861px) 55vw, calc(100vw - 36px)">
+              <img src="/assets/cases/hearth-hound/policies-mobile-1560.jpg" srcset="/assets/cases/hearth-hound/policies-mobile-780.jpg 780w, /assets/cases/hearth-hound/policies-mobile-1560.jpg 1560w" sizes="(min-width: 1180px) 650px, (min-width: 861px) 55vw, calc(100vw - 36px)" width="1560" height="1100" alt="Four policy pages side by side on mobile: Collection &amp; returns, Legal notice, Terms and conditions and Secure payment, each with plain headings such as How collection works, Returns, Your personal data and Ways to pay" loading="lazy" decoding="async">
+            </picture>
+          </div>
+          <figcaption><span class="stack-tag tag-live">After</span>Collection &amp; returns, Legal notice, Terms, Secure payment on mobile</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="fix-colours" class="section-alt py-22">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">06 · Stray colours &amp; inline styles</p>
+          <h2><span class="reveal-line"><span>No more stray blue</span></span></h2>
+        </div>
+        <p>The parent theme's blue kept showing up on buttons and links, mostly on hover or click.</p>
+      </div>
+      <div class="fix">
+        <div class="fix-points">
+          <div class="fix-point">
+            <h3>Problem</h3>
+            <p>The Classic parent theme's blue kept showing up across the site. You'd see it on a pressed button, a hovered link in checkout, a focused field or a product name in the cart popup. Most of these only appear on hover, focus or click, so you'd never spot them in a static screenshot. Some styling was also hard-coded in inline <code>style</code> attributes.</p>
+          </div>
+          <div class="fix-point">
+            <h3>Solution</h3>
+            <p>A browser script forced every hover, focus and active state on ten kinds of page and found 32 places where the blue appeared. Each was overridden with the brand colours, plus a shared focus ring, and a re-run found none. The inline styles were moved into the stylesheet.</p>
+          </div>
+        </div>
+        <div class="flex flex-col gap-5">
+          <figure class="shot">
+            <div class="shot-frame">
+              <picture>
+                <source type="image/webp" srcset="/assets/cases/hearth-hound/colour-cart-before-580.webp 580w, /assets/cases/hearth-hound/colour-cart-before-1160.webp 1160w" sizes="(min-width: 1180px) 650px, (min-width: 861px) 55vw, calc(100vw - 36px)">
+                <img src="/assets/cases/hearth-hound/colour-cart-before-1160.jpg" srcset="/assets/cases/hearth-hound/colour-cart-before-580.jpg 580w, /assets/cases/hearth-hound/colour-cart-before-1160.jpg 1160w" sizes="(min-width: 1180px) 650px, (min-width: 861px) 55vw, calc(100vw - 36px)" width="1160" height="371" alt="Before: add-to-cart popup where the product name Stonewashed Linen Bolster Bed is shown in bright cyan" loading="lazy" decoding="async">
+              </picture>
+            </div>
+            <figcaption><span class="stack-tag tag-soon">Before</span>Product name in the parent theme's cyan</figcaption>
+          </figure>
+          <figure class="shot">
+            <div class="shot-frame">
+              <picture>
+                <source type="image/webp" srcset="/assets/cases/hearth-hound/colour-cart-after-580.webp 580w, /assets/cases/hearth-hound/colour-cart-after-1160.webp 1160w" sizes="(min-width: 1180px) 650px, (min-width: 861px) 55vw, calc(100vw - 36px)">
+                <img src="/assets/cases/hearth-hound/colour-cart-after-1160.jpg" srcset="/assets/cases/hearth-hound/colour-cart-after-580.jpg 580w, /assets/cases/hearth-hound/colour-cart-after-1160.jpg 1160w" sizes="(min-width: 1180px) 650px, (min-width: 861px) 55vw, calc(100vw - 36px)" width="1160" height="371" alt="After: the same popup with the product name in the site's dark ink colour" loading="lazy" decoding="async">
+              </picture>
+            </div>
+            <figcaption><span class="stack-tag tag-live">After</span>Brand ink, like the rest of the site</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="fix-checkout" class="py-22">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">07 · Checkout branding</p>
+          <h2><span class="reveal-line"><span>A checkout that matches the store</span></span></h2>
+        </div>
+        <p>The last step before paying looked like a different website.</p>
+      </div>
+      <div class="fix">
+        <div class="fix-points">
+          <div class="fix-point">
+            <h3>Problem</h3>
+            <p>Checkout had PrestaShop's green step numbers and check marks, grey radio buttons and checkboxes, and “Ecommerce software by PrestaShop™” in the footer. It was the least on-brand page in the store, right at the moment of paying.</p>
+          </div>
+          <div class="fix-point">
+            <h3>Solution</h3>
+            <p>The step indicator now uses the site's charcoal and terracotta, with a clear “Edit” link on completed steps. Radio buttons and checkboxes are terracotta, form fields share the paper background with a higher-contrast border, and the footer shows the store's own name.</p>
+          </div>
+        </div>
+        <div class="flex flex-col gap-5">
+          <figure class="shot">
+            <div class="shot-frame">
+              <picture>
+                <source type="image/webp" srcset="/assets/cases/hearth-hound/checkout-desktop-before-640.webp 640w, /assets/cases/hearth-hound/checkout-desktop-before-1280.webp 1280w" sizes="(min-width: 1180px) 650px, (min-width: 861px) 55vw, calc(100vw - 36px)">
+                <img src="/assets/cases/hearth-hound/checkout-desktop-before-1280.jpg" srcset="/assets/cases/hearth-hound/checkout-desktop-before-640.jpg 640w, /assets/cases/hearth-hound/checkout-desktop-before-1280.jpg 1280w" sizes="(min-width: 1180px) 650px, (min-width: 861px) 55vw, calc(100vw - 36px)" width="1280" height="959" alt="Before: checkout payment step with green check marks and a green step number 4, black radio buttons and a grey checkbox, and the footer text Ecommerce software by PrestaShop" loading="lazy" decoding="async">
+              </picture>
+            </div>
+            <figcaption><span class="stack-tag tag-soon">Before</span>Green stepper, stock controls, PrestaShop footer</figcaption>
+          </figure>
+          <figure class="shot">
+            <div class="shot-frame">
+              <picture>
+                <source type="image/webp" srcset="/assets/cases/hearth-hound/checkout-desktop-after-640.webp 640w, /assets/cases/hearth-hound/checkout-desktop-after-1280.webp 1280w" sizes="(min-width: 1180px) 650px, (min-width: 861px) 55vw, calc(100vw - 36px)">
+                <img src="/assets/cases/hearth-hound/checkout-desktop-after-1280.jpg" srcset="/assets/cases/hearth-hound/checkout-desktop-after-640.jpg 640w, /assets/cases/hearth-hound/checkout-desktop-after-1280.jpg 1280w" sizes="(min-width: 1180px) 650px, (min-width: 861px) 55vw, calc(100vw - 36px)" width="1280" height="977" alt="After: the same step with terracotta check marks and Edit links, a charcoal step number, terracotta radio button and checkbox, a tinted payment details table and the footer reading © 2026 Hearth &amp; Hound" loading="lazy" decoding="async">
+              </picture>
+            </div>
+            <figcaption><span class="stack-tag tag-live">After</span>Charcoal and terracotta, the store's own footer</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-22">
+    <div class="wrap">
+      <div class="cta-band">
+        <p class="eyebrow text-accent">Let's start</p>
+        <h2><span class="reveal-line"><span>Is your store telling shoppers the truth?</span></span></h2>
+        <p>The demo is live. Open a bed or a collar and try the size guide, then send me a link to your own site.</p>
+        <div class="flex gap-3 flex-wrap justify-center">
+          <a href="/#contact" class="btn btn-solid">Start a project</a>
+          <a href="http://hearth-hound.loc/" class="btn btn-ghost" target="_blank" rel="noopener">Visit the live demo</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <a href="/" class="logo">Svitlana <span>Biletska</span></a>
+      <nav aria-label="Footer">
+        <ul>
+          <li><a href="/#work">Work</a></li>
+          <li><a href="/#services">Services</a></li>
+          <li><a href="/#about">About</a></li>
+        </ul>
+      </nav>
+      <div class="foot-contact">
+        <div><b>Email</b> — hello@svitlanabiletska.com</div>
+        <div><b>LinkedIn</b> — <a href="https://www.linkedin.com/in/svitlana-biletska-8507841bb" target="_blank" rel="noopener" class="underline underline-offset-4">/in/svitlana-biletska</a></div>
+        <div><b>Based in</b> — Piekary Śląskie, Poland</div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Svitlana Biletska</span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="/js/main.js"></script>
+</body>
+</html>
