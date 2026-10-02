@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@source not "../js/vendor";
 
 @font-face {
   font-family: "Fraunces";
@@ -151,6 +152,11 @@
   /* hero */
   .hero-line, .reveal-line { @apply overflow-hidden block; }
   .hero-line span, .reveal-line span { @apply inline-block; will-change: transform; }
+  /* Hidden until main.js runs its intro (scripts are deferred). The inline
+     head script removes .js if the animation never starts. */
+  @media (prefers-reduced-motion: no-preference) {
+    .js .hero-line > span, .js .case-hero-shot { opacity: 0; }
+  }
   .hero-photo {
     @apply relative rounded-[18px] overflow-hidden border border-line flex items-end p-5;
     aspect-ratio: 4/5;

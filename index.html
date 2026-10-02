@@ -30,6 +30,7 @@
   <link rel="preload" href="/assets/fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/css/style.css">
+  <script>(function(d){d.classList.add('js');addEventListener('load',function(){if(!d.classList.contains('anim-ready'))d.classList.remove('js')})})(document.documentElement)</script>
 
   <script type="application/ld+json">
   {
@@ -52,7 +53,7 @@
   }
   </script>
 
-  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.9/dist/cdn.min.js"></script>
+  <script defer src="/js/vendor/alpine.min.js"></script>
 </head>
 <body>
 
@@ -118,8 +119,8 @@
       </div>
       <div class="hero-photo">
         <picture>
-          <source type="image/webp" srcset="/assets/about/portrait-480.webp 480w, /assets/about/portrait-800.webp 800w, /assets/about/portrait-944.webp 944w" sizes="(min-width: 1180px) 484px, (min-width: 861px) calc(45vw - 47px), calc(100vw - 36px)">
-          <img src="/assets/about/portrait-800.jpg" srcset="/assets/about/portrait-480.jpg 480w, /assets/about/portrait-800.jpg 800w, /assets/about/portrait-944.jpg 944w" sizes="(min-width: 1180px) 484px, (min-width: 861px) calc(45vw - 47px), calc(100vw - 36px)" width="944" height="1180" alt="Svitlana Biletska in a white linen shirt, arms crossed, in warm evening light" fetchpriority="high">
+          <source type="image/webp" srcset="/assets/about/portrait-480.webp 480w, /assets/about/portrait-640.webp 640w, /assets/about/portrait-800.webp 800w, /assets/about/portrait-944.webp 944w" sizes="(min-width: 1180px) 484px, (min-width: 861px) calc(45vw - 47px), (min-width: 640px) calc(100vw - 36px), calc(100vw - 48px)">
+          <img src="/assets/about/portrait-800.jpg" srcset="/assets/about/portrait-480.jpg 480w, /assets/about/portrait-640.jpg 640w, /assets/about/portrait-800.jpg 800w, /assets/about/portrait-944.jpg 944w" sizes="(min-width: 1180px) 484px, (min-width: 861px) calc(45vw - 47px), (min-width: 640px) calc(100vw - 36px), calc(100vw - 48px)" width="944" height="1180" alt="Svitlana Biletska in a white linen shirt, arms crossed, in warm evening light" fetchpriority="high">
         </picture>
       </div>
     </div>
@@ -396,8 +397,8 @@
   </div>
 </footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script src="/js/main.js"></script>
+<script defer src="/js/vendor/gsap.min.js"></script>
+<script defer src="/js/vendor/ScrollTrigger.min.js"></script>
+<script defer src="/js/main.js"></script>
 </body>
 </html>

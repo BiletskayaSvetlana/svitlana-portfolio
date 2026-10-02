@@ -1,76 +1,31 @@
 (function(){
+  var root = document.documentElement;
+  if(!window.gsap || !window.ScrollTrigger){ root.classList.remove('js'); return; }
+  root.classList.add('anim-ready');
+
+  // Start after the first frame is laid out, so GSAP/ScrollTrigger measure a
+  // clean layout instead of forcing one right after parsing.
+  requestAnimationFrame(function(){ requestAnimationFrame(init); });
+
+  function init(){
   try{
     var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if(!window.gsap) return;
     gsap.registerPlugin(ScrollTrigger);
 
-    var lines = document.querySelectorAll('.hero-line span');
-    if(reduce){
-      lines.forEach(function(el){ el.style.transform='none'; });
-    } else {
-      gsap.set(lines, {yPercent:110, opacity:0});
-      gsap.to(lines, {
-        yPercent:0, opacity:1, duration:.9, ease:'expo.out',
-        stagger:.09, delay:.15
-      });
-    }
-
-    var headLines = document.querySelectorAll('.reveal-line span');
-    if(reduce){
-      headLines.forEach(function(el){ el.style.transform='none'; });
-    } else {
-      headLines.forEach(function(el){
-        gsap.set(el, {yPercent:110, opacity:0});
-        gsap.to(el, {
-          yPercent:0, opacity:1, duration:.85, ease:'expo.out',
-          scrollTrigger:{ trigger: el.closest('.reveal-line'), start:'top 88%' }
-        });
-      });
-    }
-
+    var lines = gsap.utils.toArray('.hero-line span');
+    var headLines = gsap.utils.toArray('.reveal-line span');
     var stage = document.getElementById('stackStage');
     var cards = gsap.utils.toArray('.stack-card');
-    if(stage && cards.length && !reduce && window.innerWidth > 700){
-      gsap.set(cards, {yPercent:0, scale:1});
-      cards.forEach(function(card, i){
-        gsap.set(card, {zIndex: i+1, transformOrigin:'center top'});
-      });
-      var tl = gsap.timeline({
-        scrollTrigger:{
-          trigger: stage.closest('section'),
-          start:'top top',
-          end:'+=' + (cards.length-1) * 500,
-          scrub:.6,
-          pin:true,
-          anticipatePin:1
-        }
-      });
-      cards.forEach(function(card, i){
-        if(i===0) return;
-        tl.fromTo(card, {yPercent:14, opacity:0, scale:.96},
-                         {yPercent:0, opacity:1, scale:1, duration:1, ease:'power2.out'}, i-1);
-        tl.to(cards[i-1], {scale:.94, opacity:.35, duration:1, ease:'power2.out'}, i-1);
-      });
-    } else {
-      gsap.set(cards, {clearProps:'all'});
-    }
+    var pinStack = !!(stage && cards.length && !reduce && window.innerWidth > 700);
+    var deck = pinStack ? stage.closest('section') : null;
 
-    var deck = stage && stage.closest('.pin-spacer') ? stage.closest('section') : null;
-
+    // Reveals are collected first and applied in two phases below: all start
+    // states are written in one batch, then the ScrollTriggers (which read
+    // layout) are created — so DOM writes and reads don't interleave.
+    var reveals = [];
     function reveal(trigger, layers){
       if(reduce || !trigger) return;
-      var st = { trigger:trigger, start:'top 88%' };
-      if(deck && deck !== trigger && deck.contains(trigger)) st.pinnedContainer = deck;
-      var tl = gsap.timeline({ scrollTrigger:st });
-      layers.forEach(function(layer){
-        var targets = gsap.utils.toArray(layer.targets);
-        if(!targets.length) return;
-        gsap.set(targets, {opacity:0, x:layer.x || 0, y:layer.x ? 0 : (layer.y || 24)});
-        tl.to(targets, {
-          opacity:1, x:0, y:0, duration:layer.duration || .8, ease:'expo.out',
-          stagger:layer.stagger || .12
-        }, layer.at || 0);
-      });
+      reveals.push({ trigger:trigger, layers:layers });
     }
 
     gsap.utils.toArray('.section-head').forEach(function(head){
@@ -173,6 +128,86 @@
       ]);
     }
 
-    window.addEventListener('load', function(){ ScrollTrigger.refresh(); });
-  } catch(e){}
+    // Phase 1 — writes only.
+    if(reduce){
+      lines.concat(headLines).forEach(function(el){ el.style.transform='none'; });
+    } else {
+      gsap.set(lines.concat(headLines), {yPercent:110, opacity:0});
+    }
+
+    if(pinStack){
+      gsap.set(cards, {
+        yPercent:0, scale:1, transformOrigin:'center top',
+        zIndex:function(i){ return i+1; }
+      });
+    } else {
+      gsap.set(cards, {clearProps:'all'});
+    }
+
+    var hidden = [], offsets = [];
+    reveals.forEach(function(r){
+      r.layers.forEach(function(layer){
+        layer.list = gsap.utils.toArray(layer.targets);
+        layer.list.forEach(function(el){
+          var i = hidden.indexOf(el);
+          if(i < 0){ i = hidden.length; hidden.push(el); }
+          offsets[i] = { x:layer.x || 0, y:layer.x ? 0 : (layer.y || 24) };
+        });
+      });
+    });
+    if(hidden.length){
+      gsap.set(hidden, {
+        opacity:0,
+        x:function(i){ return offsets[i].x; },
+        y:function(i){ return offsets[i].y; }
+      });
+    }
+
+    // Phase 2 — tweens and ScrollTriggers (these measure layout).
+    if(!reduce){
+      gsap.to(lines, {
+        yPercent:0, opacity:1, duration:.9, ease:'expo.out',
+        stagger:.09, delay:.15
+      });
+      headLines.forEach(function(el){
+        gsap.to(el, {
+          yPercent:0, opacity:1, duration:.85, ease:'expo.out',
+          scrollTrigger:{ trigger: el.closest('.reveal-line'), start:'top 88%' }
+        });
+      });
+    }
+
+    if(pinStack){
+      var tl = gsap.timeline({
+        scrollTrigger:{
+          trigger: deck,
+          start:'top top',
+          end:'+=' + (cards.length-1) * 500,
+          scrub:.6,
+          pin:true,
+          anticipatePin:1
+        }
+      });
+      cards.forEach(function(card, i){
+        if(i===0) return;
+        tl.fromTo(card, {yPercent:14, opacity:0, scale:.96},
+                         {yPercent:0, opacity:1, scale:1, duration:1, ease:'power2.out'}, i-1);
+        tl.to(cards[i-1], {scale:.94, opacity:.35, duration:1, ease:'power2.out'}, i-1);
+      });
+    }
+
+    reveals.forEach(function(r){
+      var st = { trigger:r.trigger, start:'top 88%' };
+      if(deck && deck !== r.trigger && deck.contains(r.trigger)) st.pinnedContainer = deck;
+      var rtl = gsap.timeline({ scrollTrigger:st });
+      r.layers.forEach(function(layer){
+        if(!layer.list.length) return;
+        rtl.to(layer.list, {
+          opacity:1, x:0, y:0, duration:layer.duration || .8, ease:'expo.out',
+          stagger:layer.stagger || .12
+        }, layer.at || 0);
+      });
+    });
+  } catch(e){ root.classList.remove('js'); }
+  }
 })();
