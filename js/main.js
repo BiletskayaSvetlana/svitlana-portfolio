@@ -10,6 +10,11 @@
   function init(){
   try{
     var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    // Phones: shorter, smaller reveals that start as soon as an element enters
+    // the viewport, so text isn't left faded while the page is being scrolled.
+    var small = window.innerWidth <= 700;
+    var revealStart = small ? 'top 98%' : 'top 88%';
+    var pace = small ? .55 : 1;
     gsap.registerPlugin(ScrollTrigger);
 
     var lines = gsap.utils.toArray('.hero-line span');
@@ -151,7 +156,8 @@
         layer.list.forEach(function(el){
           var i = hidden.indexOf(el);
           if(i < 0){ i = hidden.length; hidden.push(el); }
-          offsets[i] = { x:layer.x || 0, y:layer.x ? 0 : (layer.y || 24) };
+          var y = layer.x ? 0 : (layer.y || 24);
+          offsets[i] = { x:small ? 0 : (layer.x || 0), y:small ? Math.min(y, 12) : y };
         });
       });
     });
@@ -165,14 +171,14 @@
 
     // Phase 2 — tweens and ScrollTriggers (these measure layout).
     if(!reduce){
-      gsap.to(lines, {
+      if(lines.length) gsap.to(lines, {
         yPercent:0, opacity:1, duration:.9, ease:'expo.out',
         stagger:.09, delay:.15
       });
       headLines.forEach(function(el){
         gsap.to(el, {
-          yPercent:0, opacity:1, duration:.85, ease:'expo.out',
-          scrollTrigger:{ trigger: el.closest('.reveal-line'), start:'top 88%' }
+          yPercent:0, opacity:1, duration:.85 * pace, ease:'expo.out',
+          scrollTrigger:{ trigger: el.closest('.reveal-line'), start:revealStart }
         });
       });
     }
@@ -197,15 +203,15 @@
     }
 
     reveals.forEach(function(r){
-      var st = { trigger:r.trigger, start:'top 88%' };
+      var st = { trigger:r.trigger, start:revealStart };
       if(deck && deck !== r.trigger && deck.contains(r.trigger)) st.pinnedContainer = deck;
       var rtl = gsap.timeline({ scrollTrigger:st });
       r.layers.forEach(function(layer){
         if(!layer.list.length) return;
         rtl.to(layer.list, {
-          opacity:1, x:0, y:0, duration:layer.duration || .8, ease:'expo.out',
-          stagger:layer.stagger || .12
-        }, layer.at || 0);
+          opacity:1, x:0, y:0, duration:(layer.duration || .8) * pace, ease:'expo.out',
+          stagger:(layer.stagger || .12) * pace
+        }, (layer.at || 0) * pace);
       });
     });
   } catch(e){ root.classList.remove('js'); }

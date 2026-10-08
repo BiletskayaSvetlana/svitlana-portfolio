@@ -4,3 +4,23 @@
 
 [build.environment]
   NODE_VERSION = "20"
+
+# One URL per case study: the .html versions redirect to the clean URLs that the
+# site links to and the canonicals use.
+[[redirects]]
+  from = "/case-northcairn.html"
+  to = "/case-northcairn"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/case-solene.html"
+  to = "/case-solene"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/case-hearth-hound.html"
+  to = "/case-hearth-hound"
+  status = 301
+  force = true

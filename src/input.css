@@ -147,7 +147,7 @@
   .mobile-menu { @apply border-b border-line bg-bg overflow-hidden; }
   .mobile-menu-inner { @apply flex flex-col gap-1 px-6 pt-2 pb-7; }
   .mobile-menu ul { @apply list-none flex flex-col m-0 p-0; }
-  .mobile-menu a { @apply text-base font-semibold text-ink py-[13px] border-b border-line block; }
+  .mobile-menu nav a { @apply text-base font-semibold text-ink py-[13px] border-b border-line block; }
 
   /* hero */
   .hero-line, .reveal-line { @apply overflow-hidden block; }
@@ -157,6 +157,13 @@
   @media (prefers-reduced-motion: no-preference) {
     .js .hero-line > span, .js .case-hero-shot { opacity: 0; }
   }
+  /* Home H1 is visible from the first paint; only the accent word shifts colour. */
+  .hero-accent { @apply text-accent; }
+  @media (prefers-reduced-motion: no-preference) {
+    .hero-accent { animation: hero-accent 1.4s ease-out .3s backwards; }
+  }
+  .hero-sub { @apply flex flex-col gap-0.5 mb-[18px] font-serif text-[clamp(19px,2.2vw,24px)] leading-[1.3] text-ink; }
+  .hero-sub span::before { content: '— '; @apply text-accent; }
   .hero-photo {
     @apply relative rounded-[18px] overflow-hidden border border-line flex items-end p-5;
     aspect-ratio: 4/5;
@@ -188,14 +195,32 @@
   /* services stack */
   .stack-stage { @apply relative h-[420px] max-[700px]:h-auto; }
   .stack-card {
-    @apply absolute inset-0 rounded-[20px] border border-line-strong bg-bg p-10 flex flex-col justify-between
+    @apply absolute inset-0 rounded-[20px] border border-line-strong bg-bg p-10 flex gap-10
            max-[700px]:relative max-[700px]:mb-[18px];
     box-shadow: 0 30px 60px -30px rgba(0,0,0,.18);
   }
   .stack-card .num { @apply font-mono text-[13px] text-accent font-semibold; }
   .stack-card h3 { @apply text-[clamp(22px,3vw,32px)] font-medium mt-[14px] mb-[10px]; }
   .stack-card p { @apply text-ink-soft text-[15px] leading-[1.6] max-w-[52ch]; }
+  .stack-copy { @apply flex-1 min-w-0 flex flex-col justify-between; }
+  .stack-card p.stack-teaser { @apply mt-3 text-[14px]; }
+  .stack-teaser a { @apply font-bold text-ink underline underline-offset-4 hover:text-accent; }
+  /* Right half of a card on desktop: a before/after pair, a photo or a cover image. */
+  .stack-media { @apply flex-1 min-w-0 rounded-[14px] overflow-hidden max-[700px]:hidden; }
+  .stack-media-pair { @apply flex justify-center gap-4; }
+  .stack-media-pair figure { @apply relative m-0 h-full; aspect-ratio: 400/681; }
+  .stack-media-pair figure:only-child { aspect-ratio: 4/5; }
+  .stack-media-cover { @apply border border-line; }
+  .stack-media-cover picture, .stack-media-cover img { @apply block size-full object-cover; }
+  .stack-media-pair picture, .stack-media-pair img { @apply block size-full object-cover object-top rounded-[10px] border border-line; }
+  .stack-media-pair figcaption {
+    @apply absolute left-2 top-2 font-mono text-[10.5px] uppercase tracking-[0.1em] text-ink rounded-full px-2 py-1;
+    background: color-mix(in srgb, var(--color-bg) 85%, transparent);
+  }
   .stack-tag { @apply self-start text-[11.5px] font-bold tracking-[0.04em] px-3 py-1.5 rounded-full mt-[18px]; }
+  .stack-tag-link { @apply transition-colors hover:bg-accent hover:text-accent-ink; }
+  /* After the display rules above, so phones really hide the media column. */
+  .stack-card .stack-media { @apply max-[700px]:hidden; }
   .tag-live { @apply text-accent; background: color-mix(in srgb, var(--color-accent) 16%, transparent); }
   .tag-soon { @apply bg-line text-ink-soft; }
 
@@ -206,8 +231,19 @@
   .price-card p { @apply text-ink-soft text-sm leading-[1.55]; }
   .price-note {
     @apply mt-[22px] rounded-2xl border border-dashed border-line-strong text-ink-soft text-sm
-           flex flex-wrap justify-between gap-4 px-[22px] py-[18px];
+           flex flex-wrap items-center justify-between gap-4 px-[22px] py-[18px];
   }
+  .price-note-actions { @apply flex flex-wrap gap-3 ml-auto max-[560px]:ml-0; }
+
+  /* content strip */
+  .shoot-grid { @apply grid grid-cols-3 gap-5 max-[820px]:grid-cols-2 max-[520px]:gap-3; }
+  .shoot-tile {
+    @apply relative flex items-center justify-center rounded-[18px] overflow-hidden border border-line;
+    aspect-ratio: 4/5;
+    background: linear-gradient(160deg, var(--color-bg-alt), var(--color-line));
+  }
+  .shoot-tile span { @apply font-mono text-xs text-ink-faint; }
+  .shoot-tile picture, .shoot-tile img { @apply absolute inset-0 block size-full object-cover; }
 
   /* process */
   .process-step { @apply relative border-t-2 border-line-strong py-[26px] pr-[22px] max-[520px]:pl-0 max-[520px]:!border-r-0; }
@@ -292,11 +328,18 @@
   /* footer */
   .site-footer { @apply border-t border-line py-11 bg-bg-alt; }
   .foot-grid { @apply flex flex-wrap justify-between gap-7; }
-  .foot-grid nav ul { @apply flex-col gap-[10px]; }
-  .foot-grid nav a { @apply text-ink-soft text-[13.5px]; }
-  .foot-contact { @apply text-[13.5px] text-ink-soft flex flex-col gap-2; }
+  .foot-grid nav ul { @apply flex flex-col m-0 p-0 list-none; }
+  /* Footer links get a 44px tap target. */
+  .foot-grid nav a { @apply inline-flex items-center min-h-11 text-ink-soft text-[13.5px]; }
+  .foot-contact { @apply text-[13.5px] text-ink-soft flex flex-col; }
+  .foot-contact > div { @apply flex flex-wrap items-center gap-x-1 min-h-11; }
+  .foot-contact a { @apply inline-flex items-center min-h-11; }
   .foot-contact b { @apply text-ink; }
   .foot-bottom { @apply mt-[34px] pt-5 border-t border-line text-xs text-ink-faint flex flex-wrap justify-between gap-[10px]; }
+}
+
+@keyframes hero-accent {
+  from { color: var(--color-ink); }
 }
 
 @media (prefers-reduced-motion: reduce) {

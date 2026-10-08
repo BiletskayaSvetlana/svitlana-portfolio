@@ -16,3 +16,6 @@ npm-debug.log*
 .vscode/
 .DS_Store
 Thumbs.db
+
+# Raw photo sources (processed copies live in assets/content/)
+/content/
