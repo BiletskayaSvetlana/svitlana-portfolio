@@ -347,10 +347,85 @@
   .foot-contact a { @apply inline-flex items-center min-h-11; }
   .foot-contact b { @apply text-ink; }
   .foot-bottom { @apply mt-[34px] pt-5 border-t border-line text-xs text-ink-faint flex flex-wrap justify-between gap-[10px]; }
+
+  /* audit case: static page, a short CSS rise on load only */
+  @media (prefers-reduced-motion: no-preference) {
+    .rise { animation: rise .7s cubic-bezier(.2,.7,.2,1) backwards; }
+    .rise-2 { animation-delay: .12s; }
+  }
+  .case-media svg { @apply block h-[84%] w-auto transition-transform duration-500 ease-out; }
+  .case-link:hover .case-media svg { @apply scale-[1.03]; }
+
+  .audit-metrics { @apply grid grid-cols-4 gap-5 mt-14 max-[980px]:grid-cols-2 max-[340px]:grid-cols-1; }
+
+  .finding-list { @apply list-none m-0 p-0 grid grid-cols-2 gap-x-14 max-[860px]:grid-cols-1; counter-reset: finding; }
+  .finding { @apply border-t border-line py-[22px] flex flex-col gap-3; counter-increment: finding; }
+  .finding-head { @apply flex items-center gap-3; }
+  .finding-head::before { content: counter(finding, decimal-leading-zero); @apply font-mono text-xs text-accent font-semibold; }
+  .finding p { @apply text-ink-soft text-[15px] leading-[1.6] max-w-[56ch]; }
+  .prio { @apply inline-flex items-center font-mono text-[11px] tracking-[0.1em] uppercase rounded-full px-2.5 py-1 border; }
+  .prio-high { @apply text-ink border-ink; }
+  .prio-medium { @apply text-ink-soft border-line-strong; }
+  .prio-low { @apply text-ink-soft border-line-strong border-dashed; }
+
+  /* schematic screens (inline SVG, coloured from the theme tokens) */
+  .scheme-grid { @apply grid grid-cols-2 gap-14 max-[980px]:grid-cols-1; }
+  .scheme h3 { @apply text-xl font-medium mb-6; }
+  .scheme-pair { @apply grid grid-cols-2 gap-6 max-[560px]:grid-cols-1 max-[560px]:justify-items-center; }
+  .scheme-pair figure { @apply m-0 min-w-0 w-full max-w-[260px]; }
+  .scheme-wide { @apply mt-16 pt-14 border-t border-line; }
+  .scheme-wide figure { @apply m-0 w-full max-w-[560px]; }
+  .scheme figcaption { @apply mt-3 flex flex-wrap items-center gap-2 text-[12.5px] text-ink-soft leading-[1.4]; }
+  .scheme figcaption .stack-tag { @apply mt-0; }
+  .scheme svg { @apply block w-full h-auto; }
+  .sk { font-family: var(--font-mono); }
+  .sk-frame { fill: var(--color-bg-alt); stroke: var(--color-line-strong); stroke-width: 2; }
+  .sk-screen { fill: var(--color-bg); stroke: var(--color-line); }
+  .sk-block { fill: var(--color-line); }
+  .sk-bar { fill: var(--color-line-strong); }
+  .sk-dim { opacity: .45; }
+  .sk-text { fill: var(--color-ink-soft); font-size: 11px; }
+  .sk-ink { fill: var(--color-ink); }
+  .sk-icon { fill: var(--color-bg); stroke: var(--color-ink-soft); stroke-width: 1.5; }
+  .sk-guide { fill: none; stroke: var(--color-ink-soft); stroke-width: 1.5; stroke-dasharray: 4 4; }
+  .sk-axis { stroke: var(--color-line-strong); stroke-width: 2; }
+  .sk-fix { fill: var(--color-accent); }
+  .sk-fix-ink { fill: var(--color-accent-ink); font-weight: 600; }
+
+  /* quick fixes: a table on wide screens, cards on phones */
+  .fix-table { @apply w-full border-collapse text-[15px]; }
+  .fix-table th { @apply font-mono text-[11px] font-normal tracking-[0.14em] uppercase text-ink-faint text-left pb-3 pr-6 border-b-2 border-line-strong; }
+  .fix-table td { @apply py-[18px] pr-6 border-b border-line align-top text-ink-soft leading-[1.5]; }
+  .fix-table td:first-child { @apply text-ink font-semibold; }
+  .fix-table td:nth-child(2) { @apply font-mono text-[13px] text-ink whitespace-nowrap; }
+  .fix-table tbody tr { @apply transition-colors duration-150 hover:bg-bg-alt; }
+  @media (max-width: 640px) {
+    .fix-table thead { @apply sr-only; }
+    .fix-table, .fix-table tbody, .fix-table tr, .fix-table td { display: block; }
+    .fix-table tbody { @apply flex flex-col gap-3; }
+    .fix-table tr { @apply border border-line-strong rounded-[18px] p-5 bg-bg; }
+    .fix-table td { @apply p-0 pr-0 border-0; }
+    .fix-table td + td { @apply mt-3; }
+    .fix-table td[data-label]::before {
+      content: attr(data-label); @apply block font-mono text-[10.5px] font-normal tracking-[0.14em] uppercase text-ink-faint mb-1;
+    }
+  }
+
+  .status-note { @apply rounded-[18px] border border-dashed border-line-strong px-7 py-6 text-[17px] leading-[1.6] text-ink max-w-[68ch] max-[520px]:px-5; }
+
+  /* full-width loading timeline: percentage x, fixed 12px text */
+  .scheme-wide figure { @apply max-w-none; }
+  .scheme .sk-timeline { @apply h-[128px] overflow-visible; }
+  .sk-timeline .sk-text { font-size: 12px; }
+  .sk-on-block { fill: var(--color-ink); }
 }
 
 @keyframes hero-accent {
   from { color: var(--color-ink); }
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(14px); }
 }
 
 @media (prefers-reduced-motion: reduce) {

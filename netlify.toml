@@ -24,3 +24,9 @@
   to = "/case-hearth-hound"
   status = 301
   force = true
+
+[[redirects]]
+  from = "/mobile-ux-audit-handmade-shop.html"
+  to = "/mobile-ux-audit-handmade-shop"
+  status = 301
+  force = true

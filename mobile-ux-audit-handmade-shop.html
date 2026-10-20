@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Mobile UX Audit for a Small Handmade-Goods Shop — WooCommerce Case Study | Svitlana Biletska</title>
+  <meta name="description" content="A mobile UX audit of a small WooCommerce shop: six things that make buying harder on a phone, with schematic before/after screens and a list of quick fixes.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://svitlanabiletska.com/mobile-ux-audit-handmade-shop">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Mobile UX audit for a small handmade-goods shop (case study)">
+  <meta property="og:description" content="A mobile UX audit of a small WooCommerce shop: six things that make buying harder on a phone, with schematic before/after screens and a list of quick fixes.">
+  <meta property="og:image" content="https://svitlanabiletska.com/assets/cases/mobile-ux-audit/og-1200.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Two schematic phone screens of a product page, before and after: in the after screen the price, the Add to cart button and three info lines fit on the first screen">
+  <meta property="og:url" content="https://svitlanabiletska.com/mobile-ux-audit-handmade-shop">
+  <meta property="og:locale" content="en_US">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Mobile UX audit for a small handmade-goods shop (case study)">
+  <meta name="twitter:description" content="A mobile UX audit of a small WooCommerce shop: six things that make buying harder on a phone, with schematic before/after screens and a list of quick fixes.">
+  <meta name="twitter:image" content="https://svitlanabiletska.com/assets/cases/mobile-ux-audit/og-1200.jpg">
+
+  <link rel="icon" href="/assets/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="512x512" href="/assets/icon-512.png">
+  <link rel="apple-touch-icon" href="/assets/icon-512.png">
+
+  <link rel="preload" href="/assets/fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/style.css?v=20261020b">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://svitlanabiletska.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Work", "item": "https://svitlanabiletska.com/#work" },
+      { "@type": "ListItem", "position": 3, "name": "Mobile UX audit", "item": "https://svitlanabiletska.com/mobile-ux-audit-handmade-shop" }
+    ]
+  }
+  </script>
+
+  <script defer src="/js/vendor/alpine.min.js"></script>
+</head>
+<body>
+
+<header class="site-header" x-data="{ open: false }">
+  <div class="wrap nav-row">
+    <a href="/" class="logo">Svitlana <span>Biletska</span></a>
+    <div class="nav-links">
+      <nav aria-label="Primary" class="hidden md:block">
+        <ul>
+          <li><a href="/#work">Work</a></li>
+          <li><a href="/#services">Services</a></li>
+          <li><a href="/#about">About</a></li>
+          <li><a href="/#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <a href="/#contact" class="btn btn-solid hidden md:inline-flex">Start a project</a>
+      <button
+        class="nav-toggle flex md:!hidden"
+        :aria-expanded="open.toString()"
+        :aria-label="open ? 'Close menu' : 'Open menu'"
+        aria-controls="mobileMenu"
+        @click="open = !open">
+        <span :class="open ? 'translate-y-[3.25px] rotate-45' : ''"></span>
+        <span :class="open ? '-translate-y-[3.25px] -rotate-45' : ''"></span>
+      </button>
+    </div>
+  </div>
+  <div id="mobileMenu" class="mobile-menu md:hidden" x-show="open" x-transition x-cloak>
+    <div class="wrap mobile-menu-inner">
+      <nav aria-label="Mobile">
+        <ul>
+          <li><a href="/#work" @click="open=false">Work</a></li>
+          <li><a href="/#services" @click="open=false">Services</a></li>
+          <li><a href="/#about" @click="open=false">About</a></li>
+          <li><a href="/#contact" @click="open=false">Contact</a></li>
+        </ul>
+      </nav>
+      <a href="/#contact" class="btn btn-solid mt-4" @click="open=false">Start a project</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="pt-[72px] pb-22">
+    <div class="wrap">
+      <div class="grid grid-cols-[1.1fr_.9fr] gap-14 items-end max-[860px]:grid-cols-1 max-[860px]:gap-8">
+        <div class="rise">
+          <p class="eyebrow"><a href="/#work" class="hover:text-ink transition-colors">Work</a> · Case study · UX audit</p>
+          <h1 class="text-[clamp(34px,5.4vw,60px)] leading-[1.06] font-medium tracking-[-0.01em] my-[18px] mb-[22px]">Mobile UX audit for a small <em class="italic text-accent whitespace-nowrap">handmade-goods</em> shop</h1>
+        </div>
+        <div class="rise rise-2">
+          <ul class="stack-list mt-0 p-0 list-none" aria-label="Tags">
+            <li>UX audit</li>
+            <li>WooCommerce</li>
+            <li>Mobile</li>
+          </ul>
+          <div class="flex gap-3 flex-wrap mt-[30px]">
+            <a href="/#contact" class="btn btn-solid">Start a project</a>
+            <a href="#findings" class="btn btn-ghost">What I found</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="context" class="section-alt py-22">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">01</p>
+          <h2>Context</h2>
+        </div>
+      </div>
+      <div class="grid grid-cols-[1.15fr_.85fr] gap-14 items-start max-[860px]:grid-cols-1 max-[860px]:gap-10">
+        <p class="text-[17px] leading-[1.6] text-ink-soft max-w-[52ch]">A small independent WooCommerce shop selling fragile handmade items, mostly as gifts. The owner asked what keeps mobile visitors from buying. I reviewed the public pages only: home, category, product page and cart. I tested on an iPhone and checked speed with PageSpeed Insights.</p>
+        <div class="case-meta">
+          <div class="row"><b>Role</b><span>UX audit</span></div>
+          <div class="row"><b>Platform</b><span>WooCommerce</span></div>
+          <div class="row"><b>Pages</b><span>Home, category, product page, cart</span></div>
+          <div class="row"><b>Tested with</b><span>iPhone · PageSpeed Insights</span></div>
+        </div>
+      </div>
+      <div class="audit-metrics">
+        <div class="metric"><span class="value">11.9&nbsp;s</span><span class="label">Until the main content appears on mobile; the norm is up to 2.5&nbsp;s</span></div>
+        <div class="metric"><span class="value">48&nbsp;/&nbsp;100</span><span class="label">Mobile performance score</span></div>
+        <div class="metric"><span class="value">6</span><span class="label">Areas that hurt buying most</span></div>
+        <div class="metric"><span class="value">1–3&nbsp;h</span><span class="label">Typical time per fix</span></div>
+      </div>
+      <p class="metric-note">11.9 s and 48 / 100: lab test, not real-user data.</p>
+    </div>
+  </section>
+
+  <section id="findings" class="py-22">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">02</p>
+          <h2>What I found</h2>
+        </div>
+        <p>Six areas, each with the priority it got in the audit.</p>
+      </div>
+      <ol class="finding-list">
+        <li class="finding">
+          <div class="finding-head"><span class="prio prio-high"><span class="sr-only">Priority: </span>High</span></div>
+          <p>Shipping and returns were scattered. The information existed, but in three places, and none of it sat next to the price or the “Add to cart” button. For a fragile gift, that’s exactly where a buyer looks.</p>
+        </li>
+        <li class="finding">
+          <div class="finding-head"><span class="prio prio-high"><span class="sr-only">Priority: </span>High</span></div>
+          <p>The home page was slow on mobile. The main content took almost 12 seconds to appear in lab tests. Likely causes: a slider that loads extra scripts, plugin files loaded on every page, and oversized photos.</p>
+        </li>
+        <li class="finding">
+          <div class="finding-head"><span class="prio prio-medium"><span class="sr-only">Priority: </span>Medium</span></div>
+          <p>The category page showed one product per screen, and the first product, which was out of stock, was marked only by an icon, with the explanation hidden behind a long press.</p>
+        </li>
+        <li class="finding">
+          <div class="finding-head"><span class="prio prio-medium"><span class="sr-only">Priority: </span>Medium</span></div>
+          <p>On the product page the price and the buy button were far from the top. A large title banner pushed the photo down, and the button came after a long description.</p>
+        </li>
+        <li class="finding">
+          <div class="finding-head"><span class="prio prio-medium"><span class="sr-only">Priority: </span>Medium</span></div>
+          <p>Mixed languages in the cart and product page: some theme texts were left in English, which makes the page look unfinished right before payment.</p>
+        </li>
+        <li class="finding">
+          <div class="finding-head"><span class="prio prio-low"><span class="sr-only">Priority: </span>Low</span></div>
+          <p>Small, low-contrast details: a tiny remove button in the cart, a nearly invisible reviews tab showing “0”, and a back-to-top button covering text.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="schemes" class="section-alt py-22">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">03</p>
+          <h2>Schematic screens</h2>
+        </div>
+        <p>Grey blocks stand in for real content. Amber marks what the fix changes.</p>
+      </div>
+
+      <div class="scheme-grid">
+        <div class="scheme">
+          <h3>Product page</h3>
+          <div class="scheme-pair">
+            <figure>
+              <svg class="sk" viewBox="0 0 220 490" role="img" aria-label="Product page before: a large title banner fills the top of the screen, the photo sits below it, and the price and Add to cart button are below the first screen">
+                <rect class="sk-frame" x="2" y="2" width="216" height="436" rx="30"/>
+                <rect class="sk-screen" x="12" y="36" width="196" height="368" rx="6"/>
+                <rect class="sk-bar" x="88" y="16" width="44" height="8" rx="4"/>
+                <rect class="sk-bar" x="80" y="420" width="60" height="5" rx="2.5"/>
+                <rect class="sk-bar" x="24" y="45" width="44" height="8" rx="2"/>
+                <rect class="sk-bar" x="180" y="44" width="16" height="2"/><rect class="sk-bar" x="180" y="49" width="16" height="2"/><rect class="sk-bar" x="180" y="54" width="16" height="2"/>
+                <rect class="sk-block" x="12" y="64" width="196" height="150"/>
+                <text class="sk-text sk-on-block" x="110" y="143" text-anchor="middle">Title banner</text>
+                <rect class="sk-block" x="24" y="226" width="172" height="140" rx="4"/>
+                <text class="sk-text sk-on-block" x="110" y="300" text-anchor="middle">Photo</text>
+                <rect class="sk-bar" x="24" y="376" width="120" height="6" rx="3"/>
+                <rect class="sk-bar" x="24" y="388" width="90" height="6" rx="3"/>
+                <rect class="sk-guide" x="24" y="450" width="172" height="34" rx="8"/>
+                <text class="sk-text" x="110" y="471" text-anchor="middle">Price · Add to cart ↓</text>
+              </svg>
+              <figcaption><span class="stack-tag tag-soon">Before</span>Price and button below the first screen</figcaption>
+            </figure>
+            <figure>
+              <svg class="sk" viewBox="0 0 220 490" role="img" aria-label="Product page after: a smaller title banner, then the photo, the price and the Add to cart button on the first screen, with three lines for shipping, delivery time and returns under the button">
+                <rect class="sk-frame" x="2" y="2" width="216" height="436" rx="30"/>
+                <rect class="sk-screen" x="12" y="36" width="196" height="368" rx="6"/>
+                <rect class="sk-bar" x="88" y="16" width="44" height="8" rx="4"/>
+                <rect class="sk-bar" x="80" y="420" width="60" height="5" rx="2.5"/>
+                <rect class="sk-bar" x="24" y="45" width="44" height="8" rx="2"/>
+                <rect class="sk-bar" x="180" y="44" width="16" height="2"/><rect class="sk-bar" x="180" y="49" width="16" height="2"/><rect class="sk-bar" x="180" y="54" width="16" height="2"/>
+                <rect class="sk-block" x="12" y="64" width="196" height="34"/>
+                <text class="sk-text sk-on-block" x="110" y="85" text-anchor="middle">Title</text>
+                <rect class="sk-block" x="24" y="108" width="172" height="136" rx="4"/>
+                <text class="sk-text sk-on-block" x="110" y="180" text-anchor="middle">Photo</text>
+                <text class="sk-text sk-ink" x="24" y="268">Price</text>
+                <rect class="sk-fix" x="24" y="278" width="172" height="30" rx="15"/>
+                <text class="sk-text sk-fix-ink" x="110" y="297" text-anchor="middle">Add to cart</text>
+                <circle class="sk-fix" cx="29" cy="325" r="3"/>
+                <text class="sk-text" x="38" y="329">Shipping</text>
+                <circle class="sk-fix" cx="29" cy="345" r="3"/>
+                <text class="sk-text" x="38" y="349">Delivery time</text>
+                <circle class="sk-fix" cx="29" cy="365" r="3"/>
+                <text class="sk-text" x="38" y="369">Returns</text>
+                <rect class="sk-bar" x="24" y="382" width="150" height="6" rx="3"/>
+                <rect class="sk-bar" x="24" y="393" width="110" height="6" rx="3"/>
+              </svg>
+              <figcaption><span class="stack-tag tag-live">After</span>Price, button and three info lines on the first screen</figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <div class="scheme">
+          <h3>Category page</h3>
+          <div class="scheme-pair">
+            <figure>
+              <svg class="sk" viewBox="0 0 220 490" role="img" aria-label="Category page before: one product per screen; the first product is out of stock and marked only by an icon">
+                <rect class="sk-frame" x="2" y="2" width="216" height="436" rx="30"/>
+                <rect class="sk-screen" x="12" y="36" width="196" height="368" rx="6"/>
+                <rect class="sk-bar" x="88" y="16" width="44" height="8" rx="4"/>
+                <rect class="sk-bar" x="80" y="420" width="60" height="5" rx="2.5"/>
+                <rect class="sk-bar" x="24" y="45" width="44" height="8" rx="2"/>
+                <rect class="sk-bar" x="180" y="44" width="16" height="2"/><rect class="sk-bar" x="180" y="49" width="16" height="2"/><rect class="sk-bar" x="180" y="54" width="16" height="2"/>
+                <rect class="sk-bar" x="24" y="72" width="90" height="10" rx="2"/>
+                <rect class="sk-block" x="24" y="94" width="172" height="180" rx="4"/>
+                <text class="sk-text sk-on-block" x="110" y="188" text-anchor="middle">Product</text>
+                <circle class="sk-icon" cx="178" cy="112" r="9"/>
+                <line class="sk-icon" x1="172" y1="118" x2="184" y2="106"/>
+                <rect class="sk-bar" x="24" y="286" width="110" height="8" rx="3"/>
+                <rect class="sk-bar" x="24" y="300" width="50" height="8" rx="3"/>
+                <rect class="sk-block" x="24" y="320" width="172" height="84" rx="4"/>
+                <rect class="sk-guide" x="24" y="450" width="172" height="34" rx="8"/>
+                <text class="sk-text" x="110" y="471" text-anchor="middle">1 product per screen</text>
+              </svg>
+              <figcaption><span class="stack-tag tag-soon">Before</span>One per row; out of stock shown only by an icon</figcaption>
+            </figure>
+            <figure>
+              <svg class="sk" viewBox="0 0 220 490" role="img" aria-label="Category page after: products in two columns, with the unavailable product at the end marked by a Sold out text label">
+                <rect class="sk-frame" x="2" y="2" width="216" height="436" rx="30"/>
+                <rect class="sk-screen" x="12" y="36" width="196" height="368" rx="6"/>
+                <rect class="sk-bar" x="88" y="16" width="44" height="8" rx="4"/>
+                <rect class="sk-bar" x="80" y="420" width="60" height="5" rx="2.5"/>
+                <rect class="sk-bar" x="24" y="45" width="44" height="8" rx="2"/>
+                <rect class="sk-bar" x="180" y="44" width="16" height="2"/><rect class="sk-bar" x="180" y="49" width="16" height="2"/><rect class="sk-bar" x="180" y="54" width="16" height="2"/>
+                <rect class="sk-bar" x="24" y="72" width="90" height="10" rx="2"/>
+                <rect class="sk-block" x="24" y="94" width="82" height="96" rx="4"/>
+                <rect class="sk-block" x="114" y="94" width="82" height="96" rx="4"/>
+                <rect class="sk-bar" x="24" y="198" width="60" height="6" rx="3"/><rect class="sk-bar" x="24" y="209" width="30" height="6" rx="3"/>
+                <rect class="sk-bar" x="114" y="198" width="60" height="6" rx="3"/><rect class="sk-bar" x="114" y="209" width="30" height="6" rx="3"/>
+                <rect class="sk-block" x="24" y="226" width="82" height="96" rx="4"/>
+                <rect class="sk-block" x="114" y="226" width="82" height="96" rx="4"/>
+                <rect class="sk-bar" x="24" y="330" width="60" height="6" rx="3"/><rect class="sk-bar" x="24" y="341" width="30" height="6" rx="3"/>
+                <rect class="sk-bar" x="114" y="330" width="60" height="6" rx="3"/><rect class="sk-bar" x="114" y="341" width="30" height="6" rx="3"/>
+                <rect class="sk-block" x="24" y="358" width="82" height="46" rx="4"/>
+                <rect class="sk-block sk-dim" x="114" y="358" width="82" height="46" rx="4"/>
+                <rect class="sk-fix" x="116" y="363" width="64" height="20" rx="10"/>
+                <text class="sk-text sk-fix-ink" x="148" y="377" text-anchor="middle">Sold out</text>
+              </svg>
+              <figcaption><span class="stack-tag tag-live">After</span>Two columns; a “Sold out” label, unavailable last</figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+
+      <div class="scheme scheme-wide">
+        <h3>Home page loading</h3>
+        <figure>
+          <svg class="sk sk-timeline" width="100%" height="128" role="img" aria-label="Timeline of the home page loading on mobile: the main content appears at 11.9 seconds, against a target of 2.5 seconds">
+            <!-- scale 0–13 s: x = t / 13 -->
+            <line class="sk-guide" x1="19.2%" y1="22" x2="19.2%" y2="86"/>
+            <text class="sk-text sk-ink" x="19.2%" dx="6" y="16">Target 2.5 s</text>
+            <text class="sk-text sk-ink" x="91.5%" y="42" text-anchor="end">Main content 11.9 s</text>
+            <rect class="sk-bar" x="0" y="56" width="91.5%" height="14" rx="7"/>
+            <circle class="sk-ink" cx="91.5%" cy="63" r="7"/>
+            <line class="sk-axis" x1="0" y1="86" x2="100%" y2="86"/>
+            <line class="sk-axis" x1="1" y1="82" x2="1" y2="90"/>
+            <line class="sk-axis" x1="38.5%" y1="82" x2="38.5%" y2="90"/>
+            <line class="sk-axis" x1="76.9%" y1="82" x2="76.9%" y2="90"/>
+            <text class="sk-text" x="0" y="106">0 s</text>
+            <text class="sk-text" x="38.5%" y="106" text-anchor="middle">5 s</text>
+            <text class="sk-text" x="76.9%" y="106" text-anchor="middle">10 s</text>
+            <text class="sk-text" x="0" y="124">Lab test, mobile</text>
+          </svg>
+          <figcaption>Main content appears at 11.9 s against a target of 2.5 s</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="quick-fixes" class="py-22">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">04</p>
+          <h2>Quick fixes</h2>
+        </div>
+      </div>
+      <table class="fix-table" role="table">
+        <thead role="rowgroup">
+          <tr role="row">
+            <th role="columnheader" scope="col" class="w-1/2">Fix</th>
+            <th role="columnheader" scope="col">Time</th>
+            <th role="columnheader" scope="col">Effect</th>
+          </tr>
+        </thead>
+        <tbody role="rowgroup">
+          <tr role="row"><td role="cell">Sold-out label instead of an icon</td><td role="cell" data-label="Time">1 h</td><td role="cell" data-label="Effect">Clear availability in the catalog</td></tr>
+          <tr role="row"><td role="cell">Shipping, delivery time and returns block under the buy button</td><td role="cell" data-label="Time">1–2 h</td><td role="cell" data-label="Effect">Fewer doubts before buying</td></tr>
+          <tr role="row"><td role="cell">Translating theme texts</td><td role="cell" data-label="Time">1 h</td><td role="cell" data-label="Effect">A consistent page</td></tr>
+          <tr role="row"><td role="cell">Smaller title banner on the product page</td><td role="cell" data-label="Time">1 h</td><td role="cell" data-label="Effect">Photo and price higher up</td></tr>
+          <tr role="row"><td role="cell">Two columns in the category on mobile</td><td role="cell" data-label="Time">0.5–1 h</td><td role="cell" data-label="Effect">Easier browsing</td></tr>
+          <tr role="row"><td role="cell">One image format in the product gallery</td><td role="cell" data-label="Time">0.5–1 h</td><td role="cell" data-label="Effect">A tidier gallery</td></tr>
+          <tr role="row"><td role="cell">A static banner instead of the slider</td><td role="cell" data-label="Time">1–3 h</td><td role="cell" data-label="Effect">Faster loading</td></tr>
+          <tr role="row"><td role="cell">Larger, darker remove button and visible or hidden reviews tab</td><td role="cell" data-label="Time">1 h</td><td role="cell" data-label="Effect">Readability</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="status" class="section-alt py-22">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">05</p>
+          <h2>Status</h2>
+        </div>
+      </div>
+      <p class="status-note">Audit delivered; implementation is up to the owner. This is a review of public pages and lab tests, not a before-and-after result, and it doesn’t replace analysis of real sales data.</p>
+    </div>
+  </section>
+
+  <section class="py-22">
+    <div class="wrap">
+      <div class="cta-band">
+        <p class="eyebrow text-accent">Let's start</p>
+        <h2>Ready to see what could work better on your site?</h2>
+        <div class="flex gap-3 flex-wrap justify-center">
+          <a href="/#contact" class="btn btn-solid">Start a project</a>
+          <a href="/#work" class="btn btn-ghost"><span aria-hidden="true">←</span> Back to Work</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <a href="/" class="logo">Svitlana <span>Biletska</span></a>
+      <nav aria-label="Footer">
+        <ul>
+          <li><a href="/#work">Work</a></li>
+          <li><a href="/#services">Services</a></li>
+          <li><a href="/#about">About</a></li>
+        </ul>
+      </nav>
+      <div class="foot-contact">
+        <div><b>Email</b> — <a href="mailto:hello@svitlanabiletska.com" class="underline underline-offset-4">hello@svitlanabiletska.com</a></div>
+        <div><b>LinkedIn</b> — <a href="https://www.linkedin.com/in/svitlana-biletska-8507841bb" target="_blank" rel="noopener" class="underline underline-offset-4">/in/svitlana-biletska</a></div>
+        <div><b>Upwork</b> — <a href="https://www.upwork.com/freelancers/~01f8807fa2010ed7d5" target="_blank" rel="noopener" class="underline underline-offset-4">Svitlana Biletska</a></div>
+        <div><b>Instagram</b> — <a href="https://www.instagram.com/visual_content_svetlana/" target="_blank" rel="noopener" class="underline underline-offset-4">@visual_content_svetlana</a></div>
+        <div><b>Based in</b> — Piekary Śląskie, Poland</div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Svitlana Biletska</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
