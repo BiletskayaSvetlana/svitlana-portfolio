@@ -30,3 +30,9 @@
   to = "/mobile-ux-audit-handmade-shop"
   status = 301
   force = true
+
+[[redirects]]
+  from = "/mobile-ux-audit-flamazing-ceramics.html"
+  to = "/mobile-ux-audit-flamazing-ceramics"
+  status = 301
+  force = true
