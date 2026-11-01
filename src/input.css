@@ -418,6 +418,63 @@
   .scheme .sk-timeline { @apply h-[128px] overflow-visible; }
   .sk-timeline .sk-text { font-size: 12px; }
   .sk-on-block { fill: var(--color-ink); }
+
+  .pp-hero-photo { @apply w-full max-w-[460px] justify-self-end max-[860px]:justify-self-start; }
+
+  .light-test { @apply grid grid-cols-[.8fr_1.2fr] gap-14 items-start max-[860px]:grid-cols-1 max-[860px]:gap-6; }
+  .light-tabs { @apply flex flex-col border-t-2 border-line-strong max-[860px]:grid max-[860px]:grid-cols-2 max-[860px]:gap-2.5 max-[860px]:border-t-0; }
+  .light-tab {
+    @apply flex flex-col items-start gap-1.5 w-full text-left cursor-pointer bg-transparent border-0 border-b border-line py-5
+           font-serif text-[clamp(19px,2.2vw,24px)] leading-[1.25] text-ink-soft transition-colors duration-150 hover:text-ink
+           max-[860px]:border max-[860px]:border-line-strong max-[860px]:rounded-[14px] max-[860px]:px-4 max-[860px]:py-3 max-[860px]:text-[17px];
+  }
+  .light-num { @apply font-mono text-[11px] tracking-[0.14em] text-ink-faint transition-colors duration-150; }
+  .light-tab[aria-selected="true"] { @apply text-ink max-[860px]:border-accent; }
+  .light-tab[aria-selected="true"] .light-num { @apply text-accent; }
+  .light-tab:focus-visible, .light-panel:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 4px; }
+  .light-panel { @apply min-w-0 max-w-[520px] rounded-[18px]; }
+  .light-stage { @apply relative rounded-[18px] overflow-hidden border border-line-strong bg-bg-alt; aspect-ratio: 4/5; box-shadow: 0 30px 60px -30px rgba(0,0,0,.18); }
+  .light-stage picture { @apply absolute inset-0 block opacity-0 transition-opacity duration-500 ease-out; }
+  .light-stage picture.is-active { @apply opacity-100; }
+  .light-stage img { @apply block size-full object-cover; }
+  .light-caption { @apply grid mt-5; }
+  .light-caption > div { @apply invisible flex flex-col gap-2; grid-area: 1 / 1; }
+  .light-caption > div.is-active { @apply visible; }
+  .light-step { @apply font-mono text-[11px] tracking-[0.14em] uppercase text-accent; }
+  .light-caption p:not(.light-step) { @apply text-ink-soft text-[15px] leading-[1.6] max-w-[46ch]; }
+
+  .ba-grid { @apply grid grid-cols-3 gap-5 max-[860px]:grid-cols-1 max-[860px]:gap-10 max-[860px]:max-w-[480px]; }
+  .ba { @apply m-0 min-w-0; }
+  .ba-frame {
+    @apply relative rounded-[18px] overflow-hidden border border-line-strong bg-bg-alt select-none;
+    aspect-ratio: 4/5;
+    --thumb: 44px;
+    --x: calc(var(--thumb) / 2 + (100% - var(--thumb)) * var(--pos) / 100);
+  }
+  .ba-frame picture, .ba-frame img { @apply absolute inset-0 block size-full object-cover; }
+  .ba-before { clip-path: inset(0 calc(100% - var(--x)) 0 0); }
+  .ba-range { @apply absolute inset-0 z-10 m-0 size-full opacity-0 cursor-ew-resize appearance-none bg-transparent; touch-action: pan-y; }
+  .ba-range::-webkit-slider-thumb { @apply appearance-none h-[2000px] cursor-ew-resize; width: var(--thumb); }
+  .ba-range::-moz-range-thumb { @apply h-[2000px] border-0 cursor-ew-resize; width: var(--thumb); }
+  .ba-handle { @apply absolute top-0 bottom-0 z-[5] w-0.5 bg-accent pointer-events-none flex items-center justify-center; left: var(--x); transform: translateX(-50%); }
+  .ba-knob {
+    @apply flex items-center justify-center size-10 shrink-0 rounded-full border-2 border-accent text-ink;
+    background: color-mix(in srgb, var(--color-bg) 85%, transparent);
+  }
+  .ba-range:focus-visible ~ .ba-handle .ba-knob { outline: 2px solid var(--color-accent); outline-offset: 3px; }
+  .ba figcaption { @apply mt-4; }
+  .ba figcaption h3 { @apply text-xl font-medium; }
+
+  .duo { @apply grid grid-cols-2 gap-5 max-[640px]:grid-cols-1 max-[640px]:gap-10; }
+  .duo-item { @apply m-0 min-w-0; }
+  .duo-frame { @apply relative rounded-[18px] overflow-hidden border border-line-strong bg-bg-alt; aspect-ratio: 4/5; }
+  .duo-frame picture, .duo-frame img { @apply absolute inset-0 block size-full object-cover; }
+  .duo-item figcaption { @apply mt-5 flex flex-col gap-2; }
+  .duo-item h3 { @apply text-xl font-medium; }
+  .duo-item p { @apply text-ink-soft text-[15px] leading-[1.6] max-w-[46ch]; }
+
+  .trial-points { @apply list-none m-0 p-0 grid grid-cols-3 gap-5 max-[860px]:grid-cols-1 max-[860px]:gap-3; }
+  .trial-points li { @apply border border-line-strong rounded-[18px] px-[22px] py-6 bg-bg font-serif text-[19px] leading-[1.35] text-ink; }
 }
 
 @keyframes hero-accent {

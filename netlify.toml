@@ -36,3 +36,9 @@
   to = "/mobile-ux-audit-flamazing-ceramics"
   status = 301
   force = true
+
+[[redirects]]
+  from = "/product-photography.html"
+  to = "/product-photography"
+  status = 301
+  force = true
