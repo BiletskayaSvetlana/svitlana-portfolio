@@ -149,19 +149,23 @@
   .mobile-menu ul { @apply list-none flex flex-col m-0 p-0; }
   .mobile-menu nav a { @apply text-base font-semibold text-ink py-[13px] border-b border-line block; }
 
-  /* hero */
-  .hero-line, .reveal-line { @apply overflow-hidden block; }
-  .hero-line span, .reveal-line span { @apply inline-block; will-change: transform; }
-  /* Hidden until main.js runs its intro (scripts are deferred). The inline
-     head script removes .js if the animation never starts. */
-  @media (prefers-reduced-motion: no-preference) {
-    .js .hero-line > span, .js .case-hero-shot { opacity: 0; }
-  }
-  /* Home H1 is visible from the first paint; only the accent word shifts colour. */
+  /* hero: the H1 and the LCP image are visible from the first paint on every
+     page. Only blocks beside them use the CSS .rise below; GSAP handles
+     headings further down the page (.reveal-line). */
+  .reveal-line { @apply overflow-hidden block; }
+  .reveal-line span { @apply inline-block; will-change: transform; }
+  /* Home H1: only the accent word shifts colour. */
   .hero-accent { @apply text-accent; }
   @media (prefers-reduced-motion: no-preference) {
     .hero-accent { animation: hero-accent 1.4s ease-out .3s backwards; }
   }
+  /* Home H1: a small keyword line above the big emotional line. */
+  .hero-kicker { @apply block mb-3 font-sans text-[clamp(15px,1.6vw,18px)] font-semibold leading-[1.4] tracking-normal text-ink-soft; }
+  /* Small text links under hero buttons (secondary routes). */
+  .hero-note { @apply mt-4 text-[13.5px] leading-[1.6] text-ink-soft; }
+  .hero-note a { @apply font-bold text-ink underline underline-offset-4 hover:text-accent; }
+  .cta-band .hero-note { @apply mt-0; }
+  .cta-band .hero-note a { @apply text-bg hover:text-accent; }
   .hero-sub { @apply flex flex-col gap-0.5 mb-[18px] font-serif text-[clamp(19px,2.2vw,24px)] leading-[1.3] text-ink; }
   .hero-sub span::before { content: '— '; @apply text-accent; }
   .hero-photo {
@@ -180,6 +184,9 @@
     background: color-mix(in srgb, var(--color-bg) 82%, transparent);
   }
   .hero-photo picture, .hero-photo img { @apply absolute inset-0 z-10 block size-full object-cover; }
+  /* Home hero portrait: top-aligned with the text column and capped so the
+     whole hero (H1, buttons, photo) fits on a 1440×900 first screen. */
+  .hero-photo-main { align-self: start; max-height: min(560px, calc(100svh - 220px)); }
 
   .x-clip { overflow-x: clip; }
 
@@ -348,10 +355,30 @@
   .foot-contact b { @apply text-ink; }
   .foot-bottom { @apply mt-[34px] pt-5 border-t border-line text-xs text-ink-faint flex flex-wrap justify-between gap-[10px]; }
 
-  /* audit case: static page, a short CSS rise on load only */
+  /* hero blocks next to the H1: a short CSS rise on load only, no JS. Never
+     put it on the H1 or the LCP image. */
   @media (prefers-reduced-motion: no-preference) {
     .rise { animation: rise .7s cubic-bezier(.2,.7,.2,1) backwards; }
     .rise-2 { animation-delay: .12s; }
+  }
+  /* Audit and photo pages: the H1 and the hero block only slide up. Opacity
+     stays 1, so the text and the LCP image are visible from the first paint. */
+  @media (prefers-reduced-motion: no-preference) {
+    .lift { animation: lift .6s ease-out backwards; }
+    .lift-2 { animation-delay: .12s; }
+  }
+  /* Scroll reveal without GSAP (js/reveal.js), same feel as the GSAP reveal on
+     the case studies. Only blocks below the first screen get .reveal-pending,
+     and only once the script runs, so without JS everything stays visible. */
+  .reveal-pending { opacity: 0; transform: translateY(24px); }
+  .reveal-pending.is-in {
+    opacity: 1; transform: none;
+    transition: opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1);
+    transition-delay: var(--reveal-delay, 0s);
+  }
+  @media (max-width: 700px) {
+    .reveal-pending { transform: translateY(12px); }
+    .reveal-pending.is-in { transition-duration: .44s; }
   }
   .case-media svg { @apply block h-[84%] w-auto transition-transform duration-500 ease-out; }
   .case-link:hover .case-media svg { @apply scale-[1.03]; }
@@ -483,6 +510,10 @@
 
 @keyframes rise {
   from { opacity: 0; transform: translateY(14px); }
+}
+
+@keyframes lift {
+  from { transform: translateY(14px); }
 }
 
 @media (prefers-reduced-motion: reduce) {

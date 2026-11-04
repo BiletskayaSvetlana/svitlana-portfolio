@@ -1,0 +1,14 @@
+# Netlify response headers.
+# A year-long immutable cache only for files whose URLs never change content:
+# css/style.css and every /js file are linked with a ?v= version, so bump that
+# version on every page whenever one of these files changes. Fonts never change.
+# Other /assets files (images, PDFs) keep Netlify's default caching.
+
+/css/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/js/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/fonts/*
+  Cache-Control: public, max-age=31536000, immutable

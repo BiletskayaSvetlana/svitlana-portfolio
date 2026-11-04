@@ -1,7 +1,8 @@
 (function(){
-  var root = document.documentElement;
-  if(!window.gsap || !window.ScrollTrigger){ root.classList.remove('js'); return; }
-  root.classList.add('anim-ready');
+  // The hero (H1 and LCP image) never waits for this file: it is visible from
+  // the first paint, and blocks next to it use the CSS .rise. GSAP only
+  // animates what sits below the first screen.
+  if(!window.gsap || !window.ScrollTrigger) return;
 
   // Start after the first frame is laid out, so GSAP/ScrollTrigger measure a
   // clean layout instead of forcing one right after parsing.
@@ -17,7 +18,6 @@
     var pace = small ? .55 : 1;
     gsap.registerPlugin(ScrollTrigger);
 
-    var lines = gsap.utils.toArray('.hero-line span');
     var headLines = gsap.utils.toArray('.reveal-line span');
     var stage = document.getElementById('stackStage');
     var cards = gsap.utils.toArray('.stack-card');
@@ -70,8 +70,10 @@
       ]);
     }
 
-    gsap.utils.toArray('.case-hero-shot, .case-pdp-shot').forEach(function(shot){
-      reveal(shot, [{ targets:shot, y:48, duration:.9, at:shot.classList.contains('case-hero-shot') ? .2 : 0 }]);
+    // Product-page shots further down a case study. The hero shot
+    // (.case-hero-shot) is the LCP image and is left alone.
+    gsap.utils.toArray('.case-pdp-shot').forEach(function(shot){
+      reveal(shot, [{ targets:shot, y:48, duration:.9 }]);
     });
 
     var overview = document.querySelector('.case-overview');
@@ -135,9 +137,9 @@
 
     // Phase 1 — writes only.
     if(reduce){
-      lines.concat(headLines).forEach(function(el){ el.style.transform='none'; });
+      headLines.forEach(function(el){ el.style.transform='none'; });
     } else {
-      gsap.set(lines.concat(headLines), {yPercent:110, opacity:0});
+      gsap.set(headLines, {yPercent:110, opacity:0});
     }
 
     if(pinStack){
@@ -171,10 +173,6 @@
 
     // Phase 2 — tweens and ScrollTriggers (these measure layout).
     if(!reduce){
-      if(lines.length) gsap.to(lines, {
-        yPercent:0, opacity:1, duration:.9, ease:'expo.out',
-        stagger:.09, delay:.15
-      });
       headLines.forEach(function(el){
         gsap.to(el, {
           yPercent:0, opacity:1, duration:.85 * pace, ease:'expo.out',
@@ -214,6 +212,6 @@
         }, (layer.at || 0) * pace);
       });
     });
-  } catch(e){ root.classList.remove('js'); }
+  } catch(e){}
   }
 })();

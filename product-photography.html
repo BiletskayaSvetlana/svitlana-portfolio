@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Product photography for small online stores | Svitlana Biletska</title>
-  <meta name="description" content="Product photos for small shops: clean shots for the product page, mood shots for social. Free trial shoot: 3 spots, 5 photos, 5 working days.">
+  <title>Product Photography for Small Online Stores | Svitlana B.</title>
+  <meta name="description" content="Clean product page photos and mood shots for social, for small online shops. Free trial shoot: 3 spots, 5 photos in 5 working days. Apply now.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://svitlanabiletska.com/product-photography">
 
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Product photography for small online stores">
+  <meta property="og:title" content="Product Photography for Small Online Stores | Svitlana B.">
   <meta property="og:description" content="Product photos for small shops: clean shots for the product page, mood shots for social. Free trial shoot: 3 spots, 5 photos, 5 working days.">
   <meta property="og:image" content="https://svitlanabiletska.com/assets/product-photography/og-1200.jpg">
   <meta property="og:image:width" content="1200">
@@ -19,7 +19,7 @@
   <meta property="og:locale" content="en_US">
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Product photography for small online stores">
+  <meta name="twitter:title" content="Product Photography for Small Online Stores | Svitlana B.">
   <meta name="twitter:description" content="Product photos for small shops: clean shots for the product page, mood shots for social. Free trial shoot: 3 spots, 5 photos, 5 working days.">
   <meta name="twitter:image" content="https://svitlanabiletska.com/assets/product-photography/og-1200.jpg">
 
@@ -29,7 +29,7 @@
 
   <link rel="preload" href="/assets/fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/css/style.css?v=20261101">
+  <link rel="stylesheet" href="/css/style.css?v=20261104b">
 
   <script type="application/ld+json">
   {
@@ -55,7 +55,7 @@
   }
   </script>
 
-  <script defer src="/js/vendor/alpine.min.js"></script>
+  <script defer src="/js/vendor/alpine.min.js?v=3.14.9"></script>
 </head>
 <body>
 
@@ -71,7 +71,7 @@
           <li><a href="/#contact">Contact</a></li>
         </ul>
       </nav>
-      <a href="/#contact" class="btn btn-solid hidden md:inline-flex">Start a project</a>
+      <a href="#trial" class="btn btn-solid hidden md:inline-flex">Get a free trial shoot</a>
       <button
         class="nav-toggle flex md:!hidden"
         :aria-expanded="open.toString()"
@@ -93,7 +93,7 @@
           <li><a href="/#contact" @click="open=false">Contact</a></li>
         </ul>
       </nav>
-      <a href="/#contact" class="btn btn-solid mt-4" @click="open=false">Start a project</a>
+      <a href="#trial" class="btn btn-solid mt-4" @click="open=false">Get a free trial shoot</a>
     </div>
   </div>
 </header>
@@ -102,7 +102,8 @@
   <section class="pt-[72px] pb-22">
     <div class="wrap">
       <div class="grid grid-cols-[1.1fr_.9fr] gap-14 items-center max-[860px]:grid-cols-1 max-[860px]:gap-10">
-        <div class="rise">
+        <!-- Visible from the first paint: H1 and the hero photo (LCP) only slide up, opacity stays 1. -->
+        <div class="lift">
           <p class="eyebrow">Product photo</p>
           <h1 class="text-[clamp(34px,5.4vw,60px)] leading-[1.06] font-medium tracking-[-0.01em] my-[18px] mb-[22px]">Product photos, <em class="italic text-accent whitespace-nowrap">lit properly.</em></h1>
           <p class="text-[17px] leading-[1.6] text-ink-soft max-w-[46ch]">Photos for small online shops. Clean ones for the product page, moodier ones for Instagram. Same product, the light does most of the work.</p>
@@ -111,7 +112,7 @@
             <a href="#light" class="btn btn-ghost">See what light changes</a>
           </div>
         </div>
-        <div class="hero-photo pp-hero-photo">
+        <div class="hero-photo pp-hero-photo lift lift-2">
         <picture>
           <source type="image/webp" srcset="/assets/product-photography/mills-4-background-640.webp 640w, /assets/product-photography/mills-4-background-1000.webp 1000w, /assets/product-photography/mills-4-background-1600.webp 1600w" sizes="(min-width: 861px) 460px, min(calc(100vw - 36px), 460px)">
           <img src="/assets/product-photography/mills-4-background-1000.jpg" srcset="/assets/product-photography/mills-4-background-640.jpg 640w, /assets/product-photography/mills-4-background-1000.jpg 1000w, /assets/product-photography/mills-4-background-1600.jpg 1600w" sizes="(min-width: 861px) 460px, min(calc(100vw - 36px), 460px)" width="1600" height="2400" alt="Pepper mills and a stack of ceramic bowls on a wood slice in full studio light, with the background lit" fetchpriority="high" decoding="async">
@@ -386,7 +387,7 @@
       <p class="metric-note">No promises about sales. Just better light.</p>
       <div class="grid grid-cols-2 gap-12 mt-14 items-start max-[820px]:grid-cols-1 max-[820px]:gap-9">
         <form
-          id="contactForm" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field"
+          id="contactForm" name="contact" method="POST" action="/thank-you" data-netlify="true" netlify-honeypot="bot-field"
           x-data="{
             status: '',
             sending: false,
@@ -394,13 +395,14 @@
               this.sending = true; this.status = 'Sending…';
               const data = new FormData(e.target);
               fetch('/', { method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body: new URLSearchParams(data).toString() })
-                .then(r => { if(!r.ok) throw new Error('network'); this.status = 'Thanks — I\'ll get back to you within a day or two.'; e.target.reset(); })
-                .catch(() => { this.status = 'Something went wrong — email me directly at hello@svitlanabiletska.com'; })
-                .finally(() => { this.sending = false; });
+                .then(r => { if(!r.ok) throw new Error('network'); window.location.href = '/thank-you'; })
+                .catch(() => { this.status = 'Something went wrong — email me directly at hello@svitlanabiletska.com'; this.sending = false; });
             }
           }"
           @submit.prevent="submitForm($event)">
           <input type="hidden" name="form-name" value="contact">
+          <!-- Which page the request came from. -->
+          <input type="hidden" name="page" value="product-photography">
           <p class="hidden-field">
             <label>Don't fill this out if you're human: <input name="bot-field"></label>
           </p>
@@ -417,9 +419,9 @@
             <input id="cf-site" name="site" type="text" placeholder="yourstore.com">
           </div>
           <div class="field">
-            <label for="cf-need">What do you need?</label>
-            <select id="cf-need" name="need" required>
-              <option value="" disabled>Choose one</option>
+            <label for="cf-need">What do you need? (optional)</label>
+            <select id="cf-need" name="need">
+              <option value="">Choose one</option>
               <option value="Fix">Fix</option>
               <option value="Audit">Audit</option>
               <option value="Content" selected>Content</option>
@@ -470,5 +472,7 @@
     </div>
   </div>
 </footer>
+
+<script defer src="/js/reveal.js?v=20261104"></script>
 </body>
 </html>

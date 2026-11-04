@@ -42,3 +42,9 @@
   to = "/product-photography"
   status = 301
   force = true
+
+[[redirects]]
+  from = "/thank-you.html"
+  to = "/thank-you"
+  status = 301
+  force = true
