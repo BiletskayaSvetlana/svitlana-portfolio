@@ -48,3 +48,9 @@
   to = "/thank-you"
   status = 301
   force = true
+
+[[redirects]]
+  from = "/ux-audit.html"
+  to = "/ux-audit"
+  status = 301
+  force = true

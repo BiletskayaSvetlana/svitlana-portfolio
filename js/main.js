@@ -194,8 +194,8 @@
       });
       cards.forEach(function(card, i){
         if(i===0) return;
-        tl.fromTo(card, {yPercent:14, opacity:0, scale:.96},
-                         {yPercent:0, opacity:1, scale:1, duration:1, ease:'power2.out'}, i-1);
+        tl.fromTo(card, {yPercent:14, autoAlpha:0, scale:.96},
+                         {yPercent:0, autoAlpha:1, scale:1, duration:1, ease:'power2.out'}, i-1);
         tl.to(cards[i-1], {scale:.94, opacity:.35, duration:1, ease:'power2.out'}, i-1);
       });
     }
