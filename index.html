@@ -29,7 +29,7 @@
 
   <link rel="preload" href="/assets/fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/css/style.css?v=20261104b">
+  <link rel="stylesheet" href="/css/style.css?v=20261104c">
 
   <script type="application/ld+json">
   {
@@ -61,6 +61,7 @@
   </script>
 
   <script defer src="/js/vendor/alpine.min.js?v=3.14.9"></script>
+  <script defer src="/js/consent.js?v=20261104"></script>
 </head>
 <body>
 
@@ -538,7 +539,7 @@
               this.sending = true; this.status = 'Sending…';
               const data = new FormData(e.target);
               fetch('/', { method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body: new URLSearchParams(data).toString() })
-                .then(r => { if(!r.ok) throw new Error('network'); window.location.href = '/thank-you'; })
+                .then(r => { if(!r.ok) throw new Error('network'); try { sessionStorage.setItem('sb-form-page', data.get('page') || ''); } catch(err){} window.location.href = '/thank-you'; })
                 .catch(() => { this.status = 'Something went wrong — email me directly at hello@svitlanabiletska.com'; this.sending = false; });
             }
           }"
@@ -613,6 +614,7 @@
     </div>
     <div class="foot-bottom">
       <span>© 2026 Svitlana Biletska</span>
+      <span class="foot-legal"><a href="/privacy">Privacy</a> · <button type="button" data-consent-open>Cookie settings</button></span>
     </div>
   </div>
 </footer>

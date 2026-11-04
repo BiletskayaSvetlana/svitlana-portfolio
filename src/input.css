@@ -354,6 +354,30 @@
   .foot-contact a { @apply inline-flex items-center min-h-11; }
   .foot-contact b { @apply text-ink; }
   .foot-bottom { @apply mt-[34px] pt-5 border-t border-line text-xs text-ink-faint flex flex-wrap justify-between gap-[10px]; }
+  /* Privacy link and the button that reopens the consent banner (44px tap targets). */
+  .foot-legal { @apply flex flex-wrap items-center gap-x-2; }
+  .foot-legal a, .foot-legal button { @apply inline-flex items-center min-h-11 bg-transparent border-0 p-0 font-sans text-xs text-ink-soft cursor-pointer underline underline-offset-4 hover:text-ink; }
+
+  /* Consent banner (js/consent.js): fixed at the bottom, added after load, so it
+     causes no layout shift and never becomes the LCP element. */
+  .consent {
+    @apply fixed inset-x-3 bottom-3 z-50 mx-auto max-w-[640px] rounded-[18px] border border-line-strong bg-bg
+           px-5 pt-4 flex flex-wrap items-center gap-x-5 gap-y-3 text-[13.5px] leading-[1.5] text-ink-soft;
+    padding-bottom: calc(1rem + env(safe-area-inset-bottom));
+    box-shadow: 0 20px 50px -20px rgba(0,0,0,.35);
+  }
+  .consent[hidden] { display: none; }
+  .consent p { @apply flex-1 min-w-[220px]; }
+  .consent a { @apply font-bold text-ink underline underline-offset-4 hover:text-accent; }
+  .consent-actions { @apply flex gap-2.5 ml-auto; }
+  .consent .btn { @apply py-2 px-4; }
+
+  /* Privacy page text. */
+  .legal { @apply max-w-[68ch]; }
+  .legal > p:not(.eyebrow) { @apply text-[17px] leading-[1.65] text-ink-soft mt-4; }
+  .legal h2 { @apply text-[clamp(22px,2.6vw,28px)] font-medium mt-10; }
+  .legal a { @apply text-ink underline underline-offset-4 hover:text-accent; }
+  .legal code { @apply font-mono text-[14px] text-ink; }
 
   /* hero blocks next to the H1: a short CSS rise on load only, no JS. Never
      put it on the H1 or the LCP image. */
