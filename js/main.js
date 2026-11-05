@@ -18,6 +18,23 @@
     var pace = small ? .55 : 1;
     gsap.registerPlugin(ScrollTrigger);
 
+    // html has scroll-behavior:smooth (CSS). ScrollTrigger jumps the page to
+    // the top and back while it measures, and with smooth scrolling those jumps
+    // animate: after a reload in the middle of the page the pinned Services
+    // deck was measured from the wrong position (empty gap, half-played cards,
+    // page shifted by the pin length). Keep native scrolling instant while
+    // ScrollTrigger runs and turn smooth on only for in-page anchor clicks.
+    var root = document.documentElement;
+    root.style.scrollBehavior = 'auto';
+    document.addEventListener('click', function(e){
+      var a = e.target.closest && e.target.closest('a[href^="#"]');
+      if(!a || a.getAttribute('href').length < 2 || reduce) return;
+      root.style.scrollBehavior = '';
+      var done = function(){ root.style.scrollBehavior = 'auto'; };
+      window.addEventListener('scrollend', done, { once:true });
+      setTimeout(done, 1500);
+    });
+
     var headLines = gsap.utils.toArray('.reveal-line span');
     var stage = document.getElementById('stackStage');
     var cards = gsap.utils.toArray('.stack-card');
@@ -212,6 +229,10 @@
         }, (layer.at || 0) * pace);
       });
     });
+
+    // Measure again once fonts and images have their final size.
+    if(document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ ScrollTrigger.refresh(); });
+    if(document.readyState !== 'complete') window.addEventListener('load', function(){ ScrollTrigger.refresh(); });
   } catch(e){}
   }
 })();

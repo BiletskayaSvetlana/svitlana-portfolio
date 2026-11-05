@@ -54,3 +54,15 @@
   to = "/ux-audit"
   status = 301
   force = true
+
+[[redirects]]
+  from = "/hyva-frontend-developer.html"
+  to = "/hyva-frontend-developer"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/prestashop-developer.html"
+  to = "/prestashop-developer"
+  status = 301
+  force = true
