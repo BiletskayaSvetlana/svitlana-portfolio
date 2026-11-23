@@ -66,3 +66,9 @@
   to = "/prestashop-developer"
   status = 301
   force = true
+
+[[redirects]]
+  from = "/product-photography-katowice.html"
+  to = "/product-photography-katowice"
+  status = 301
+  force = true

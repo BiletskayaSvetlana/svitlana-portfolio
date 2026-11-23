@@ -547,6 +547,20 @@
   .duo-item p { @apply text-ink-soft text-[15px] leading-[1.6] max-w-[46ch]; }
 
   .trial-points { @apply list-none m-0 p-0 grid grid-cols-3 gap-5 max-[860px]:grid-cols-1 max-[860px]:gap-3; }
+  /* FAQ accordion: one answer open at a time; the button carries aria-expanded. */
+  .faq { @apply mt-9 max-w-[760px] border-t border-line; }
+  .faq-item { @apply border-b border-line; }
+  .faq-q { @apply font-sans text-[17px] font-semibold; }
+  .faq-q button {
+    @apply w-full flex items-center justify-between gap-6 py-5 px-0 bg-transparent border-0 text-left
+           font-sans text-[17px] font-semibold text-ink cursor-pointer transition-colors hover:text-accent;
+  }
+  .faq-icon { @apply relative w-3.5 h-3.5 shrink-0; }
+  .faq-icon::before, .faq-icon::after { content: ''; @apply absolute left-0 top-1/2 w-full h-[1.5px] -mt-px bg-current transition-transform duration-200; }
+  .faq-icon::after { @apply rotate-90; }
+  .faq-q button[aria-expanded="true"] .faq-icon::after { @apply rotate-0; }
+  .faq-a { @apply pb-5; }
+  .faq-a p { @apply text-ink-soft text-[15px] leading-[1.6] max-w-[62ch]; }
   .trial-points li { @apply border border-line-strong rounded-[18px] px-[22px] py-6 bg-bg font-serif text-[19px] leading-[1.35] text-ink; }
 }
 

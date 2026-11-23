@@ -11,17 +11,17 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="Product Photography for Online Stores | Svitlana Biletska">
   <meta property="og:description" content="Product photos for small shops: clean shots for the product page, mood shots for social. Free trial shoot: 3 spots, 5 photos, 5 working days.">
-  <meta property="og:image" content="https://svitlanabiletska.com/assets/product-photography/og-1200.jpg">
+  <meta property="og:image" content="https://svitlanabiletska.com/assets/img/og/og-product-photography.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Pepper mills and ceramic bowls on a wood slice, side by side: lit only by the ceiling light on the left, in full studio light on the right">
+  <meta property="og:image:alt" content="Product photos for online stores by Svitlana Biletska">
   <meta property="og:url" content="https://svitlanabiletska.com/product-photography">
   <meta property="og:locale" content="en_US">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Product Photography for Online Stores | Svitlana Biletska">
   <meta name="twitter:description" content="Product photos for small shops: clean shots for the product page, mood shots for social. Free trial shoot: 3 spots, 5 photos, 5 working days.">
-  <meta name="twitter:image" content="https://svitlanabiletska.com/assets/product-photography/og-1200.jpg">
+  <meta name="twitter:image" content="https://svitlanabiletska.com/assets/img/og/og-product-photography.jpg">
 
   <link rel="icon" href="/assets/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="512x512" href="/assets/icon-512.png">
@@ -29,7 +29,7 @@
 
   <link rel="preload" href="/assets/fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/css/style.css?v=20261123c">
+  <link rel="stylesheet" href="/css/style.css?v=20261123d">
 
   <script type="application/ld+json">
   {
@@ -52,6 +52,62 @@
     "url": "https://svitlanabiletska.com/product-photography",
     "image": "https://svitlanabiletska.com/assets/product-photography/og-1200.jpg",
     "provider": { "@type": "Person", "name": "Svitlana Biletska", "url": "https://svitlanabiletska.com/" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How long does it take?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Usually 5 working days from when the products reach me. The free trial shoot is ready within 5 working days."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What do I send?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The products themselves, clean and in their packaging, plus a link to your shop so I can match its style. We agree how they get to me (by post or in person) and how they come back before I start."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How many photos do I get?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We agree on the number per product before I start. The free trial is 5 photos on a light background."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you edit and retouch?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Colour correction, dust and small marks removed, and a clean background."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I use the photos anywhere?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, on your shop, marketplaces, social media and ads. I may show the work in my portfolio, and I'll ask you first."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does the free trial shoot work?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "5 photos on a light background, ready within 5 working days. In return I ask for a short review and your OK to show the work. There are three spots."
+        }
+      }
+    ]
   }
   </script>
 
@@ -130,6 +186,7 @@
             <a href="#trial" class="btn btn-solid">Get a free trial shoot</a>
             <a href="#light" class="btn btn-ghost">See what light changes</a>
           </div>
+          <p class="hero-note">Based in Upper Silesia. <a href="/product-photography-katowice">Shooting near Katowice <span aria-hidden="true">→</span></a></p>
         </div>
         <div class="hero-photo pp-hero-photo lift lift-2">
         <picture>
@@ -504,6 +561,55 @@
       <p class="text-ink-soft text-[15px] leading-[1.6] mt-9">Everything I do is on the <a href="/" class="underline underline-offset-4">home page</a>.</p>
     </div>
   </section>
+
+  <section id="faq" class="section-alt py-22">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">07 / FAQ</p>
+          <h2>Questions, <em class="italic text-accent">answered.</em></h2>
+        </div>
+      </div>
+      <div class="faq" x-data="{ open: null }">
+        <div class="faq-item">
+          <h3 class="faq-q"><button type="button" id="faq-q1" aria-controls="faq-a1" aria-expanded="false" :aria-expanded="(open === 1).toString()" @click="open = open === 1 ? null : 1">How long does it take?<span class="faq-icon" aria-hidden="true"></span></button></h3>
+          <div id="faq-a1" class="faq-a" role="region" aria-labelledby="faq-q1" x-show="open === 1" x-cloak>
+            <p>Usually 5 working days from when the products reach me. The free trial shoot is ready within 5 working days.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <h3 class="faq-q"><button type="button" id="faq-q2" aria-controls="faq-a2" aria-expanded="false" :aria-expanded="(open === 2).toString()" @click="open = open === 2 ? null : 2">What do I send?<span class="faq-icon" aria-hidden="true"></span></button></h3>
+          <div id="faq-a2" class="faq-a" role="region" aria-labelledby="faq-q2" x-show="open === 2" x-cloak>
+            <p>The products themselves, clean and in their packaging, plus a link to your shop so I can match its style. We agree how they get to me (by post or in person) and how they come back before I start.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <h3 class="faq-q"><button type="button" id="faq-q3" aria-controls="faq-a3" aria-expanded="false" :aria-expanded="(open === 3).toString()" @click="open = open === 3 ? null : 3">How many photos do I get?<span class="faq-icon" aria-hidden="true"></span></button></h3>
+          <div id="faq-a3" class="faq-a" role="region" aria-labelledby="faq-q3" x-show="open === 3" x-cloak>
+            <p>We agree on the number per product before I start. The free trial is 5 photos on a light background.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <h3 class="faq-q"><button type="button" id="faq-q4" aria-controls="faq-a4" aria-expanded="false" :aria-expanded="(open === 4).toString()" @click="open = open === 4 ? null : 4">Do you edit and retouch?<span class="faq-icon" aria-hidden="true"></span></button></h3>
+          <div id="faq-a4" class="faq-a" role="region" aria-labelledby="faq-q4" x-show="open === 4" x-cloak>
+            <p>Yes. Colour correction, dust and small marks removed, and a clean background.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <h3 class="faq-q"><button type="button" id="faq-q5" aria-controls="faq-a5" aria-expanded="false" :aria-expanded="(open === 5).toString()" @click="open = open === 5 ? null : 5">Can I use the photos anywhere?<span class="faq-icon" aria-hidden="true"></span></button></h3>
+          <div id="faq-a5" class="faq-a" role="region" aria-labelledby="faq-q5" x-show="open === 5" x-cloak>
+            <p>Yes, on your shop, marketplaces, social media and ads. I may show the work in my portfolio, and I'll ask you first.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <h3 class="faq-q"><button type="button" id="faq-q6" aria-controls="faq-a6" aria-expanded="false" :aria-expanded="(open === 6).toString()" @click="open = open === 6 ? null : 6">How does the free trial shoot work?<span class="faq-icon" aria-hidden="true"></span></button></h3>
+          <div id="faq-a6" class="faq-a" role="region" aria-labelledby="faq-q6" x-show="open === 6" x-cloak>
+            <p>5 photos on a light background, ready within 5 working days. In return I ask for a short review and your OK to show the work. There are three spots.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </main>
 
 <footer class="site-footer">
@@ -523,6 +629,7 @@
           <li><a href="/prestashop-developer">PrestaShop developer</a></li>
           <li><a href="/ux-audit">Mobile UX audit</a></li>
           <li><a href="/product-photography" aria-current="page">Product photography</a></li>
+          <li><a href="/product-photography-katowice">Product photography in Silesia</a></li>
         </ul>
       </nav>
       <div class="foot-contact">
