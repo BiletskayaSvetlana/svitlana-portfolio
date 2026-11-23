@@ -239,10 +239,12 @@
   .stack-media { @apply flex-1 min-w-0 rounded-[14px] overflow-hidden max-[700px]:hidden; }
   .stack-media-pair { @apply flex justify-center gap-4; }
   .stack-media-pair figure { @apply relative m-0 h-full; aspect-ratio: 400/681; }
-  .stack-media-pair figure:only-child { aspect-ratio: 4/5; }
+  /* Single 2:3 product photo: the frame matches the photo, so nothing is cropped. */
+  .stack-media-pair figure:only-child { aspect-ratio: 2/3; }
   .stack-media-cover { @apply border border-line; }
   .stack-media-cover picture, .stack-media-cover img { @apply block size-full object-cover; }
   .stack-media-pair picture, .stack-media-pair img { @apply block size-full object-cover object-top rounded-[10px] border border-line; }
+  .stack-media-pair figure:only-child img { @apply object-center; }
   .stack-media-pair figcaption {
     @apply absolute left-2 top-2 font-mono text-[10.5px] uppercase tracking-[0.1em] text-ink rounded-full px-2 py-1;
     background: color-mix(in srgb, var(--color-bg) 85%, transparent);
@@ -266,10 +268,11 @@
   .price-note-actions { @apply flex flex-wrap gap-3 ml-auto max-[560px]:ml-0; }
 
   /* content strip */
-  .shoot-grid { @apply grid grid-cols-3 gap-5 max-[820px]:grid-cols-2 max-[520px]:gap-3; }
+  /* 2:3 tiles: capped at 960px on desktop so the two rows do not get too tall. */
+  .shoot-grid { @apply grid grid-cols-3 gap-5 max-w-[960px] max-[820px]:grid-cols-2 max-[520px]:gap-3; }
   .shoot-tile {
     @apply relative flex items-center justify-center rounded-[18px] overflow-hidden border border-line;
-    aspect-ratio: 4/5;
+    aspect-ratio: 2/3;
     background: linear-gradient(160deg, var(--color-bg-alt), var(--color-line));
   }
   .shoot-tile span { @apply font-mono text-xs text-ink-faint; }
