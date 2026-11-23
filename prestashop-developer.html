@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>PrestaShop Front-End Developer | Svitlana B.</title>
+  <title>PrestaShop Front-End Developer | Svitlana Biletska</title>
   <meta name="description" content="PrestaShop front-end developer: theme customization, UX fixes, filters and size guides. See the Hearth &amp; Hound case and get a free mini-audit.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://svitlanabiletska.com/prestashop-developer">
 
   <meta property="og:type" content="website">
-  <meta property="og:title" content="PrestaShop Front-End Developer | Svitlana B.">
+  <meta property="og:title" content="PrestaShop Front-End Developer | Svitlana Biletska">
   <meta property="og:description" content="PrestaShop front-end developer: theme customization, UX fixes, filters and size guides. See the Hearth &amp; Hound case and get a free mini-audit.">
   <meta property="og:image" content="https://svitlanabiletska.com/assets/cases/mobile-ux-audit/og-1200.jpg">
   <meta property="og:image:width" content="1200">
@@ -19,7 +19,7 @@
   <meta property="og:locale" content="en_US">
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="PrestaShop Front-End Developer | Svitlana B.">
+  <meta name="twitter:title" content="PrestaShop Front-End Developer | Svitlana Biletska">
   <meta name="twitter:description" content="PrestaShop front-end developer: theme customization, UX fixes, filters and size guides. See the Hearth &amp; Hound case and get a free mini-audit.">
   <meta name="twitter:image" content="https://svitlanabiletska.com/assets/cases/mobile-ux-audit/og-1200.jpg">
 
@@ -29,7 +29,7 @@
 
   <link rel="preload" href="/assets/fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/css/style.css?v=20261104d">
+  <link rel="stylesheet" href="/css/style.css?v=20261123">
 
   <script type="application/ld+json">
   {
@@ -65,7 +65,18 @@
       <nav aria-label="Primary" class="hidden md:block">
         <ul>
           <li><a href="/#work">Work</a></li>
-          <li><a href="/#services">Services</a></li>
+          <li class="nav-drop" x-data="{ sub: false }" @pointerenter="if ($event.pointerType === 'mouse') sub = true" @pointerleave="if ($event.pointerType === 'mouse') sub = false" @click.outside="sub = false" @focusout="if (!$el.contains($event.relatedTarget)) sub = false" @keydown.escape="sub = false; $refs.subBtn.focus()">
+            <button type="button" class="nav-drop-btn" x-ref="subBtn" :aria-expanded="sub.toString()" aria-controls="servicesMenu" @click="sub = !sub">Services <svg viewBox="0 0 10 10" aria-hidden="true"><path d="M1.5 3.5 5 7l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button>
+            <div id="servicesMenu" class="nav-drop-panel" x-show="sub" x-transition.opacity.duration.150ms x-cloak>
+              <ul>
+                <li><a href="/#services">All services</a></li>
+                <li><a href="/hyva-frontend-developer">Hyvä developer</a></li>
+                <li><a href="/prestashop-developer" aria-current="page">PrestaShop developer</a></li>
+                <li><a href="/ux-audit">Mobile UX audit</a></li>
+                <li><a href="/product-photography">Product photography</a></li>
+              </ul>
+            </div>
+          </li>
           <li><a href="/#about">About</a></li>
           <li><a href="/#contact">Contact</a></li>
         </ul>
@@ -87,7 +98,14 @@
       <nav aria-label="Mobile">
         <ul>
           <li><a href="/#work" @click="open=false">Work</a></li>
-          <li><a href="/#services" @click="open=false">Services</a></li>
+          <li><a href="/#services" @click="open=false">Services</a>
+            <ul class="mobile-sub">
+              <li><a href="/hyva-frontend-developer" @click="open=false">Hyvä developer</a></li>
+              <li><a href="/prestashop-developer" aria-current="page" @click="open=false">PrestaShop developer</a></li>
+              <li><a href="/ux-audit" @click="open=false">Mobile UX audit</a></li>
+              <li><a href="/product-photography" @click="open=false">Product photography</a></li>
+            </ul>
+          </li>
           <li><a href="/#about" @click="open=false">About</a></li>
           <li><a href="/#contact" @click="open=false">Contact</a></li>
         </ul>
@@ -244,6 +262,14 @@
           <li><a href="/#work">Work</a></li>
           <li><a href="/#services">Services</a></li>
           <li><a href="/#about">About</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Footer services">
+        <ul>
+          <li><a href="/hyva-frontend-developer">Hyvä developer</a></li>
+          <li><a href="/prestashop-developer" aria-current="page">PrestaShop developer</a></li>
+          <li><a href="/ux-audit">Mobile UX audit</a></li>
+          <li><a href="/product-photography">Product photography</a></li>
         </ul>
       </nav>
       <div class="foot-contact">

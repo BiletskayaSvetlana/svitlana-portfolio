@@ -137,6 +137,22 @@
     content: ''; @apply absolute left-0 -bottom-0.5 h-[1.5px] w-full bg-accent origin-left scale-x-0 transition-transform duration-500;
   }
   .nav-links nav a:hover::after { @apply scale-x-100; }
+  /* Services dropdown in the desktop nav (hover with a mouse, click or keyboard otherwise). */
+  .nav-drop { @apply relative; }
+  .nav-drop-btn {
+    @apply inline-flex items-center gap-1 bg-transparent border-0 p-0 py-0.5 font-sans text-sm font-semibold
+           text-ink-soft cursor-pointer transition-colors hover:text-ink;
+  }
+  .nav-drop-btn svg { @apply w-2.5 h-2.5 transition-transform duration-200; }
+  .nav-drop-btn[aria-expanded="true"] { @apply text-ink; }
+  .nav-drop-btn[aria-expanded="true"] svg { @apply rotate-180; }
+  .nav-drop-panel { @apply absolute top-full -left-4 pt-3 z-50; }
+  .nav-links .nav-drop-panel ul {
+    @apply flex-col gap-0 min-w-[220px] py-2 rounded-2xl border border-line bg-bg shadow-[0_12px_32px_rgba(0,0,0,0.14)];
+  }
+  .nav-links .nav-drop-panel a { @apply block px-4 py-2.5 whitespace-nowrap; }
+  .nav-links .nav-drop-panel a::after { @apply hidden; }
+  .nav-links .nav-drop-panel a[aria-current="page"] { @apply text-ink; }
 
   /* mobile nav */
   .nav-toggle {
@@ -144,10 +160,13 @@
            border border-line-strong bg-transparent cursor-pointer shrink-0;
   }
   .nav-toggle span { @apply block w-4 h-[1.5px] bg-ink transition-transform duration-300; }
-  .mobile-menu { @apply border-b border-line bg-bg overflow-hidden; }
+  /* Scrolls inside itself if the list is taller than a small phone screen. */
+  .mobile-menu { @apply border-b border-line bg-bg overflow-x-hidden overflow-y-auto max-h-[calc(100dvh-72px)]; }
   .mobile-menu-inner { @apply flex flex-col gap-1 px-6 pt-2 pb-7; }
   .mobile-menu ul { @apply list-none flex flex-col m-0 p-0; }
   .mobile-menu nav a { @apply text-base font-semibold text-ink py-[13px] border-b border-line block; }
+  .mobile-menu .mobile-sub a { @apply pl-4 py-[11px] text-[15px] font-medium text-ink-soft; }
+  .mobile-menu .mobile-sub a[aria-current="page"] { @apply text-ink font-semibold; }
 
   /* hero: the H1 and the LCP image are visible from the first paint on every
      page. Only blocks beside them use the CSS .rise below; GSAP handles

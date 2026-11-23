@@ -26,7 +26,7 @@
 
   <link rel="preload" href="/assets/fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/css/style.css?v=20261104d">
+  <link rel="stylesheet" href="/css/style.css?v=20261123">
 
   <script type="application/ld+json">
   {
@@ -52,7 +52,18 @@
       <nav aria-label="Primary" class="hidden md:block">
         <ul>
           <li><a href="/#work">Work</a></li>
-          <li><a href="/#services">Services</a></li>
+          <li class="nav-drop" x-data="{ sub: false }" @pointerenter="if ($event.pointerType === 'mouse') sub = true" @pointerleave="if ($event.pointerType === 'mouse') sub = false" @click.outside="sub = false" @focusout="if (!$el.contains($event.relatedTarget)) sub = false" @keydown.escape="sub = false; $refs.subBtn.focus()">
+            <button type="button" class="nav-drop-btn" x-ref="subBtn" :aria-expanded="sub.toString()" aria-controls="servicesMenu" @click="sub = !sub">Services <svg viewBox="0 0 10 10" aria-hidden="true"><path d="M1.5 3.5 5 7l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button>
+            <div id="servicesMenu" class="nav-drop-panel" x-show="sub" x-transition.opacity.duration.150ms x-cloak>
+              <ul>
+                <li><a href="/#services">All services</a></li>
+                <li><a href="/hyva-frontend-developer">Hyvä developer</a></li>
+                <li><a href="/prestashop-developer">PrestaShop developer</a></li>
+                <li><a href="/ux-audit">Mobile UX audit</a></li>
+                <li><a href="/product-photography">Product photography</a></li>
+              </ul>
+            </div>
+          </li>
           <li><a href="/#about">About</a></li>
           <li><a href="/#contact">Contact</a></li>
         </ul>
@@ -74,7 +85,14 @@
       <nav aria-label="Mobile">
         <ul>
           <li><a href="/#work" @click="open=false">Work</a></li>
-          <li><a href="/#services" @click="open=false">Services</a></li>
+          <li><a href="/#services" @click="open=false">Services</a>
+            <ul class="mobile-sub">
+              <li><a href="/hyva-frontend-developer" @click="open=false">Hyvä developer</a></li>
+              <li><a href="/prestashop-developer" @click="open=false">PrestaShop developer</a></li>
+              <li><a href="/ux-audit" @click="open=false">Mobile UX audit</a></li>
+              <li><a href="/product-photography" @click="open=false">Product photography</a></li>
+            </ul>
+          </li>
           <li><a href="/#about" @click="open=false">About</a></li>
           <li><a href="/#contact" @click="open=false">Contact</a></li>
         </ul>
@@ -331,7 +349,7 @@
           <a href="/#contact" class="btn btn-solid">Get a free mini-audit</a>
           <a href="https://northcairn.svitlanabiletska.com/" class="btn btn-ghost" target="_blank" rel="noopener">Visit the live demo</a>
         </div>
-        <p class="hero-note"><a href="/assets/cases/northcairn/northcairn-sample-audit.pdf" target="_blank" rel="noopener">View a sample audit (PDF) <span aria-hidden="true">→</span></a> · <a href="/hyva-frontend-developer">Need Hyvä work? <span aria-hidden="true">→</span></a></p>
+        <p class="hero-note"><a href="/assets/cases/northcairn/northcairn-sample-audit.pdf" target="_blank" rel="noopener">View a sample audit (PDF) <span aria-hidden="true">→</span></a> · <a href="/hyva-frontend-developer">Need Hyvä work? <span aria-hidden="true">→</span></a> · <a href="/ux-audit">Mobile UX audit <span aria-hidden="true">→</span></a></p>
       </div>
     </div>
   </section>
@@ -346,6 +364,14 @@
           <li><a href="/#work">Work</a></li>
           <li><a href="/#services">Services</a></li>
           <li><a href="/#about">About</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Footer services">
+        <ul>
+          <li><a href="/hyva-frontend-developer">Hyvä developer</a></li>
+          <li><a href="/prestashop-developer">PrestaShop developer</a></li>
+          <li><a href="/ux-audit">Mobile UX audit</a></li>
+          <li><a href="/product-photography">Product photography</a></li>
         </ul>
       </nav>
       <div class="foot-contact">

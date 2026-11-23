@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Product Photography for Small Online Stores | Svitlana B.</title>
+  <title>Product Photography for Online Stores | Svitlana Biletska</title>
   <meta name="description" content="Clean product page photos and mood shots for social, for small online shops. Free trial shoot: 3 spots, 5 photos in 5 working days. Apply now.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://svitlanabiletska.com/product-photography">
 
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Product Photography for Small Online Stores | Svitlana B.">
+  <meta property="og:title" content="Product Photography for Online Stores | Svitlana Biletska">
   <meta property="og:description" content="Product photos for small shops: clean shots for the product page, mood shots for social. Free trial shoot: 3 spots, 5 photos, 5 working days.">
   <meta property="og:image" content="https://svitlanabiletska.com/assets/product-photography/og-1200.jpg">
   <meta property="og:image:width" content="1200">
@@ -19,7 +19,7 @@
   <meta property="og:locale" content="en_US">
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Product Photography for Small Online Stores | Svitlana B.">
+  <meta name="twitter:title" content="Product Photography for Online Stores | Svitlana Biletska">
   <meta name="twitter:description" content="Product photos for small shops: clean shots for the product page, mood shots for social. Free trial shoot: 3 spots, 5 photos, 5 working days.">
   <meta name="twitter:image" content="https://svitlanabiletska.com/assets/product-photography/og-1200.jpg">
 
@@ -29,7 +29,7 @@
 
   <link rel="preload" href="/assets/fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/css/style.css?v=20261104d">
+  <link rel="stylesheet" href="/css/style.css?v=20261123">
 
   <script type="application/ld+json">
   {
@@ -67,7 +67,18 @@
       <nav aria-label="Primary" class="hidden md:block">
         <ul>
           <li><a href="/#work">Work</a></li>
-          <li><a href="/#services">Services</a></li>
+          <li class="nav-drop" x-data="{ sub: false }" @pointerenter="if ($event.pointerType === 'mouse') sub = true" @pointerleave="if ($event.pointerType === 'mouse') sub = false" @click.outside="sub = false" @focusout="if (!$el.contains($event.relatedTarget)) sub = false" @keydown.escape="sub = false; $refs.subBtn.focus()">
+            <button type="button" class="nav-drop-btn" x-ref="subBtn" :aria-expanded="sub.toString()" aria-controls="servicesMenu" @click="sub = !sub">Services <svg viewBox="0 0 10 10" aria-hidden="true"><path d="M1.5 3.5 5 7l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button>
+            <div id="servicesMenu" class="nav-drop-panel" x-show="sub" x-transition.opacity.duration.150ms x-cloak>
+              <ul>
+                <li><a href="/#services">All services</a></li>
+                <li><a href="/hyva-frontend-developer">Hyvä developer</a></li>
+                <li><a href="/prestashop-developer">PrestaShop developer</a></li>
+                <li><a href="/ux-audit">Mobile UX audit</a></li>
+                <li><a href="/product-photography" aria-current="page">Product photography</a></li>
+              </ul>
+            </div>
+          </li>
           <li><a href="/#about">About</a></li>
           <li><a href="/#contact">Contact</a></li>
         </ul>
@@ -89,7 +100,14 @@
       <nav aria-label="Mobile">
         <ul>
           <li><a href="/#work" @click="open=false">Work</a></li>
-          <li><a href="/#services" @click="open=false">Services</a></li>
+          <li><a href="/#services" @click="open=false">Services</a>
+            <ul class="mobile-sub">
+              <li><a href="/hyva-frontend-developer" @click="open=false">Hyvä developer</a></li>
+              <li><a href="/prestashop-developer" @click="open=false">PrestaShop developer</a></li>
+              <li><a href="/ux-audit" @click="open=false">Mobile UX audit</a></li>
+              <li><a href="/product-photography" aria-current="page" @click="open=false">Product photography</a></li>
+            </ul>
+          </li>
           <li><a href="/#about" @click="open=false">About</a></li>
           <li><a href="/#contact" @click="open=false">Contact</a></li>
         </ul>
@@ -447,6 +465,45 @@
       </div>
     </div>
   </section>
+
+  <section id="same-store" class="py-22">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">06 / Same store</p>
+          <h2>Product photos plus a mobile audit <em class="italic text-accent">of the same store.</em></h2>
+        </div>
+        <p>New photos sell better on a page that works on a phone. I can check that page too, and fix it.</p>
+      </div>
+      <div class="grid grid-cols-3 gap-6 mt-9 max-[760px]:grid-cols-1">
+        <a href="/ux-audit" class="case case-link">
+          <div class="case-body">
+            <p class="eyebrow mb-1.5">Service · Mobile UX audit</p>
+            <h3>Mobile UX audit</h3>
+            <p>What keeps mobile visitors from buying in your shop, and how to fix it. Starts with a free mini-audit.</p>
+            <span class="case-more">See the audit <span aria-hidden="true">→</span></span>
+          </div>
+        </a>
+        <a href="/case-solene" class="case case-link">
+          <div class="case-body">
+            <p class="eyebrow mb-1.5">Case study · WooCommerce</p>
+            <h3>Solene</h3>
+            <p>A demo jewelry store: a product page with swipeable photos, a sticky add to cart and a live engraving preview.</p>
+            <span class="case-more">Read the case study <span aria-hidden="true">→</span></span>
+          </div>
+        </a>
+        <a href="/case-hearth-hound" class="case case-link">
+          <div class="case-body">
+            <p class="eyebrow mb-1.5">Case study · PrestaShop</p>
+            <h3>Hearth &amp; Hound</h3>
+            <p>A demo pet and home-goods store with a size guide and faceted filters built from scratch.</p>
+            <span class="case-more">Read the case study <span aria-hidden="true">→</span></span>
+          </div>
+        </a>
+      </div>
+      <p class="text-ink-soft text-[15px] leading-[1.6] mt-9">Everything I do is on the <a href="/" class="underline underline-offset-4">home page</a>.</p>
+    </div>
+  </section>
 </main>
 
 <footer class="site-footer">
@@ -458,6 +515,14 @@
           <li><a href="/#work">Work</a></li>
           <li><a href="/#services">Services</a></li>
           <li><a href="/#about">About</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Footer services">
+        <ul>
+          <li><a href="/hyva-frontend-developer">Hyvä developer</a></li>
+          <li><a href="/prestashop-developer">PrestaShop developer</a></li>
+          <li><a href="/ux-audit">Mobile UX audit</a></li>
+          <li><a href="/product-photography" aria-current="page">Product photography</a></li>
         </ul>
       </nav>
       <div class="foot-contact">
